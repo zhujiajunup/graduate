@@ -1,0 +1,4 @@
+templates/
+*.log
+*/*.conf
+*/.idea/

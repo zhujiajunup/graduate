@@ -1,6 +1,6 @@
 templates/
 *.log
-*/*.conf
+*.conf
 */.idea/
 */conf/*
 *.pyc

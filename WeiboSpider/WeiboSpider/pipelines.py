@@ -1,6 +1,6 @@
 # encoding=utf-8
 import os
-from items import CommentItem, TweetsItem, FlagItem, FansItem
+from items import CommentItem, TweetsItem, FlagItem, FollowsItem, InformationItem
 
 
 class FilePipeline(object):
@@ -19,6 +19,8 @@ class FilePipeline(object):
             self.FILE_CACHE[item['_id'].split('-')[1]] = f
             f.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (item['Content'], item['PubTime'], item['Tools'],
                                                   item['Comment'], item['Like'], item['Transfer']))
+        elif isinstance(item, InformationItem):
+            print item
         if isinstance(item, FlagItem):
             f = self.FILE_CACHE[item['weibo_id']]
             f.close()

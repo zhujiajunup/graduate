@@ -3,7 +3,6 @@
 import base64
 import requests
 import sys
-import time
 import json
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
@@ -12,8 +11,64 @@ import logging
 from settings import PROPERTIES
 from yumdama import identify
 import traceback
+import redis
+import time
+
 reload(sys)
 sys.setdefaultencoding('utf8')
+
+
+class RedisCookies(object):
+    redis_pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
+
+    @classmethod
+    def save_cookies(cls, user_name, cookies):
+
+        pickled_cookies = json.dumps({
+            'user_name': user_name,
+            'cookies': cookies,
+            'login_time': lambda: int(round(time.time() * 1000))
+        })
+        logging.info('save cookie in redis: %s' % str(pickled_cookies))
+        r = redis.Redis(connection_pool=cls.redis_pool)
+        r.hset('account', user_name, pickled_cookies)
+        cls.user_in_queue(user_name)
+
+    @classmethod
+    def user_in_queue(cls, user_name):
+        r = redis.Redis(connection_pool=cls.redis_pool)
+
+        if not r.sismember('users', user_name):
+            logging.info('user in queue: %s' % user_name)
+            r.sadd("users", user_name)
+        else:
+            logging.info('user already in queue: %s' % user_name)
+
+    @classmethod
+    def fetch_cookies(cls):
+        logging.info('get cookies from redis')
+        r = redis.Redis(connection_pool=cls.redis_pool)
+        retry_time = 0
+        while True:
+            retry_time += 1
+            logging.info('get cookies, try %d time(s)' % retry_time)
+            user = r.spop('users')
+            r.sadd('users', user)
+            c = r.hget('account', user)
+            if c:
+                user_cookies = c.decode('utf-8')
+                cookies_json = json.loads(user_cookies)
+                logging.info('cookies got-------')
+                return cookies_json
+            logging.warn('cookies not get')
+
+    @classmethod
+    def clean(cls):
+        r = redis.Redis(connection_pool=cls.redis_pool)
+        r.delete('users')
+        r.delete('account')
+
+
 IDENTIFY = 1  # 验证码输入方式:        1:看截图aa.png，手动输入     2:云打码
 # 0 代表从https://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.4.18) 获取cookie
 # 1 代表从https://weibo.cn/login/获取Cookie
@@ -26,7 +81,7 @@ logger = logging.getLogger(__name__)
 logging.getLogger("selenium").setLevel(logging.WARNING)  # 将selenium的日志级别设成WARNING，太烦人
 
 
-def getCookie(account, password):
+def get_cookie(account, password):
     if COOKIE_GETWAY == 0:
         return get_cookie_from_login_sina_com_cn(account, password)
     elif COOKIE_GETWAY == 1:
@@ -37,9 +92,9 @@ def getCookie(account, password):
 
 def get_cookie_from_login_sina_com_cn(account, password):
     """ 获取一个账号的Cookie """
-    loginURL = "https://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.4.18)"
+    login_url = "https://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.4.18)"
     username = base64.b64encode(account.encode("utf-8")).decode("utf-8")
-    postData = {
+    post_data = {
         "entry": "sso",
         "gateway": "1",
         "from": "null",
@@ -58,9 +113,9 @@ def get_cookie_from_login_sina_com_cn(account, password):
         "returntype": "TEXT",
     }
     session = requests.Session()
-    r = session.post(loginURL, data=postData)
-    jsonStr = r.content.decode("gbk")
-    info = json.loads(jsonStr)
+    r = session.post(login_url, data=post_data)
+    json_str = r.content.decode("gbk")
+    info = json.loads(json_str)
     if info["retcode"] == "0":
         logger.warning("Get Cookie Success!( Account:%s )" % account)
         cookie = session.cookies.get_dict()
@@ -135,23 +190,24 @@ def get_cookie_from_weibo_cn(account, password):
             pass
 
 
-def getCookies(weibo):
+def get_cookies(weibo):
     """ 获取Cookies """
     cookies = []
     for elem in weibo:
         account = elem['user']
         password = elem['password']
-        print account, password
-        cookie = getCookie(account, password)
+        cookie = get_cookie(account, password)
+        print cookie
         if cookie is not None:
-            print cookie
+            print type(cookie)
             if isinstance(cookie, str):
                 cookies.append(eval(cookie))
             elif isinstance(cookie, dict):
                 cookies.append(cookie)
             else:
                 raise "unsupported type[%s] of cookie[%s]" % (type(cookie), cookie)
-
     return cookies
-cookies = getCookies(PROPERTIES['accounts'])
+
+
+cookies = get_cookies(PROPERTIES['accounts'])
 logger.warning("Get Cookies Finish!( Num:%d)" % len(cookies))

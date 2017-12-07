@@ -2,3 +2,5 @@ templates/
 *.log
 */*.conf
 */.idea/
+*/conf/*
+*.pyc

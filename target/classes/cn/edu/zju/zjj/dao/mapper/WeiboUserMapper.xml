@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zju.zjj.dao.WeiboUserDao">
+
+    <insert id="insert" parameterType="cn.edu.zju.zjj.entity.WeiboUser">
+        insert into weibo_user (id, tags, gender, place, signature, birthday, sex_orientation, edu_info, marriage,
+        work_info, nickname) value (#{id}, #{tags}, #{gender}, #{place}, #{signature}, #{birthday},#{sexOrientation}, #{eduInfo},
+         #{marriage}, #{workInfo}, #{nickname})
+    </insert>
+    <select id="exist" resultType="java.lang.Boolean">
+        select ifnull(exists(select 1 from weibo_user where id = #{id}), 0);
+    </select>
+    <update id="update" parameterType="cn.edu.zju.zjj.entity.WeiboUser">
+        update weibo_user set tags = #{tags}, gender = #{gender}, place = #{place}, signature = #{signature},
+         birthday = #{birthday}, sex_orientation = #{sexOrientation}, edu_info = #{eduInfo},
+          marriage = #{marriage}, work_info = #{workInfo}, nickname = #{nickname} where id = #{id}
+    </update>
+
+
+</mapper>

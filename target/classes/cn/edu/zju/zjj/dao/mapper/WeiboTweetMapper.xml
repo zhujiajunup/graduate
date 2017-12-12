@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zju.zjj.dao.WeiboTweetDao">
+
+    <insert id="insert" parameterType="cn.edu.zju.zjj.entity.WeiboTweet">
+        insert into weibo_tweet (id, `time`, source, `like`, transfer, comment, content, source_tid, flag,
+        uid) value (#{id}, #{time}, #{source}, #{like}, #{transfer}, #{comment},#{content}, #{sourceTid},
+         #{flag}, #{uid})
+    </insert>
+    <select id="exist" resultType="java.lang.Boolean">
+        select ifnull(exists(select 1 from weibo_tweet where id = #{id}), 0);
+    </select>
+    <update id="update" parameterType="cn.edu.zju.zjj.entity.WeiboUser">
+        update weibo_tweet set `time` = #{time}, source = #{source}, `like` = #{like}, transfer = #{transfer},
+         comment = #{comment}, content = #{content}, source_tid = #{sourceTid},
+          flag = #{flag}, uid = #{uid} where id = #{id}
+    </update>
+
+
+</mapper>

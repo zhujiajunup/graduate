@@ -129,6 +129,7 @@ def get_cookie_from_weibo_cn(account, password):
     """ 获取一个账号的Cookie """
     try:
         browser = webdriver.PhantomJS(desired_capabilities=dcap)
+
         browser.get("https://weibo.cn/login/")
         time.sleep(1)
 

@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-# from redis_cookies import RedisCookies
+from redis_cookies import RedisCookies
 import os
 from time import sleep
 from PIL import Image
@@ -30,14 +30,16 @@ def save_verify_code_img():
 
 
 def login():
+    weibo_user = 'g6382912shanlu4@163.com'
+    weibo_password = 'vs7452014'
     try_time = 10
     browser.get('https://weibo.com/login.php')
     username = browser.find_element_by_id("loginname")
     username.clear()
-    username.send_keys("g6382912shanlu4@163.com")
+    username.send_keys(weibo_user)
     psd = browser.find_element_by_xpath('//input[@type="password"]')
     psd.clear()
-    psd.send_keys("vs7452014")
+    psd.send_keys(weibo_password)
     commit_btn = browser.find_element_by_xpath('//a[@node-type="submitBtn"]')
     commit_btn.click()
     # 没那么快登录成功
@@ -68,14 +70,17 @@ def login():
         except NoSuchElementException:
             print('login success')
             break
-
+    cookies_dict = {}
     for elem in browser.get_cookies():
+        cookies_dict[elem['name']] = elem['value']
         print(elem["name"], elem["value"])
-    print("end")
+    RedisCookies.save_cookies(weibo_user, cookies_dict)
 
 
 def home():
-    browser.get('https://weibo.cn/1316949123/info')
+    browser.get('https://weibo.com/47452014')
+    # browser.get('https://weibo.cn/1316949123/info')
+
 login()
 home()
 

@@ -57,9 +57,10 @@ class WeiboCnSpider:
     @staticmethod
     def get_header():
         header = {
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             'Accept-Encoding': 'gzip, deflate, br',
             'Accept-Language': 'zh-CN,zh;q=0.9',
+            'Upgrade-Insecure-Requests': '1',
             'Connection': 'keep-alive',
             'Host': 'weibo.cn',
             'Referer': 'https://weibo.cn',
@@ -135,10 +136,15 @@ class WeiboCnSpider:
         session = requests.Session()
         session2 = requests.Session()
         cookies = RedisCookies.fetch_cookies()
+        cookie = ''
+        for k, v in cookies['cookies'].items():
+            cookie = cookie + k + '=' + v + ';'
         LOGGER.info(cookies)
-        response = session.get(self.user_info_url % user_id, cookies=cookies['cookies'], verify=False)
-        response2 = session2.get(self.user_info_url % user_id, verify=False)
-        print(response2.text)
+        LOGGER.info(cookie)
+        headers = self.get_header()
+        headers['Cookie'] = cookie
+        response = session.get(self.user_info_url % user_id, headers=headers, verify=False)
+        print(response.text)
         response.encoding = 'utf-8'
         user_info_html = BeautifulSoup(response.text, "lxml")
         div_list = list(user_info_html.find_all(class_=['c', 'tip']))

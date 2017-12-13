@@ -1,6 +1,6 @@
 from scrapy import cmdline
 
-cmdline.execute("scrapy crawl WeiboSpider".split())
+cmdline.execute("scrapy crawl WeiboSpider3".split())
 # import yaml
-# f = open('./WeiboSpider/conf/weibo.yaml')
+# f = open('./WeiboSpider3/conf/weibo.yaml')
 # print yaml.load(f)

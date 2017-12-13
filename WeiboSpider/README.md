@@ -1,7 +1,7 @@
-- WeiboSpider
+# WeiboSpider
+## weibo login
+use selenium
 
-script
-
-- WeiboSpider2
-
-urllib
+yundama to recognize the verify code
+## crawl weibo
+from weibo.cn

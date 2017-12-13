@@ -2,10 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0e6a06e8-512e-4d67-bbcd-62af3aa5995b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/YDMPython3.x.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/code/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/code_recognize.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/dll/yundamaAPI-x64.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/dll/yundamaAPI.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/getimage.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/pin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/code/python_getpic.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/code/recognize.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WeiboSpider/code/test.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/aa.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/conf.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/constant.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/cookies.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/items.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/middleware.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/pipelines.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/settings.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/spiders/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/spiders/spiders.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/urls.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/user_agents.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/weibo_http.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/wsgi.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/WeiboSpider/yumdama.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/aa.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/WeiboSpider/verify_code.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/Begin.py" afterPath="$PROJECT_DIR$/WeiboSpider/Begin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/redis_cookies.py" afterPath="$PROJECT_DIR$/WeiboSpider/redis_cookies.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/start_services.py" afterPath="$PROJECT_DIR$/WeiboSpider/start_services.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/test.py" afterPath="$PROJECT_DIR$/WeiboSpider/test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/weibo_cn.py" afterPath="$PROJECT_DIR$/WeiboSpider/weibo_cn.py" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="160">
-              <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+              <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -220,10 +250,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2135" />
-    <option name="y" value="187" />
-    <option name="width" value="1120" />
-    <option name="height" value="784" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -430,25 +460,33 @@
       <workItem from="1512798336520" duration="1987000" />
       <workItem from="1512800693920" duration="807000" />
       <workItem from="1512801523656" duration="12675000" />
-      <workItem from="1513169972120" duration="377000" />
+      <workItem from="1513169972120" duration="1067000" />
     </task>
+    <task id="LOCAL-00001" summary="change">
+      <created>1513170373729</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1513170373729</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20045000" />
+    <option name="totallyTimeSpent" value="20735000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32964602" sideWeight="0.50429183" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33483145" sideWeight="0.5064378" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32964602" sideWeight="0.49570817" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33483145" sideWeight="0.49356222" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32411504" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -480,6 +518,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change" />
+    <option name="LAST_COMMIT_MESSAGE" value="change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -976,7 +1018,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
-          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
           <folding />
         </state>
       </provider>

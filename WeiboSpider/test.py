@@ -1,43 +1,94 @@
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 from redis_cookies import RedisCookies
-from urllib.request import urlretrieve
+import os
 from time import sleep
-import requests
+from PIL import Image
+from code_recognize import YunDaMa
+from setting import PROPERTIES
 # from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 # dcap = dict(DesiredCapabilities.PHANTOMJS)
 # driver = webdriver.PhantomJS(desired_capabilities=dcap)
 browser = webdriver.Firefox()
-browser.get('https://weibo.com/login.php')
-username = browser.find_element_by_id("loginname")
-username.clear()
-username.send_keys("767543579@qq.com")
-sleep(1)
-psd = browser.find_element_by_xpath('//input[@type="password"]')
-psd.clear()
-psd.send_keys("jvs7452014@jjzhu")
-sleep(1)
-commit_btn = browser.find_element_by_xpath('//a[@node-type="submitBtn"]')
-commit_btn.click()
-sleep(10)
-while True:
-    verify_box = browser.find_element_by_xpath('//div[@node-type="verifycode_box"]')
-    if verify_box:
-        code_img = browser.find_element_by_xpath('//img[@node-type="verifycode_image"]')
-        img_url = code_img.get_attribute('src')
-        urlretrieve(img_url, "img.png")
+browser.maximize_window()
+yun_da_ma = YunDaMa(username=PROPERTIES['yundama']['user'], password=PROPERTIES['yundama']['password'])
 
-        browser.save_screenshot("verify_code.png")
-        code = input("输入验证码：")
-        code_input = browser.find_element_by_xpath('//input[@node-type="verifycode"]')
-        code_input.clear()
-        code_input.send_keys(code)
-        commit_btn = browser.find_element_by_xpath('//a[@node-type="submitBtn"]')
-        commit_btn.click()
-    else:
-        break
-for elem in browser.get_cookies():
-    print(elem["name"], elem["value"])
-print("end")
+
+def save_verify_code_img():
+    screen_shot_path = '.\\img\\screenshot.png'
+    code_img_path = '.\\img\\verify_code.png'
+    browser.save_screenshot(screen_shot_path)
+    code_img = browser.find_element_by_xpath('//img[@node-type="verifycode_image"]')
+    left = code_img.location['x']
+    top = code_img.location['y']
+    right = code_img.location['x'] + code_img.size['width']
+    bottom = code_img.location['y'] + code_img.size['height']
+    print(left, top, right, bottom)
+    picture = Image.open(screen_shot_path)
+    picture = picture.crop((1422, 300, 1533, 334))
+    picture.save(code_img_path)
+    # os.remove(screen_shot_path)
+    return code_img_path
+
+
+def login(weibo_user, weibo_password):
+    try_time = 10
+    browser.get('https://weibo.com/login.php')
+    username = browser.find_element_by_id("loginname")
+    username.clear()
+    username.send_keys(weibo_user)
+    psd = browser.find_element_by_xpath('//input[@type="password"]')
+    psd.clear()
+    psd.send_keys(weibo_password)
+    commit_btn = browser.find_element_by_xpath('//a[@node-type="submitBtn"]')
+    commit_btn.click()
+    # 没那么快登录成功
+    sleep(8)
+    while try_time:
+        try:
+            # 如果登录不成功是有验证码框的
+            browser.find_element_by_xpath('//div[@node-type="verifycode_box"]')
+            code_input = browser.find_element_by_xpath('//input[@node-type="verifycode"]')
+            code_input.send_keys('  ')
+            img_path = save_verify_code_img()
+
+            while not os.path.exists(img_path):
+                print(img_path + "not exist")
+                sleep(1)
+            print(img_path)
+            captcha_id, code_text = yun_da_ma.recognize(img_path)
+            # os.remove(img_path)
+            code_str = bytes.decode(code_text)
+            print('recognize result: %s' % code_str)
+
+            code_input.clear()
+            code_input.send_keys(code_str)
+            commit_btn = browser.find_element_by_xpath('//a[@node-type="submitBtn"]')
+            commit_btn.click()
+            # 稍等一会
+            sleep(5)
+            try_time -= 1
+            break
+        except NoSuchElementException:
+            print('login success')
+            break
+    browser.get('https://weibo.cn/1316949123/info')
+    sleep(2)
+    cookies_dict = {}
+    for elem in browser.get_cookies():
+        cookies_dict[elem['name']] = elem['value']
+        print(elem["name"], elem["value"])
+    RedisCookies.save_cookies(weibo_user, cookies_dict)
+
+
+# def home():
+# browser.get('https://weibo.com/47452014')
+# browser.get('https://weibo.cn/1316949123/info')
+
+# RedisCookies.clean()
+# login()
+# home()
+
 # cookies_json = RedisCookies.fetch_cookies()
 # # driver.delete_all_cookies()
 # cookies = cookies_json['cookies']

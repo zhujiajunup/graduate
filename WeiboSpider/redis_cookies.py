@@ -2,12 +2,12 @@
 import redis
 import json
 import datetime
-from login import login, get_cookie_from_login_sina_com_cn
+from login import WeiboLogin
 from setting import LOGGER, ACCOUNTS
 
 
 class RedisCookies(object):
-    redis_pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
+    redis_pool = redis.ConnectionPool(host='localhost', port=6378, db=0)
 
     @classmethod
     def save_cookies(cls, user_name, cookies):
@@ -56,8 +56,9 @@ class RedisCookies(object):
 
 def main():
     RedisCookies.clean()
+    weiboLogin = WeiboLogin()
     for account in ACCOUNTS:
-        cookies = get_cookie_from_login_sina_com_cn(account['user'], account['password'])
+        cookies = weiboLogin.login_by_selenium(account['user'], account['password'])
         if cookies is not None:
             RedisCookies.save_cookies(account['user'], cookies)
 

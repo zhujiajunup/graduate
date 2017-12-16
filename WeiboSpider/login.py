@@ -6,7 +6,8 @@ import base64
 import json
 from setting import LOGGER, PROPERTIES
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException
+from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException,\
+    StaleElementReferenceException, InvalidElementStateException
 import os
 from time import sleep
 from PIL import Image
@@ -14,8 +15,6 @@ from code_recognize import YunDaMa
 # from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 # dcap = dict(DesiredCapabilities.PHANTOMJS)
 # driver = webdriver.PhantomJS(desired_capabilities=dcap)
-
-
 
 
 class WeiboLogin:
@@ -113,23 +112,24 @@ class WeiboLogin:
             cookies[cookie.name] = cookie.value
         return cookies
 
-
     @staticmethod
     def save_verify_code_img(browser, weibo_user):
 
         screen_shot_path = '.\\img\\%s-screenshot.png' % weibo_user
         code_img_path = '.\\img\\%s-verify_code.png' % weibo_user
+        LOGGER.info('get verify code img for %s' % weibo_user)
         browser.save_screenshot(screen_shot_path)
         code_img = browser.find_element_by_xpath('//img[@node-type="verifycode_image"]')
         left = code_img.location['x']
         top = code_img.location['y']
         right = code_img.location['x'] + code_img.size['width']
         bottom = code_img.location['y'] + code_img.size['height']
-        print(left, top, right, bottom)
+        # print(left, top, right, bottom)
         picture = Image.open(screen_shot_path)
         picture = picture.crop((1422, 300, 1533, 334))
         picture.save(code_img_path)
         # os.remove(screen_shot_path)
+        LOGGER.info('code img saved(%s)' % code_img_path)
         return code_img_path
 
     def login_by_selenium(self, weibo_user, weibo_password):
@@ -147,23 +147,24 @@ class WeiboLogin:
         commit_btn = browser.find_element_by_xpath('//a[@node-type="submitBtn"]')
         commit_btn.click()
         # 没那么快登录成功
-        sleep(8)
+        sleep(6)
         while try_time:
             try:
                 # 如果登录不成功是有验证码框的
                 browser.find_element_by_xpath('//div[@node-type="verifycode_box"]')
                 code_input = browser.find_element_by_xpath('//input[@node-type="verifycode"]')
+                LOGGER.info("need input verify code")
                 code_input.send_keys('  ')
                 img_path = self.save_verify_code_img(browser, weibo_user)
 
                 while not os.path.exists(img_path):
-                    print(img_path + "not exist")
+                    LOGGER.info(img_path + "not exist")
                     sleep(1)
-                print(img_path)
+                    LOGGER.info(img_path)
                 captcha_id, code_text = self.yun_da_ma.recognize(img_path)
                 # os.remove(img_path)
                 code_str = bytes.decode(code_text)
-                print('recognize result: %s' % code_str)
+                LOGGER.info('recognize result: %s' % code_str)
 
                 code_input.clear()
                 code_input.send_keys(code_str)
@@ -178,9 +179,11 @@ class WeiboLogin:
                 print('login success')
                 break
             except ElementNotInteractableException:
-                sleep(5)
+                sleep(2)
                 try_time -= 1
+
         if cookie_got:
+            LOGGER.info('get https://weibo.cn/1316949123/info')
             browser.get('https://weibo.cn/1316949123/info')
             sleep(2)
             cookies_dict = {}

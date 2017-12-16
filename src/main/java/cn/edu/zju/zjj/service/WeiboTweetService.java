@@ -2,6 +2,7 @@ package cn.edu.zju.zjj.service;
 
 import cn.edu.zju.zjj.dao.WeiboTweetDao;
 import cn.edu.zju.zjj.entity.WeiboTweet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,8 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class WeiboTweetService extends  BaseService<WeiboTweet>{
 
-    private WeiboTweetDao tweetDao;
-
+    @Autowired
     private WeiboTweetService(WeiboTweetDao tweetDao){
         super(tweetDao);
     }

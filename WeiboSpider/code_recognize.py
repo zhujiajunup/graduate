@@ -1,7 +1,7 @@
 # -*- coding: cp936 -*-
 
 from ctypes import *
-
+from setting import LOGGER
 
 class YunDaMa:
     YDMApi = windll.LoadLibrary('.\\dll\\yundamaAPI-x64.dll')
@@ -9,7 +9,7 @@ class YunDaMa:
     appKey = b'fdacec8d9f1c2deb86346bfcf64e95f2'  # 软件密钥，开发者分成必要参数。登录开发者后台【我的软件】获得！
 
     def __init__(self, username, password):
-        print('软件ＩＤ：%d\r\n软件密钥：%s' % (self.appId, self.appKey))
+        LOGGER.info('app id：%d\r\napp key：%s' % (self.appId, self.appKey))
         self.username = b'zhujiajun'
         self.password = b'vs7452014'
         self.code_type = 1005
@@ -20,7 +20,7 @@ class YunDaMa:
         if not isinstance(filename, bytes):
             filename = filename.encode()
         result = c_char_p(b"                              ")
-        print('\r\n>>>正在登陆...')
+        LOGGER.info('\r\n>>>正在登陆...')
         captcha_id = self.YDMApi.YDM_EasyDecodeByPath(self.username, self.password, self.appId, self.appKey,
                                                       filename, self.code_type, self.timeout, result)
 

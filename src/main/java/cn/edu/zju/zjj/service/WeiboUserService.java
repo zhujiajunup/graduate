@@ -14,11 +14,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class WeiboUserService extends BaseService<WeiboUser>{
 
-    private WeiboUserDao weiboUserDao;
-
     @Autowired
     private WeiboUserService(WeiboUserDao weiboUserDao){
         super(weiboUserDao);
-        this.weiboUserDao = weiboUserDao;
     }
 }

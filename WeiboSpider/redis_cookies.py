@@ -43,7 +43,7 @@ class RedisCookies(object):
             if c:
                 user_cookies = c.decode('utf-8')
                 cookies_json = json.loads(user_cookies)
-                LOGGER.info('cookies got-------')
+                LOGGER.info(cookies_json)
                 return cookies_json
             LOGGER.warn('cookies not get')
 
@@ -58,6 +58,7 @@ def main():
     RedisCookies.clean()
     weiboLogin = WeiboLogin()
     for account in ACCOUNTS:
+        LOGGER.info('get cookies for %s' % str(account))
         cookies = weiboLogin.login_by_selenium(account['user'], account['password'])
         if cookies is not None:
             RedisCookies.save_cookies(account['user'], cookies)

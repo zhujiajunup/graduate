@@ -4,3 +4,5 @@ templates/
 .idea/*
 */conf/*
 *.pyc
+target/
+.idea/

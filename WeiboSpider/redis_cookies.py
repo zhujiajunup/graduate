@@ -7,7 +7,7 @@ from setting import LOGGER, ACCOUNTS
 
 
 class RedisCookies(object):
-    redis_pool = redis.ConnectionPool(host='localhost', port=6378, db=0)
+    redis_pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
 
     @classmethod
     def save_cookies(cls, user_name, cookies):
@@ -55,13 +55,23 @@ class RedisCookies(object):
 
 
 def main():
-    RedisCookies.clean()
+    # RedisCookies.clean()
     weiboLogin = WeiboLogin()
+    success = []
+    failed = []
     for account in ACCOUNTS:
-        LOGGER.info('get cookies for %s' % str(account))
-        cookies = weiboLogin.login_by_selenium(account['user'], account['password'])
-        if cookies is not None:
-            RedisCookies.save_cookies(account['user'], cookies)
+        try:
+            LOGGER.info('get cookies for %s' % str(account))
+            cookies = weiboLogin.login_by_selenium(account['user'], account['password'])
+            if cookies is not None:
+                success.append(account)
+                RedisCookies.save_cookies(account['user'], cookies)
+            else:
+                failed.append(account)
+        except Exception:
+            failed.append(account)
+    LOGGER.info("%d accounts login success" % len(success))
+    LOGGER.info("%d accounts login failed" % len(failed))
 
 
 if __name__ == '__main__':

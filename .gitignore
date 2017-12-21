@@ -6,3 +6,4 @@ templates/
 *.pyc
 target/
 .idea/
+*/img/*

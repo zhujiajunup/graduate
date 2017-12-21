@@ -2,6 +2,7 @@
 import json
 import random
 import re
+import datetime
 import traceback
 from queue import Queue
 from time import sleep
@@ -14,7 +15,7 @@ from kafka import KafkaProducer
 import user_agents
 from redis_cookies import RedisCookies
 from setting import LOGGER
-
+from pybloom import ScalableBloomFilter
 
 class WeiboProcuder:
     def __init__(self, bootstrap_servers, topic):
@@ -30,23 +31,46 @@ class WeiboProcuder:
 
 class WeiboCnSpider:
     def __init__(self):
-        self.weibo_host = 'https://weibo.cn/'
-        self.user_info_url = 'https://weibo.cn/%s/info'
-        self.user_tweet_url = 'https://weibo.cn/%s/profile'
-        self.user_tweet_url2 = 'https://weibo.cn/%s/profile?page=%d'
-        self.tweet_comment_url = 'https://weibo.cn/comment/%s'
-        self.tweet_comment_url2 = 'https://weibo.cn/comment/%s?page=%d'
+        self.bloom_filter = ScalableBloomFilter(mode=ScalableBloomFilter.SMALL_SET_GROWTH)
+
+        self.time_current_pattern = re.compile(r'(\d*)分钟前')
+        self.time_today_pattern = re.compile(r'今天\s*(\d*):(\d*)')
+        self.time_year_pattern = re.compile(r'(\d*)月(\d*)日\s*(\d*):(\d*)')
+        self.user_id_pattern = re.compile(r'https://weibo.cn/u/(\d*)')
+        self.weibo_host = 'https://weibo.cn'
+        self.follow_url = self.weibo_host + '/%s/follow'
+
+        self.fan_url = self.weibo_host + '/%s/fans'
+        self.user_info_url = self.weibo_host + '/%s/info'
+        self.user_tweet_url = self.weibo_host + '/%s/profile'
+        self.user_tweet_url2 = self.weibo_host + '/%s/profile?page=%d'
+        self.tweet_comment_url = self.weibo_host + '/comment/%s'
+        self.tweet_comment_url2 = self.weibo_host + '/comment/%s?page=%d'
         self.weibo_producer = WeiboProcuder(['localhost:9092'], 'sinaweibo')
         self.comment_queue = Queue()
         self.weibo_queue = Queue()
         self.user_queue = Queue()
+        self.follow_queue = Queue()
+        self.fans_queue = Queue()
 
     def crawl_user(self):
         while True:
             user_id = self.user_queue.get()
-            sleep(1)
+            sleep(2)
             try:
                 self.grab_user_info(user_id)
+                self.weibo_queue.put({'url': self.user_tweet_url % user_id, 'uid': user_id})
+                self.follow_queue.put({'uid': user_id, 'url': self.follow_url % user_id})
+            except:
+                LOGGER.error(traceback.format_exc())
+                sleep(5 * 60)
+
+    def crawl_follow(self):
+        while True:
+            follow_dict = self.follow_queue.get()
+            sleep(2)
+            try:
+                self.grab_follow(follow_dict)
             except:
                 LOGGER.error(traceback.format_exc())
                 sleep(5 * 60)
@@ -54,7 +78,7 @@ class WeiboCnSpider:
     def crawl_comment(self):
         while True:
             comment_url = self.comment_queue.get()
-            sleep(1)
+            sleep(2)
             try:
                 self.grab_tweet_comments(comment_url)
 
@@ -72,11 +96,37 @@ class WeiboCnSpider:
                 LOGGER.error(traceback.format_exc())
                 sleep(5 * 60)
 
+    def get_time(self, time_str):
+        current_result = self.time_current_pattern.findall(time_str)
+        time_now = datetime.datetime.now()
+        if current_result:
+            result_time = time_now - datetime.timedelta(minutes=int(current_result[0]))
+            return result_time.strftime('%Y-%m-%d %H:%M:%S')
+        else:
+            current_result = self.time_today_pattern.findall(time_str)
+            if current_result:
+                result_time = datetime.datetime(time_now.year, time_now.month,
+                                                time_now.day, int(current_result[0][0]), int(current_result[0][0]))
+                return result_time.strftime('%Y-%m-%d %H:%M:%S')
+            else:
+                current_result = self.time_year_pattern.findall(time_str)
+                if current_result:
+                    result_time = datetime.datetime(time_now.year, int(current_result[0][0]),
+                                                    int(current_result[0][1]), int(current_result[0][2]),
+                                                    int(current_result[0][3]))
+                    return result_time.strftime('%Y-%m-%d %H:%M:%S')
+                else:
+                    return time_str
+
     def start(self):
         # self.user_queue.put('2210643391')
         # self.grab_user_info('1316949123')
         # return self.grab_user_info('1316949123')
-        self.comment_queue.put({'url': 'https://weibo.cn/comment/Fz6Td1IgJ', 'tweetId': 'Fz6Td1IgJ'})
+
+        # self.get_follow({'uid': '2365758410', 'url': self.follow_url % '2365758410'})
+        self.comment_queue.put({'url': 'https://weibo.cn/comment/FAr5A2OdG', 'tweetId': 'FAr5A2OdG'})
+        follow_thread = threading.Thread(target=self.crawl_follow, name='follow_thread')
+        follow_thread.start()
         comment_thread = threading.Thread(target=self.crawl_comment, name='comment_thread')
         comment_thread.start()
         user_thread = threading.Thread(target=self.crawl_user, name='user_thread')
@@ -84,6 +134,37 @@ class WeiboCnSpider:
         # self.weibo_queue.put({'url': self.user_tweet_url % '2210643391', 'uid': '2210643391'})
         thread_weibo = threading.Thread(target=self.crawl_weibo, name='weibo_thread')
         thread_weibo.start()
+
+    def grab_follow(self, follow_dict):
+        session = requests.Session()
+        cookies = RedisCookies.fetch_cookies()
+        response = session.get(self.follow_url % follow_dict['uid'], cookies=cookies['cookies'], verify=False)
+        follow_html = BeautifulSoup(response.text, "lxml")
+        all_td = follow_html.find_all('td', style=True)
+        for td in all_td:
+            a = td.find('a').get('href')
+            usr_id_result = self.user_id_pattern.findall(a)
+            if usr_id_result:
+                usr_id = usr_id_result[0]
+            else:
+                usr_id = self.get_user_id_from_homepage(a)
+
+            if usr_id and usr_id not in self.bloom_filter:
+                self.bloom_filter.add(usr_id)
+                self.user_queue.put(usr_id)
+
+        if 'page=' not in follow_dict['url']:
+
+            page_div = follow_html.find(id='pagelist')
+            max_page = int(page_div.input.get('value'))
+            for page in range(2, max_page + 1):
+                pass
+                # self.weibo_queue.put({'url': (self.follow_url % follow_dict['uid'])+'?page=' + page,
+                #                       'uid': follow_dict['uid']})
+        pass
+
+    def get_fans(self, user_id):
+        pass
 
     @staticmethod
     def get_header():
@@ -99,7 +180,8 @@ class WeiboCnSpider:
         }
         return header
 
-    def get_user_id_from_homepage(self, home_page):
+    @staticmethod
+    def get_user_id_from_homepage(home_page):
         session = requests.Session()
         cookies = RedisCookies.fetch_cookies()
         response = session.get(home_page, cookies=cookies['cookies'], verify=False)
@@ -131,13 +213,15 @@ class WeiboCnSpider:
                     user_id = user_href[3:]
                 else:
                     user_id = self.get_user_id_from_homepage(self.weibo_host + user_href)
-                self.user_queue.put(user_id)
+                if user_id and user_id not in self.bloom_filter:
+                    self.bloom_filter.add(user_id)
+                    self.user_queue.put(user_id)
                 comment_info['userId'] = user_id
                 comment_info['content'] = comment_div.find(class_='ctt').get_text()
                 others = comment_div.find(class_='ct').get_text()
                 if others:
                     others = others.split('\u6765\u81ea')
-                    comment_info['pubTime'] = others[0]
+                    comment_info['pubTime'] = self.get_time(others[0])
                     if len(others) == 2:
                         comment_info['source'] = others[1]
                 comment_info['id'] = comment_id
@@ -166,7 +250,7 @@ class WeiboCnSpider:
                     comment = re.findall(u'\u8bc4\u8bba\[(\d+)\];', detail)  # 评论数
                     if others:
                         others = others.split('\u6765\u81ea')
-                        tweet['time'] = others[0]
+                        tweet['time'] = self.get_time(others[0])
                         if len(others) == 2:
                             tweet['source'] = others[1]
                     tweet['content'] = tweet_content
@@ -185,7 +269,6 @@ class WeiboCnSpider:
                 for page in range(2, max_page + 1):
                     self.comment_queue.put({'url': self.tweet_comment_url2 % (comment_url['tweetId'], page),
                                             'tweetId': comment_url['tweetId']})
-
 
     def grab_user_tweet(self, tweet_url):
         LOGGER.info('grab: %s' % str(tweet_url))
@@ -309,7 +392,7 @@ class WeiboCnSpider:
         user_info['id'] = user_id
         self.weibo_producer.send(user_info)
 
-        # self.weibo_queue.put({'url': self.user_tweet_url % user_id, 'uid': user_id})
+        #
 
 
 if __name__ == '__main__':

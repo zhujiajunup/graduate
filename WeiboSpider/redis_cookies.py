@@ -63,7 +63,7 @@ def main():
         try:
             LOGGER.info('get cookies for %s' % str(account))
             cookies = weiboLogin.login_by_selenium(account['user'], account['password'])
-            if cookies is not None:
+            if cookies is not None and 'SSOLoginState' in cookies and 'SUBP' in cookies and 'SUHB' in cookies:
                 success.append(account)
                 RedisCookies.save_cookies(account['user'], cookies)
             else:

@@ -1,41 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e6a06e8-512e-4d67-bbcd-62af3aa5995b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/13024235725-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/13024235725-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/13024235725-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/13024235725-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/13067672265-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/13067672265-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/13067672265-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/13067672265-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/13248549167-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/13248549167-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/13248549167-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/13248549167-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15377848527-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15377848527-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15377848527-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15377848527-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15390925918-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15390925918-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15390925918-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15390925918-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15390925986-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15390925986-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15390925986-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15390925986-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15390949677-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15390949677-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15390949677-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15390949677-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15398856426-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15398856426-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/15398856426-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/15398856426-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17074732502-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17074732502-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17074732502-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17074732502-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17074732989-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17074732989-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17074732989-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17074732989-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17081442416-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17081442416-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17081442416-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17081442416-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17081444230-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17081444230-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17081444230-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17081444230-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17157387746-screenshot.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17157387746-screenshot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/img/17157387746-verify_code.png" afterPath="$PROJECT_DIR$/WeiboSpider/img/17157387746-verify_code.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zju/zjj/entity/WeiboUser.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zju/zjj/entity/WeiboUser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="0e6a06e8-512e-4d67-bbcd-62af3aa5995b" name="Default" comment="change: 修改weibo_cn抓取逻辑">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/service/CookiesService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zju/zjj/App.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zju/zjj/App.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zju/zjj/kafka/WeiboConsumer.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zju/zjj/kafka/WeiboConsumer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SinaWeibo.iml" afterPath="$PROJECT_DIR$/SinaWeibo.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/.idea/workspace.xml" afterPath="$PROJECT_DIR$/WeiboSpider/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/redis_cookies.py" afterPath="$PROJECT_DIR$/WeiboSpider/redis_cookies.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WeiboSpider/weibo_cn.py" afterPath="$PROJECT_DIR$/WeiboSpider/weibo_cn.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/App.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/kafka/WeiboConsumer.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/kafka/WeiboConsumer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,7 +28,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/App.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="546">
@@ -63,11 +38,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="256">
               <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CookiesService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/service/CookiesService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="42" column="21" lean-forward="false" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -103,16 +98,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logback.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="WeiboUser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/entity/WeiboUser.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -142,16 +127,6 @@
                 <element signature="n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#ul#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/entity/BaseEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -216,7 +191,6 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/dao/mapper/WeiboUserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/entity/WeiboTweet.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/util/Emoji.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/cn/edu/zju/zjj/AppTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/dao/mapper/WeiboTweetMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/service/WeiboUserService.java" />
@@ -241,6 +215,7 @@
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/kafka/WeiboConsumer.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/App.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -298,23 +273,6 @@
               <item name="SinaWeibo" type="b2602c69:ProjectViewProjectNode" />
               <item name="SinaWeibo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SinaWeibo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SinaWeibo" type="462c0819:PsiDirectoryNode" />
-              <item name="WeiboSpider" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SinaWeibo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SinaWeibo" type="462c0819:PsiDirectoryNode" />
-              <item name="WeiboSpider" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SinaWeibo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SinaWeibo" type="462c0819:PsiDirectoryNode" />
-              <item name="WeiboSpider" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SinaWeibo" type="b2602c69:ProjectViewProjectNode" />
@@ -529,7 +487,7 @@
       <workItem from="1513489905945" duration="40000" />
       <workItem from="1513499421231" duration="1285000" />
       <workItem from="1513779094687" duration="47000" />
-      <workItem from="1513861543359" duration="3144000" />
+      <workItem from="1513861543359" duration="5421000" />
     </task>
     <task id="LOCAL-00001" summary="change">
       <created>1513170373729</created>
@@ -545,11 +503,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513433732199</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="change: 修改weibo_cn抓取逻辑">
+      <created>1513866429975</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1513866429975</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55512000" />
+    <option name="totallyTimeSpent" value="57789000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -571,7 +536,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6692478" sideWeight="0.50214595" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5370787" sideWeight="0.49785408" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.49785408" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40898877" sideWeight="0.4914163" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32411504" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" />
@@ -580,6 +545,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21405579" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -592,7 +558,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23497854" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +572,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change" />
     <MESSAGE value="add: 添加sb admin 框架" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: 添加sb admin 框架" />
+    <MESSAGE value="change: 修改weibo_cn抓取逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="change: 修改weibo_cn抓取逻辑" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -640,20 +606,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/pages/blank.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="10" column="54" lean-forward="true" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/controller/TweetController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/constant/ResponseCode.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -992,18 +944,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="73" column="8" lean-forward="false" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/service/CookiesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="42" column="21" lean-forward="false" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zju/zjj/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="73" column="8" lean-forward="false" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
           <folding />
         </state>
       </provider>

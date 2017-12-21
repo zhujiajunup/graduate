@@ -8,14 +8,16 @@ from queue import Queue
 from time import sleep
 import threading
 import requests
-from functools import reduce
+
 from bs4 import BeautifulSoup
 from kafka import KafkaProducer
-
+import urllib3
 import user_agents
 from redis_cookies import RedisCookies
 from setting import LOGGER
 from pybloom import ScalableBloomFilter
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class WeiboProcuder:
     def __init__(self, bootstrap_servers, topic):
@@ -124,7 +126,7 @@ class WeiboCnSpider:
         # return self.grab_user_info('1316949123')
 
         # self.get_follow({'uid': '2365758410', 'url': self.follow_url % '2365758410'})
-        self.comment_queue.put({'url': 'https://weibo.cn/comment/FAr5A2OdG', 'tweetId': 'FAr5A2OdG'})
+        self.comment_queue.put({'url': 'https://weibo.cn/comment/FAE1Ulh9A', 'tweetId': 'FAE1Ulh9A'})
         follow_thread = threading.Thread(target=self.crawl_follow, name='follow_thread')
         follow_thread.start()
         comment_thread = threading.Thread(target=self.crawl_comment, name='comment_thread')
@@ -293,20 +295,33 @@ class WeiboCnSpider:
                     pass
                 text = parent.get_text()
                 fields = text.split('\xa0')
+
                 content = fields[0]
-                time = fields[-2]
-                source = fields[-1]
-                other = ';'.join(fields[1:-2])
+                ct_content = parent.find('span', class_='ct').get_text()
+                time_source = ct_content.split('\u6765\u81ea')
+
+                time = time_source[0]
+                if len(time_source) == 2:
+                    source = time_source[1]
+                else:
+                    source = 'unknown'
+                other = ';'.join(fields[1:])
 
             else:
                 tweet['flag'] = '原创'
                 text = tweet_div.get_text()
+                ct_content = tweet_div.find('span', class_='ct').get_text()
+                time_source = ct_content.split('\u6765\u81ea')
+
+                time = time_source[0]
+                if len(time_source) == 2:
+                    source = time_source[1]
+                else:
+                    source = 'unknown'
                 fields = text.split('\u200b')
                 content = fields[0]
                 other_fields = fields[-1].split('\xa0')
-                time = other_fields[-2]
-                source = other_fields[-1]
-                other = ';'.join(other_fields[1:-2])
+                other = ';'.join(other_fields[1:])
 
             like = re.findall(u'\u8d5e\[(\d+)\]', other)  # 点赞数
             transfer = re.findall(u'\u8f6c\u53d1\[(\d+)\]', other)  # 转载数
@@ -372,25 +387,29 @@ class WeiboCnSpider:
             work_info = div_list[work_info_index + 1].get_text(';')
 
         nickname = re.findall(u'\u6635\u79f0[:|\uff1a](.*?);', base_info)  # 昵称
-        gender = re.findall(u'\u6027\u522b[:|\uff1a](.*?);', base_info)  # 性别
-        place = re.findall(u'\u5730\u533a[:|\uff1a](.*?);', base_info)  # 地区（包括省份和城市）
-        signature = re.findall(u'\u7b80\u4ecb[:|\uff1a](.*?);', base_info)  # 个性签名
-        birthday = re.findall(u'\u751f\u65e5[:|\uff1a](.*?);', base_info)  # 生日
-        sex_orientation = re.findall(u'\u6027\u53d6\u5411[:|\uff1a](.*?);', base_info)  # 性取向
-        marriage = re.findall(u'\u611f\u60c5\u72b6\u51b5[:|\uff1a](.*?);', base_info)  # 婚姻状况
-        user_info['tags'] = tags
-        user_info['gender'] = gender[0] if gender else 'unknown'
-        user_info['place'] = place[0] if place else 'unknown'
-        user_info['signature'] = signature[0] if signature else 'unknown'
-        user_info['birthday'] = birthday[0] if birthday else 'unknown'
-        user_info['sexOrientation'] = sex_orientation[0] if sex_orientation else 'unknown'
-        user_info['eduInfo'] = edu_info if edu_info else 'unknown'
-        user_info['marriage'] = marriage[0] if marriage else 'unknown'
-        user_info['workInfo'] = work_info if work_info else 'unknown'
-        user_info['nickname'] = nickname[0] if nickname else 'unknown'
-        user_info['type'] = 'user_info'
-        user_info['id'] = user_id
-        self.weibo_producer.send(user_info)
+        if nickname:
+            user_info['nickname'] = nickname[0] if nickname else 'unknown'
+            gender = re.findall(u'\u6027\u522b[:|\uff1a](.*?);', base_info)  # 性别
+            place = re.findall(u'\u5730\u533a[:|\uff1a](.*?);', base_info)  # 地区（包括省份和城市）
+            signature = re.findall(u'\u7b80\u4ecb[:|\uff1a](.*?);', base_info)  # 个性签名
+            birthday = re.findall(u'\u751f\u65e5[:|\uff1a](.*?);', base_info)  # 生日
+            sex_orientation = re.findall(u'\u6027\u53d6\u5411[:|\uff1a](.*?);', base_info)  # 性取向
+            marriage = re.findall(u'\u611f\u60c5\u72b6\u51b5[:|\uff1a](.*?);', base_info)  # 婚姻状况
+
+            user_info['tags'] = tags
+            user_info['gender'] = gender[0] if gender else 'unknown'
+            user_info['place'] = place[0] if place else 'unknown'
+            user_info['signature'] = signature[0] if signature else 'unknown'
+            user_info['birthday'] = birthday[0] if birthday else 'unknown'
+            user_info['sexOrientation'] = sex_orientation[0] if sex_orientation else 'unknown'
+            user_info['eduInfo'] = edu_info if edu_info else 'unknown'
+            user_info['marriage'] = marriage[0] if marriage else 'unknown'
+            user_info['workInfo'] = work_info if work_info else 'unknown'
+
+            user_info['type'] = 'user_info'
+            user_info['id'] = user_id
+
+            self.weibo_producer.send(user_info)
 
         #
 

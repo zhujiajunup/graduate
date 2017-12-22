@@ -2,7 +2,6 @@ package cn.edu.zju.zjj.service;
 
 import cn.edu.zju.zjj.dao.BaseDao;
 import cn.edu.zju.zjj.entity.BaseEntity;
-import com.sun.xml.internal.rngom.parse.host.Base;
 
 /**
  * author: zjj

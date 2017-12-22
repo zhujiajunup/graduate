@@ -21,7 +21,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "/comment", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class WeiboCommentController {
-    WeiboCommentService commentService;
+    private WeiboCommentService commentService;
 
     @Autowired
     public WeiboCommentController(WeiboCommentService commentService){
@@ -35,7 +35,16 @@ public class WeiboCommentController {
         ResponseBean bean = new ResponseBean();
         String tweetId = (String)params.get("tweetId");
         bean.setData(this.commentService.statSource(tweetId));
+        return bean;
+    }
 
+    @RequestMapping(value = "/timeCnt/stat", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean getCommentTimeCount(@RequestBody Map<String, Object> params){
+        log.info("{}", params);
+        ResponseBean bean = new ResponseBean();
+        String tweetId = (String)params.get("tweetId");
+        bean.setData(this.commentService.statTime(tweetId));
         return bean;
     }
 }

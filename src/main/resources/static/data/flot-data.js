@@ -5,14 +5,103 @@ $(document).ready(function () {
     plot();
 
     function plot() {
-        var sin = [],
-            cos = [];
-        for (var i = 0; i < 12; i += 0.2) {
-            sin.push([i, Math.sin(i + offset)]);
-            cos.push([i, Math.cos(i + offset)]);
-        }
 
-        var options = {
+        var chart = null;
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: '/comment/timeCnt/stat',
+            contentType:"application/json",
+            data: JSON.stringify({'tweetId': 'FygAjq20M'}),
+            success: function (result) {
+                var timeCntData = result['data'];
+
+                var data = [];
+                for(var i = 0 ; i < timeCntData.length; i ++){
+                    var t = [];
+                    t[0] = timeCntData[i]['time'];
+                    t[1] = timeCntData[i]['count'];
+                    data[i] = t;
+                }
+                console.log(data);
+                chart = Highcharts.chart('flot-line-chart', {
+                chart: {
+                    zoomType: 'x'
+                },
+                title: {
+                    text: '评论走势'
+                },
+                subtitle: {
+                    text: document.ontouchstart === undefined ?
+                        '鼠标拖动可以进行缩放' : '手势操作进行缩放'
+                },
+                /*xAxis: {
+                    type: 'datetime',
+                    dateTimeLabelFormats: {
+                        millisecond: '%H:%M:%S.%L',
+                        second: '%H:%M:%S',
+                        minute: '%H:%M',
+                        hour: '%H:%M',
+                        day: '%m-%d',
+                        week: '%m-%d',
+                        month: '%Y-%m',
+                        year: '%Y'
+                    }
+                },*/
+                /*tooltip: {
+                    dateTimeLabelFormats: {
+                        millisecond: '%H:%M:%S.%L',
+                        second: '%H:%M:%S',
+                        minute: '%H:%M',
+                        hour: '%H:%M',
+                        day: '%Y-%m-%d',
+                        week: '%m-%d',
+                        month: '%Y-%m',
+                        year: '%Y'
+                    }
+                },*/
+                yAxis: {
+                    title: {
+                        text: '评论数'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    area: {
+                        fillColor: {
+                            linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        marker: {
+                            radius: 2
+                        },
+                        lineWidth: 1,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        threshold: null
+                    }
+                },
+                series: [{
+                    type: 'area',
+                    name: '微博时间-评论',
+                    data: data
+                }]
+            });
+        }});
+        /*var options = {
             series: {
                 lines: {
                     show: true
@@ -45,7 +134,7 @@ $(document).ready(function () {
                 data: cos,
                 label: "cos(x)"
             }],
-            options);
+            options);*/
     }
 });
 
@@ -57,7 +146,7 @@ $(function () {
         dataType: 'json',
         url: '/comment/source/stat',
         contentType:"application/json",
-        data: JSON.stringify({'tweetId': 'FzSOZfzKI'}),
+        data: JSON.stringify({'tweetId': 'FygAjq20M'}),
         success: function (result) {
             var source_data = result['data'];
             var seriesData = [];
@@ -118,7 +207,7 @@ $(function () {
         label: "Series 3",
         data: 20
     }];*/
-    console.log(data);
+    /*
     var plotObj = $.plot($("#flot-pie-chart"), data, {
         series: {
             pie: {
@@ -137,12 +226,14 @@ $(function () {
             },
             defaultTheme: false
         }
-    });
+    });*/
 
 });
 
 //Flot Multiple Axes Line Chart
 $(function () {
+
+
     var oilprices = [
         [1167692400000, 61.05],
         [1167778800000, 58.32],

@@ -3,6 +3,7 @@ package cn.edu.zju.zjj.service;
 import cn.edu.zju.zjj.dao.BaseDao;
 import cn.edu.zju.zjj.dao.WeiboCommentDao;
 import cn.edu.zju.zjj.entity.SourceType;
+import cn.edu.zju.zjj.entity.TimeCount;
 import cn.edu.zju.zjj.entity.WeiboComment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @Service
 public class WeiboCommentService extends  BaseService<WeiboComment> {
-    WeiboCommentDao commentDao;
+    private WeiboCommentDao commentDao;
     @Autowired
     public WeiboCommentService(WeiboCommentDao commentDao) {
         super(commentDao);
@@ -25,5 +26,9 @@ public class WeiboCommentService extends  BaseService<WeiboComment> {
 
     public List<SourceType> statSource(String tweetId){
         return this.commentDao.statSource(tweetId);
+    }
+
+    public List<TimeCount> statTime(String tweetId){
+        return this.commentDao.statTime(tweetId);
     }
 }

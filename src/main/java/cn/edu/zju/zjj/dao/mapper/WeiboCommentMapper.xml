@@ -20,5 +20,8 @@
         select count(*) as `count`, source from weibo_comment where tweet_id = #{tweetId}  group by source order by `count` desc limit 15
     </select>
 
+    <select id="statTime" resultType="cn.edu.zju.zjj.entity.TimeCount">
+        select count(*) as `count`, left(pub_time, 13) as `time` from weibo_comment group by `time`
+    </select>
 
 </mapper>

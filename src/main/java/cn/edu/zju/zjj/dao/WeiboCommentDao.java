@@ -1,6 +1,7 @@
 package cn.edu.zju.zjj.dao;
 
 import cn.edu.zju.zjj.entity.SourceType;
+import cn.edu.zju.zjj.entity.TimeCount;
 import cn.edu.zju.zjj.entity.WeiboComment;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,6 @@ import java.util.List;
 public interface WeiboCommentDao extends BaseDao<WeiboComment>{
 
     List<SourceType> statSource(String tweetId);
+
+    List<TimeCount> statTime(String tweetId);
 }

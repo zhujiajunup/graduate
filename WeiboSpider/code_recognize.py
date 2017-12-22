@@ -20,7 +20,7 @@ class YunDaMa:
         if not isinstance(filename, bytes):
             filename = filename.encode()
         result = c_char_p(b"                              ")
-        LOGGER.info('\r\n>>>正在登陆...')
+        LOGGER.info('>>>正在登陆...')
         captcha_id = self.YDMApi.YDM_EasyDecodeByPath(self.username, self.password, self.appId, self.appKey,
                                                       filename, self.code_type, self.timeout, result)
 

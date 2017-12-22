@@ -11,7 +11,7 @@ import lombok.ToString;
  */
 @Setter
 @Getter
-@ToString(of = {"userId", "putTime", "source"})
+@ToString(of = {"userId", "pubTime", "source"})
 public class WeiboComment extends BaseEntity{
     private String userId;
     private String content;

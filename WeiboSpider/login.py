@@ -126,7 +126,8 @@ class WeiboLogin:
         bottom = code_img.location['y'] + code_img.size['height']
         # print(left, top, right, bottom)
         picture = Image.open(screen_shot_path)
-        picture = picture.crop((1422, 300, 1533, 334))
+        # picture = picture.crop((1422, 300, 1533, 334))
+        picture = picture.crop((left, top, right, bottom))
         picture.save(code_img_path)
         # os.remove(screen_shot_path)
         LOGGER.info('code img saved(%s)' % code_img_path)
@@ -161,6 +162,7 @@ class WeiboLogin:
                     LOGGER.info(img_path + "not exist")
                     sleep(1)
                     LOGGER.info(img_path)
+
                 captcha_id, code_text = self.yun_da_ma.recognize(img_path)
                 # os.remove(img_path)
                 code_str = bytes.decode(code_text)
@@ -197,6 +199,6 @@ class WeiboLogin:
             LOGGER.error("get cookie failed :%s" % weibo_user)
             return None
 
-# login('767543579@qq.com', 'jvs7452014@jjzhu')
+# WeiboLogin().login_by_selenium('18127141093', 'rmb199192')
 # print('-' * 10)
 # get_cookie_from_login_sina_com_cn('767543579@qq.com', 'jvs7452014@jjzhu')

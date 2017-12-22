@@ -1,9 +1,9 @@
-templates/
+templates/*
 *.log
 *.conf
 .idea/*
 */conf/*
 *.pyc
-target/
-.idea/
+./target/*
+.idea/*
 */img/*

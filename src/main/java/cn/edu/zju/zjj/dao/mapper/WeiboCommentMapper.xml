@@ -21,7 +21,15 @@
     </select>
 
     <select id="statTime" resultType="cn.edu.zju.zjj.entity.TimeCount">
-        select count(*) as `count`, left(pub_time, 13) as `time` from weibo_comment group by `time`
+        select count(*) as `count`, left(pub_time, 13) as `time` from weibo_comment where tweet_id = #{tweetId} group by `time`
+    </select>
+
+    <select id="getByTweetId" resultType="cn.edu.zju.zjj.entity.WeiboComment">
+        select * from weibo_comment where tweet_id = #{tweetId}
+    </select>
+
+    <select id="getUsers" resultType="cn.edu.zju.zjj.entity.WeiboUser">
+        select wu.* from weibo_comment wc left join weibo_user wu on wc.user_id = wu.id where wc.tweet_id = #{tweetId}
     </select>
 
 </mapper>

@@ -47,4 +47,24 @@ public class WeiboCommentController {
         bean.setData(this.commentService.statTime(tweetId));
         return bean;
     }
+
+    @RequestMapping(value = "/wordCloud", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean getWordCloud(@RequestBody Map<String, Object> params){
+        log.info("{}", params);
+        ResponseBean bean = new ResponseBean();
+        String tweetId = (String)params.get("tweetId");
+        bean.setData(this.commentService.wordCloud(tweetId));
+        return bean;
+    }
+    @RequestMapping(value = "/cityCnt", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean cityCnt(@RequestBody Map<String, Object> params){
+        log.info("{}", params);
+        ResponseBean bean = new ResponseBean();
+        String tweetId = (String)params.get("tweetId");
+        bean.setData(this.commentService.getPlaceCnt(tweetId));
+        return bean;
+    }
+
 }

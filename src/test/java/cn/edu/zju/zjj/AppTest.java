@@ -9,8 +9,14 @@ import junit.framework.TestSuite;
  * Unit test for simple App.
  */
 public class AppTest{
+    public static void incre(int a){
+        a ++;
+    }
     public static void main(String [] args){
-        String a = "麻烦鬼\uD83D\uDC49不服咬我啊";
-        System.out.println(EmojiUtils.shortCodify(a));
+        int [] a = {1, 2, 3};
+        for(int e: a){
+           e = e+1;
+            System.out.print(e+" ");
+        }
     }
 }

@@ -126,8 +126,8 @@ class WeiboLogin:
         bottom = code_img.location['y'] + code_img.size['height']
         # print(left, top, right, bottom)
         picture = Image.open(screen_shot_path)
-        # picture = picture.crop((1422, 300, 1533, 334))
-        picture = picture.crop((left, top, right, bottom))
+        picture = picture.crop((1422, 300, 1533, 334))
+        # picture = picture.crop((left, top, right, bottom))
         picture.save(code_img_path)
         # os.remove(screen_shot_path)
         LOGGER.info('code img saved(%s)' % code_img_path)

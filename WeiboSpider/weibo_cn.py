@@ -62,8 +62,8 @@ class WeiboCnSpider:
             sleep(2)
             try:
                 self.grab_user_info(user_id)
-                # self.weibo_queue.put({'url': self.user_tweet_url % user_id, 'uid': user_id})
-                # self.follow_queue.put({'uid': user_id, 'url': self.follow_url % user_id})
+                self.weibo_queue.put({'url': self.user_tweet_url % user_id, 'uid': user_id})
+                self.follow_queue.put({'uid': user_id, 'url': self.follow_url % user_id})
             except:
                 LOGGER.error(traceback.format_exc())
                 sleep(5 * 60)
@@ -122,12 +122,12 @@ class WeiboCnSpider:
                     return time_str
 
     def start(self):
-        # self.user_queue.put('2210643391')
+        self.user_queue.put('2954733061')
         # self.grab_user_info('1316949123')
         # return self.grab_user_info('1316949123')
 
         # self.get_follow({'uid': '2365758410', 'url': self.follow_url % '2365758410'})
-        self.comment_queue.put({'url': 'https://weibo.cn/comment/FygAjq20M', 'tweetId': 'FygAjq20M'})
+        # self.comment_queue.put({'url': 'https://weibo.cn/comment/FygAjq20M', 'tweetId': 'FygAjq20M'})
         follow_thread = threading.Thread(target=self.crawl_follow, name='follow_thread')
         follow_thread.start()
         comment_thread = threading.Thread(target=self.crawl_comment, name='comment_thread')
@@ -151,10 +151,11 @@ class WeiboCnSpider:
                 usr_id = usr_id_result[0]
             else:
                 usr_id = self.get_user_id_from_homepage(a)
-
-            if usr_id and usr_id not in self.bloom_filter:
-                self.bloom_filter.add(usr_id)
-                self.user_queue.put(usr_id)
+            public_user = td.parent.find_all('img', src='https://h5.sinaimg.cn/upload/2016/05/26/319/5338.gif')
+            if not public_user:
+                enterprise_user = td.parent.find_all('img', src='https://h5.sinaimg.cn/upload/2016/05/26/319/5337.gif')
+                if not enterprise_user:
+                    self.user_id_in_queue(usr_id)
 
         if 'page=' not in follow_dict['url']:
 
@@ -168,6 +169,12 @@ class WeiboCnSpider:
 
     def get_fans(self, user_id):
         pass
+
+    def user_id_in_queue(self, user_id):
+        if user_id and user_id not in self.bloom_filter:
+            LOGGER.info('%s in user queue.' % user_id)
+            self.bloom_filter.add(user_id)
+            self.user_queue.put(user_id)
 
     @staticmethod
     def get_header():
@@ -216,9 +223,7 @@ class WeiboCnSpider:
                     user_id = user_href[3:]
                 else:
                     user_id = self.get_user_id_from_homepage(self.weibo_host + user_href)
-                if user_id and user_id not in self.bloom_filter:
-                    self.bloom_filter.add(user_id)
-                    self.user_queue.put(user_id)
+                self.user_id_in_queue(user_id)
                 comment_info['userId'] = user_id
                 comment_info['content'] = comment_div.find(class_='ctt').get_text()
                 others = comment_div.find(class_='ct').get_text()
@@ -280,6 +285,7 @@ class WeiboCnSpider:
         response = session.get(tweet_url['url'], cookies=cookies['cookies'], verify=False)
         response.encoding = 'utf-8'
         user_tweet_html = BeautifulSoup(response.text, "lxml")
+
         tweet_divs = user_tweet_html.find_all(id=True, class_='c')
         for tweet_div in tweet_divs:
             tweet = {}
@@ -343,6 +349,18 @@ class WeiboCnSpider:
                                     'tweetId': tweet['id'][2:]})
 
         if 'page=' not in tweet_url['url']:
+
+            total_weibo_span = user_tweet_html.find('span', class_='tc')
+            if total_weibo_span:
+                total_result = re.findall('微博\[(\d*)\]', total_weibo_span.get_text())
+                if total_result:
+                    total = total_result[0]
+                    if int(total) > 5000:
+                        return
+                else:
+                    return
+            else:
+                return
 
             page_div = user_tweet_html.find(id='pagelist')
 

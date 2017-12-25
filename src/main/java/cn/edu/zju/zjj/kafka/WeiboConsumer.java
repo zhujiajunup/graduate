@@ -47,6 +47,7 @@ public class WeiboConsumer {
                         Map<String, String> map = MAPPER.readValue(value, Map.class);
                         if ("user_info".equals(map.get("type"))) {
                             WeiboUser user = MAPPER.readValue(value, WeiboUser.class);
+
                             user.setNickname(EmojiUtils.shortCodify(user.getNickname()));
                             user.setSignature(EmojiUtils.shortCodify(user.getSignature()));
                             entities.add(user);

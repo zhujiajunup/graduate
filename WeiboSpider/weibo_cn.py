@@ -35,7 +35,7 @@ class WeiboProcuder:
 class WeiboCnSpider:
     def __init__(self):
         self.bloom_filter = ScalableBloomFilter(mode=ScalableBloomFilter.SMALL_SET_GROWTH)
-
+        self.weibo_limit = True
         self.time_current_pattern = re.compile(r'(\d*)分钟前')
         self.time_today_pattern = re.compile(r'今天\s*(\d*):(\d*)')
         self.time_year_pattern = re.compile(r'(\d*)月(\d*)日\s*(\d*):(\d*)')
@@ -45,8 +45,8 @@ class WeiboCnSpider:
 
         self.fan_url = self.weibo_host + '/%s/fans'
         self.user_info_url = self.weibo_host + '/%s/info'
-        self.user_tweet_url = self.weibo_host + '/%s/profile'
-        self.user_tweet_url2 = self.weibo_host + '/%s/profile?page=%d'
+        self.user_tweet_url = self.weibo_host + '/%s'
+        self.user_tweet_url2 = self.weibo_host + '/%s?page=%d'
         self.tweet_comment_url = self.weibo_host + '/comment/%s'
         self.tweet_comment_url2 = self.weibo_host + '/comment/%s?page=%d'
         self.weibo_producer = WeiboProcuder(['localhost:9092'], 'sinaweibo')
@@ -122,7 +122,7 @@ class WeiboCnSpider:
                     return time_str
 
     def start(self):
-        self.user_queue.put('2954733061')
+        self.user_queue.put('1893065353')
         # self.grab_user_info('1316949123')
         # return self.grab_user_info('1316949123')
 
@@ -134,7 +134,7 @@ class WeiboCnSpider:
         comment_thread.start()
         user_thread = threading.Thread(target=self.crawl_user, name='user_thread')
         user_thread.start()
-        # self.weibo_queue.put({'url': self.user_tweet_url % '2210643391', 'uid': '2210643391'})
+        # self.weibo_queue.put({'url': self.user_tweet_url % '277118746', 'uid': '277118746'})
         thread_weibo = threading.Thread(target=self.crawl_weibo, name='weibo_thread')
         thread_weibo.start()
 
@@ -156,15 +156,19 @@ class WeiboCnSpider:
                 enterprise_user = td.parent.find_all('img', src='https://h5.sinaimg.cn/upload/2016/05/26/319/5337.gif')
                 if not enterprise_user:
                     self.user_id_in_queue(usr_id)
-
+                else:
+                    LOGGER.info('%s passed' % usr_id)
+            else:
+                LOGGER.info('%s passed' % usr_id)
         if 'page=' not in follow_dict['url']:
 
             page_div = follow_html.find(id='pagelist')
-            max_page = int(page_div.input.get('value'))
-            for page in range(2, max_page + 1):
-                pass
-                # self.weibo_queue.put({'url': (self.follow_url % follow_dict['uid'])+'?page=' + page,
-                #                       'uid': follow_dict['uid']})
+            if page_div:
+                max_page = int(page_div.input.get('value'))
+                for page in range(2, max_page + 1):
+
+                    self.weibo_queue.put({'url': (self.follow_url % follow_dict['uid'])+'?page=' + page,
+                                          'uid': follow_dict['uid']})
         pass
 
     def get_fans(self, user_id):
@@ -263,9 +267,9 @@ class WeiboCnSpider:
                             tweet['source'] = others[1]
                     tweet['content'] = tweet_content
                     tweet['id'] = comment_url['tweetId']
-                    tweet['like'] = like[0] if like else -1
-                    tweet['transfer'] = transfer[0] if transfer else -1
-                    tweet['comment'] = comment[0] if comment else -1
+                    tweet['like'] = like[0] if like else 0
+                    tweet['transfer'] = transfer[0] if transfer else 0
+                    tweet['comment'] = comment[0] if comment else 0
                     tweet['type'] = 'tweet_info'
                     tweet['uid'] = tweet_user_id
                     self.weibo_producer.send(tweet)
@@ -303,7 +307,7 @@ class WeiboCnSpider:
                 text = parent.get_text()
                 fields = text.split('\xa0')
 
-                content = fields[0]
+                content = fields[0][5:]
                 ct_content = parent.find('span', class_='ct').get_text()
                 time_source = ct_content.split('\u6765\u81ea')
 
@@ -330,9 +334,9 @@ class WeiboCnSpider:
                 other_fields = fields[-1].split('\xa0')
                 other = ';'.join(other_fields[1:])
 
-            like = re.findall(u'\u8d5e\[(\d+)\]', other)  # 点赞数
-            transfer = re.findall(u'\u8f6c\u53d1\[(\d+)\]', other)  # 转载数
-            comment = re.findall(u'\u8bc4\u8bba\[(\d+)\]', other)  # 评论数
+            like = re.findall(u'\u8d5e\[(\d+)\];', other)  # 点赞数
+            transfer = re.findall(u'\u8f6c\u53d1\[(\d+)\];', other)  # 转载数
+            comment = re.findall(u'\u8bc4\u8bba\[(\d+)\];', other)  # 评论数
             tweet['content'] = content
             tweet['id'] = tweet_div.get('id')
             tweet['time'] = time
@@ -345,8 +349,8 @@ class WeiboCnSpider:
 
             self.weibo_producer.send(tweet)
             # 获取评论
-            self.comment_queue.put({'url': self.tweet_comment_url % tweet['id'][2:],
-                                    'tweetId': tweet['id'][2:]})
+            # self.comment_queue.put({'url': self.tweet_comment_url % tweet['id'][2:],
+            #                         'tweetId': tweet['id'][2:]})
 
         if 'page=' not in tweet_url['url']:
 
@@ -363,11 +367,13 @@ class WeiboCnSpider:
                 return
 
             page_div = user_tweet_html.find(id='pagelist')
-
-            max_page = int(page_div.input.get('value'))
-            for page in range(2, max_page + 1):
-                self.weibo_queue.put({'url': self.user_tweet_url2 % (tweet_url['uid'], page),
-                                      'uid': tweet_url['uid']})
+            if page_div:
+                max_page = int(page_div.input.get('value'))
+                if self.weibo_limit:
+                    max_page = max_page if max_page < 10 else 10
+                for page in range(2, max_page + 1):
+                    self.weibo_queue.put({'url': self.user_tweet_url2 % (tweet_url['uid'], page),
+                                          'uid': tweet_url['uid']})
 
     def grab_user_info(self, user_id):
         session = requests.Session()

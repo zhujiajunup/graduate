@@ -35,6 +35,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.ansj</groupId>
             <artifactId>ansj_seg</artifactId>

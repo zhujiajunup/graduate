@@ -122,7 +122,7 @@ class WeiboCnSpider:
                     return time_str
 
     def start(self):
-        self.user_queue.put('1893065353')
+        self.user_queue.put('6037294528')
         # self.grab_user_info('1316949123')
         # return self.grab_user_info('1316949123')
 
@@ -167,7 +167,7 @@ class WeiboCnSpider:
                 max_page = int(page_div.input.get('value'))
                 for page in range(2, max_page + 1):
 
-                    self.weibo_queue.put({'url': (self.follow_url % follow_dict['uid'])+'?page=' + page,
+                    self.weibo_queue.put({'url': (self.follow_url % follow_dict['uid'])+'?page=' + str(page),
                                           'uid': follow_dict['uid']})
         pass
 

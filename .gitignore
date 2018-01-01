@@ -1,9 +1,7 @@
 *.log
-*.conf
 .idea/*
 */conf/*
 *.pyc
 target/*
-.idea/*
 */img/*
-*.class
+data/*

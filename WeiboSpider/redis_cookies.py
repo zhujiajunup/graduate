@@ -30,7 +30,12 @@ class RedisCookies(object):
             LOGGER.info('user in queue: %s' % user_name)
             r.sadd("users", user_name)
         else:
+
             LOGGER.info('user already in queue: %s' % user_name)
+            LOGGER.info("remove it")
+            r.srem("users", user_name)
+            LOGGER.info('user in queue: %s' % user_name)
+            r.sadd("users", user_name)
 
     @classmethod
     def fetch_cookies(cls):
@@ -49,6 +54,7 @@ class RedisCookies(object):
 
     @classmethod
     def clean(cls):
+        LOGGER.info('clean redis data')
         r = redis.Redis(connection_pool=cls.redis_pool)
         r.delete('users')
         r.delete('account')

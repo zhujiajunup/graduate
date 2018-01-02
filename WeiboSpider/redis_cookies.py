@@ -25,6 +25,7 @@ class RedisJob(object):
         else:
             return None
 
+
 class RedisCookies(object):
     redis_pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
 

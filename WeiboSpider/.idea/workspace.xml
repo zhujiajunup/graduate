@@ -11,69 +11,46 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/WeiboSpider$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1513177363881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$add.coverage" NAME="add Coverage Results" MODIFIED="1513390473007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/usage" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$weibo_cn.coverage" NAME="weibo_cn Coverage Results" MODIFIED="1514387721431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$login.coverage" NAME="login Coverage Results" MODIFIED="1512879730704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$decorator.coverage" NAME="decorator Coverage Results" MODIFIED="1513345140104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/usage" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$test.coverage" NAME="test Coverage Results" MODIFIED="1513004080811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider2" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$cookies.coverage" NAME="cookies Coverage Results" MODIFIED="1512569097957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$weibo_http2.coverage" NAME="weibo_http2 Coverage Results" MODIFIED="1512577220651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider2" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$start_services.coverage" NAME="start_services Coverage Results" MODIFIED="1513259364598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WeiboSpider$weibo_http.coverage" NAME="weibo_http Coverage Results" MODIFIED="1512572338107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider2" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$test.coverage" NAME="test Coverage Results" MODIFIED="1513004080811" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider2" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$weibo_http2.coverage" NAME="weibo_http2 Coverage Results" MODIFIED="1512577220651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider2" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$cookies.coverage" NAME="cookies Coverage Results" MODIFIED="1512569097957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$start_services.coverage" NAME="start_services Coverage Results" MODIFIED="1513259364598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$add.coverage" NAME="add Coverage Results" MODIFIED="1513390473007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/usage" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$decorator.coverage" NAME="decorator Coverage Results" MODIFIED="1513345140104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/usage" />
     <SUITE FILE_PATH="coverage/WeiboSpider$weibo.coverage" NAME="weibo Coverage Results" MODIFIED="1512649047597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider2" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$weibo__1_.coverage" NAME="weibo (1) Coverage Results" MODIFIED="1512822235275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WeiboSpider$weibo_com.coverage" NAME="weibo_com Coverage Results" MODIFIED="1513087769976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WeiboSpider$weibo2.coverage" NAME="weibo2 Coverage Results" MODIFIED="1513176804670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider2" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$redis_cookies.coverage" NAME="redis_cookies Coverage Results" MODIFIED="1513914050202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$login.coverage" NAME="login Coverage Results" MODIFIED="1513913989861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$weibo_cn.coverage" NAME="weibo_cn Coverage Results" MODIFIED="1513916633156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WeiboSpider$Begin.coverage" NAME="Begin Coverage Results" MODIFIED="1512138931706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$weibo__1_.coverage" NAME="weibo (1) Coverage Results" MODIFIED="1512822235275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$redis_cookies.coverage" NAME="redis_cookies Coverage Results" MODIFIED="1514561722464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="weibo.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/weibo.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1426">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="54" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="redis_cookies.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/redis_cookies.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="70" column="38" lean-forward="false" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
-              <folding />
+            <state relative-caret-position="1740">
+              <caret line="70" column="37" lean-forward="false" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
+              <folding>
+                <marker date="1514862260300" expanded="true" signature="159:1915" ph="..." />
+                <marker date="1514862260300" expanded="true" signature="753:969" ph="..." />
+                <marker date="1514862260300" expanded="true" signature="1805:1915" ph="..." />
+                <marker date="1514862260300" expanded="true" signature="2061:2487" ph="..." />
+                <marker date="1514862260300" expanded="true" signature="2322:2430" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/login.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/redis/client.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="1658" column="8" lean-forward="false" selection-start-line="1658" selection-start-column="8" selection-end-line="1658" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="weibo_cn.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="weibo_cn.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/weibo_cn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="123" column="20" lean-forward="false" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="20" />
+            <state relative-caret-position="-841">
+              <caret line="160" column="17" lean-forward="true" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
               </folding>
@@ -81,21 +58,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="code_recognize.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code_recognize.py">
+      <file leaf-file-name="datetime.pyi" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/datetime.pyi">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="23" column="41" lean-forward="false" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+            <state relative-caret-position="3219">
+              <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
+      <file leaf-file-name="login.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+            <state relative-caret-position="5452">
+              <caret line="202" column="2" lean-forward="false" selection-start-line="202" selection-start-column="2" selection-end-line="202" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+                <marker date="1514862260299" expanded="true" signature="615:7910" ph="..." />
+                <marker date="1514862260299" expanded="true" signature="7351:7809" ph="..." />
+                <marker date="1514862260299" expanded="true" signature="7351:7910" ph="..." />
+                <marker date="1514862260299" expanded="true" signature="7573:7683" ph="..." />
+                <marker date="1514862260299" expanded="true" signature="7823:7910" ph="..." />
+                <marker date="1514862260299" expanded="true" signature="7912:8066" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="18127141093-screenshot.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/img/18127141093-screenshot.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="code_recognize.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code_recognize.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="754">
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding>
+                <marker date="1514862260298" expanded="true" signature="88:173" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logging.conf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/logging.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -112,6 +126,22 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>DesiredCapabilities</find>
+      <find>17081444230</find>
+      <find>input_wrap</find>
+      <find>pl_unlogin_home_login</find>
+      <find>crawl_weibo</find>
+      <find>user_tweet_url</find>
+      <find>comment</find>
+      <find>weibo_queue.put</find>
+      <find>comment_queue</find>
+      <find>id</find>
+      <find>print</find>
+      <find>sleep</find>
+      <find>id got</find>
+      <find>grab_user_info</find>
+      <find>user_queue.pu</find>
+      <find>user_queue.get</find>
       <find>17074732502</find>
       <find>15390949677</find>
       <find>StaleElementReferenceException</find>
@@ -121,27 +151,11 @@
       <find>RedisCookies.fetch_cookies()</find>
       <find>rotatingFileHandler</find>
       <find>17081442416</find>
+      <find>user_queue</find>
       <find>13891331754</find>
       <find>unknown</find>
       <find>weibo</find>
       <find>flag</find>
-      <find>follow_queue</find>
-      <find>user_queue</find>
-      <find>weibo_queue</find>
-      <find>not in self.bloom_filter</find>
-      <find>comment_queue.pu</find>
-      <find>start</find>
-      <find>18171526975</find>
-      <find>tweet</find>
-      <find>[2:]</find>
-      <find>passed</find>
-      <find>comment</find>
-      <find>comment_queue.p</find>
-      <find>grab_tweet_comments</find>
-      <find>15390925918</find>
-      <find>user already in queue</find>
-      <find>user already in q</find>
-      <find>17196424907</find>
     </findStrings>
     <replaceStrings>
       <replace>WeiboSpider</replace>
@@ -187,12 +201,12 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/usage/decorator.py" />
         <option value="$PROJECT_DIR$/usage/add.py" />
+        <option value="$PROJECT_DIR$/redis_cookies.py" />
         <option value="$PROJECT_DIR$/conf/logging.conf" />
+        <option value="$PROJECT_DIR$/conf/weibo.yaml" />
+        <option value="$PROJECT_DIR$/login.py" />
         <option value="$PROJECT_DIR$/code_recognize.py" />
         <option value="$PROJECT_DIR$/weibo_cn.py" />
-        <option value="$PROJECT_DIR$/redis_cookies.py" />
-        <option value="$PROJECT_DIR$/login.py" />
-        <option value="$PROJECT_DIR$/conf/weibo.yaml" />
       </list>
     </option>
   </component>
@@ -202,11 +216,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2269" />
-    <option name="y" value="3" />
-    <option name="width" value="1920" />
-    <option name="height" value="882" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -223,24 +237,36 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
-          <expand>
-            <path>
-              <item name="WeiboSpider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WeiboSpider" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WeiboSpider" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WeiboSpider" type="462c0819:PsiDirectoryNode" />
-              <item name="conf" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WeiboSpider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WeiboSpider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WeiboSpider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WeiboSpider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -272,14 +298,101 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.redis_cookies">
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
+  <component name="RunManager" selected="Python.weibo_cn">
+    <configuration default="false" name="redis_cookies" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="WeiboSpider" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/redis_cookies.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="weibo_cn" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="WeiboSpider" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weibo_cn.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="start_services" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="WeiboSpider" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start_services.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="decorator" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/usage" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="WeiboSpider" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/usage/decorator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="add" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/usage" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="WeiboSpider" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/usage/add.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
     </configuration>
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -377,6 +490,15 @@
       <module name="WeiboSpider" />
       <method />
     </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run" />
       <scripts />
@@ -420,43 +542,7 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <configuration name="add" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/usage" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="WeiboSpider" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/usage/add.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="decorator" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/usage" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="WeiboSpider" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/usage/decorator.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="login" type="PythonConfigurationType" factoryName="Python">
+    <configuration default="false" name="login" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -473,60 +559,7 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="redis_cookies" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="WeiboSpider" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/redis_cookies.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="start_services" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="WeiboSpider" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start_services.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <configuration name="weibo_cn" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="WeiboSpider" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/weibo_cn.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.login" />
@@ -538,8 +571,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.redis_cookies" />
-        <item index="1" class="java.lang.String" itemvalue="Python.weibo_cn" />
+        <item index="0" class="java.lang.String" itemvalue="Python.weibo_cn" />
+        <item index="1" class="java.lang.String" itemvalue="Python.redis_cookies" />
         <item index="2" class="java.lang.String" itemvalue="Python.add" />
         <item index="3" class="java.lang.String" itemvalue="Python.decorator" />
         <item index="4" class="java.lang.String" itemvalue="Python.start_services" />
@@ -569,18 +602,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21634616" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44911504" sideWeight="0.50536484" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42699116" sideWeight="0.49785408" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6692478" sideWeight="0.4946352" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34734514" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22317597" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44469026" sideWeight="0.50214595" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3268817" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3329646" sideWeight="0.49785408" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5075269" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25375536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3483871" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5022124" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -589,11 +622,12 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3268817" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
@@ -758,27 +792,18 @@
           <line>296</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/weibo_cn.py</url>
-          <line>356</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/weibo_cn.py</url>
-          <line>93</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/weibo_cn.py</url>
-          <line>96</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="52" />
+      <option name="time" value="48" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/.PyCharm2017.2/system/python_stubs/-313451744/nt.py" />
+    <entry file="file://$PROJECT_DIR$/1.png" />
+    <entry file="file://$PROJECT_DIR$/3.png" />
+    <entry file="file://$PROJECT_DIR$/2.png" />
+    <entry file="file://$PROJECT_DIR$/img/screenshot.png" />
+    <entry file="file://$PROJECT_DIR$/WeiboSpider2/weibo2.py" />
     <entry file="file://$PROJECT_DIR$/WeiboSpider2/__init__.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -855,6 +880,16 @@
     </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/kafka/producer/kafka.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/json/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="54" column="38" lean-forward="false" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#30#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2017.2/system/python_stubs/-313451744/builtins.py" />
     <entry file="file://$PROJECT_DIR$/usage/decorator.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -889,106 +924,90 @@
     <entry file="file://$PROJECT_DIR$/img/13726864770-verify_code.png" />
     <entry file="file://$PROJECT_DIR$/img/13248549167-verify_code.png" />
     <entry file="file://$PROJECT_DIR$/img/17157387746-verify_code.png" />
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/urllib3/connectionpool.py" />
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/threading.py" />
-    <entry file="file://$PROJECT_DIR$/conf/logging.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/img/18127141093-screenshot.png" />
-    <entry file="file://$PROJECT_DIR$/img/18127141093-verify_code.png" />
-    <entry file="file://$PROJECT_DIR$/img.png" />
-    <entry file="file://$PROJECT_DIR$/getimage.jpg" />
-    <entry file="file://$PROJECT_DIR$/geckodriver.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="7596" column="0" lean-forward="true" selection-start-line="7596" selection-start-column="0" selection-end-line="7596" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/datetime.pyi">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="776">
+        <state relative-caret-position="3219">
           <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/requests/packages.py">
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/urllib3/connectionpool.py" />
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/threading.py" />
+    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/requests/packages.py" />
+    <entry file="file://$PROJECT_DIR$/redis_cookies.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1740">
+          <caret line="70" column="37" lean-forward="false" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
+          <folding>
+            <marker date="1514862260300" expanded="true" signature="159:1915" ph="..." />
+            <marker date="1514862260300" expanded="true" signature="753:969" ph="..." />
+            <marker date="1514862260300" expanded="true" signature="1805:1915" ph="..." />
+            <marker date="1514862260300" expanded="true" signature="2061:2487" ph="..." />
+            <marker date="1514862260300" expanded="true" signature="2322:2430" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
+    <entry file="file://$PROJECT_DIR$/conf/logging.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        <state relative-caret-position="232">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/17081444230-verify_code.png">
+    <entry file="file://$PROJECT_DIR$/img/18127141093-screenshot.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/17081444230-screenshot.png">
+    <entry file="file://$PROJECT_DIR$/img/18127141093-verify_code.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5452">
+          <caret line="202" column="2" lean-forward="false" selection-start-line="202" selection-start-column="2" selection-end-line="202" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <marker date="1514862260299" expanded="true" signature="615:7910" ph="..." />
+            <marker date="1514862260299" expanded="true" signature="7351:7809" ph="..." />
+            <marker date="1514862260299" expanded="true" signature="7351:7910" ph="..." />
+            <marker date="1514862260299" expanded="true" signature="7573:7683" ph="..." />
+            <marker date="1514862260299" expanded="true" signature="7823:7910" ph="..." />
+            <marker date="1514862260299" expanded="true" signature="7912:8066" ph="..." />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code_recognize.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="23" column="41" lean-forward="false" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/redis/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="1658" column="8" lean-forward="false" selection-start-line="1658" selection-start-column="8" selection-end-line="1658" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weibo_cn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="123" column="20" lean-forward="false" selection-start-line="123" selection-start-column="20" selection-end-line="123" selection-end-column="20" />
+        <state relative-caret-position="754">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
-            <element signature="e#23#34#0" expanded="true" />
+            <marker date="1514862260298" expanded="true" signature="88:173" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/weibo.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1426">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="54" selection-end-column="26" />
+        <state relative-caret-position="116">
+          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/redis_cookies.py">
+    <entry file="file://$PROJECT_DIR$/weibo_cn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="70" column="38" lean-forward="false" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-841">
+          <caret line="160" column="17" lean-forward="true" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
+          <folding>
+            <element signature="e#23#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

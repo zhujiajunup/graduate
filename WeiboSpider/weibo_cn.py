@@ -62,8 +62,8 @@ class WeiboCnSpider:
             sleep(2)
             try:
                 self.grab_user_info(user_id)
-                self.weibo_queue.put({'url': self.user_tweet_url % user_id, 'uid': user_id})
-                self.follow_queue.put({'uid': user_id, 'url': self.follow_url % user_id})
+                # self.weibo_queue.put({'url': self.user_tweet_url % user_id, 'uid': user_id})
+                # self.follow_queue.put({'uid': user_id, 'url': self.follow_url % user_id})
             except:
                 LOGGER.error(traceback.format_exc())
                 sleep(5 * 60)
@@ -122,12 +122,12 @@ class WeiboCnSpider:
                     return time_str
 
     def start(self):
-        self.user_queue.put('6037294528')
+        # self.user_queue.put('6037294528')
         # self.grab_user_info('1316949123')
         # return self.grab_user_info('1316949123')
 
         # self.get_follow({'uid': '2365758410', 'url': self.follow_url % '2365758410'})
-        # self.comment_queue.put({'url': 'https://weibo.cn/comment/FygAjq20M', 'tweetId': 'FygAjq20M'})
+        self.comment_queue.put({'url': 'https://weibo.cn/comment/FygAjq20M', 'tweetId': 'FygAjq20M'})
         follow_thread = threading.Thread(target=self.crawl_follow, name='follow_thread')
         follow_thread.start()
         comment_thread = threading.Thread(target=self.crawl_comment, name='comment_thread')

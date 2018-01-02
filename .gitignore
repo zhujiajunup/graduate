@@ -1,7 +1,8 @@
 *.log
-.idea/*
-*/conf/*
-*.pyc
-target/*
-*/img/*
 data/*
+.idea/
+WeiboSpider/__pycache__/
+WeiboSpider/conf/
+WeiboSpider/img/
+target/
+/config/

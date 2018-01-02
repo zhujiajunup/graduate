@@ -9,14 +9,16 @@ from time import sleep
 import threading
 import requests
 import sys
+from enum import Enum
 from bs4 import BeautifulSoup
 from kafka import KafkaProducer
 import urllib3
 import user_agents
-from redis_cookies import RedisCookies
+from redis_cookies import RedisCookies, RedisJob
 from setting import LOGGER
 from pybloom import ScalableBloomFilter
 from memory_collect import getsize
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
@@ -30,6 +32,14 @@ class WeiboProcuder:
         # LOGGER.info('send type: %s, id: %s' % (msg['type'], msg['id']))
         self.producer.send(topic=self.topic, value=msg)
         # LOGGER.info('send successful.')
+
+
+class JobType(Enum):
+    comment = 'comment'
+    tweet = 'tweet'
+    follower = 'follower'
+    user = 'user'
+    repost = 'repost'
 
 
 class WeiboCnSpider:
@@ -52,67 +62,68 @@ class WeiboCnSpider:
         self.tweet_comment_url = self.weibo_host + '/comment/%s'
         self.tweet_comment_url2 = self.weibo_host + '/comment/%s?page=%d'
         self.weibo_producer = WeiboProcuder(['localhost:9092'], 'sinaweibo')
-        self.comment_queue = Queue()
-        self.weibo_queue = Queue()
-        self.user_queue = Queue()
-        self.follow_queue = Queue()
-        self.fans_queue = Queue()
-        self.repost_queue = Queue()
 
     def crawl_user(self):
         while True:
-            user_id = self.user_queue.get()
-            sleep(1)
-            try:
-                self.grab_user_info(user_id)
-                # self.weibo_queue.put({'url': self.user_tweet_url % user_id, 'uid': user_id})
-                # self.follow_queue.put({'uid': user_id, 'url': self.follow_url % user_id})
-            except:
-                LOGGER.error(traceback.format_exc())
-                sleep(5 * 60)
+            user_job_info = RedisJob.fetch_job(JobType.user.value)
+            if user_job_info:
+                sleep(1)
+                try:
+                    self.grab_user_info(user_job_info['user_id'])
+                    # self.weibo_queue.put({'url': self.user_tweet_url % user_id, 'uid': user_id})
+                    # self.follow_queue.put({'uid': user_id, 'url': self.follow_url % user_id})
+                except:
+                    LOGGER.error(traceback.format_exc())
+                    sleep(5 * 60)
+            else:
+                sleep(1)
 
     def crawl_follow(self):
         while True:
-            follow_dict = self.follow_queue.get()
-            sleep(1)
-            try:
-                self.grab_follow(follow_dict)
+            follow_dict = RedisJob.fetch_job(JobType.follower.value)
+            if follow_dict:
+                sleep(1)
+                try:
+                    self.grab_follow(follow_dict)
 
-            except:
-                LOGGER.error(traceback.format_exc())
-                sleep(5 * 60)
+                except:
+                    LOGGER.error(traceback.format_exc())
+                    sleep(5 * 60)
 
     def crawl_comment(self):
         while True:
-            comment_url = self.comment_queue.get()
-            sleep(1)
-            try:
-                self.grab_tweet_comments(comment_url)
-                self.repost_queue.put({'url': self.user_repost_url % comment_url['tweetId'],
-                                       'tweetId': comment_url['tweetId']})
-            except:
-                LOGGER.error(traceback.format_exc())
-                sleep(5 * 60)
+            comment_job_info = RedisJob.fetch_job(JobType.comment.value)
+            if comment_job_info:
+                sleep(1)
+                try:
+                    self.grab_tweet_comments(comment_job_info)
+                    RedisJob.push_job(JobType.repost.value, {'url': self.user_repost_url % comment_job_info['tweetId'],
+                                                             'tweetId': comment_job_info['tweetId']})
+                except:
+                    LOGGER.error(traceback.format_exc())
+                    sleep(5 * 60)
 
     def crawl_weibo(self):
         while True:
-            user_tweet_url = self.weibo_queue.get()
-            sleep(1)
-            try:
-                self.grab_user_tweet(user_tweet_url)
-            except:
-                LOGGER.error(traceback.format_exc())
-                sleep(5 * 60)
+            tweet_job_info = RedisJob.fetch_job(JobType.tweet.value)
+            if tweet_job_info:
+                sleep(1)
+                try:
+                    self.grab_user_tweet(tweet_job_info)
+                except:
+                    LOGGER.error(traceback.format_exc())
+                    sleep(5 * 60)
 
     def crawl_repost(self):
         while True:
-            repost_url = self.repost_queue.get()
-            sleep(1)
-            try:
-                self.grab_tweet_repost(repost_url)
-            except:
-                LOGGER.error(traceback.format_exc())
-                sleep(5 * 60)
+            repost_job_info = RedisJob.fetch_job(JobType.repost.value)
+            if repost_job_info:
+                sleep(1)
+                try:
+                    self.grab_tweet_repost(repost_job_info)
+                except:
+                    LOGGER.error(traceback.format_exc())
+                    sleep(5 * 60)
 
     def grab_tweet_repost(self, repost_url):
         session = requests.Session()
@@ -128,7 +139,9 @@ class WeiboCnSpider:
                 attitude_url = attr_span.extract().find('a').get('href')
                 tweet_id = attitude_url.split('/')[2]
                 tweet_info['id'] = tweet_id
-                self.comment_queue.put({'url': 'https://weibo.cn/comment/%s' % tweet_id, 'tweetId': tweet_id})
+                RedisJob.push_job(JobType.comment.value,
+                                  {'url': 'https://weibo.cn/comment/%s' % tweet_id, 'tweetId': tweet_id})
+                # self.comment_queue.put({'url': 'https://weibo.cn/comment/%s' % tweet_id, 'tweetId': tweet_id})
             else:
                 continue
 
@@ -156,8 +169,9 @@ class WeiboCnSpider:
                 max_page = int(page_div.input.get('value'))
 
                 for page in range(2, max_page + 1):
-                    self.repost_queue.put({'url': self.user_repost_url2 % (repost_url['tweetId'], page),
-                                          'tweetId': repost_url['tweetId']})
+                    RedisJob.push_job(JobType.repost.value,
+                                      {'url': self.user_repost_url2 % (repost_url['tweetId'], page),
+                                       'tweetId': repost_url['tweetId']})
 
     def get_time(self, time_str):
         current_result = self.time_current_pattern.findall(time_str)
@@ -187,8 +201,8 @@ class WeiboCnSpider:
         # return self.grab_user_info('1316949123')
 
         # self.get_follow({'uid': '2365758410', 'url': self.follow_url % '2365758410'})
+        # RedisJob.push_job(JobType.comment.value, {'url': 'https://weibo.cn/comment/FCoPpaIQp', 'tweetId': 'FCoPpaIQp'})
 
-        self.comment_queue.put({'url': 'https://weibo.cn/comment/FCoPpaIQp', 'tweetId': 'FCoPpaIQp'})
         follow_thread = threading.Thread(target=self.crawl_follow, name='follow_thread')
         follow_thread.start()
         comment_thread = threading.Thread(target=self.crawl_comment, name='comment_thread')
@@ -201,24 +215,6 @@ class WeiboCnSpider:
         # self.repost_queue.put({'url': self.user_repost_url % 'FCoPpaIQp', 'tweetId': 'FCoPpaIQp'})
         repost_thread = threading.Thread(target=self.crawl_repost, name='repost_thread')
         repost_thread.start()
-        memory_thread = threading.Thread(target=self.memory_print, name='memory_thread')
-        memory_thread.start()
-
-    def memory_print(self):
-        while True:
-            try:
-                LOGGER.info("-" * 100)
-                LOGGER.info('bloom filter memory size %d' % getsize(self.bloom_filter))
-                LOGGER.info('repost_queue: %d(%d)' % (getsize(self.repost_queue), self.repost_queue.qsize()))
-                LOGGER.info('comment_queue: %d(%d)' % (getsize(self.comment_queue), self.comment_queue.qsize()))
-                LOGGER.info('weibo_queue: %d(%d)' % (getsize(self.weibo_queue), self.weibo_queue.qsize()))
-                LOGGER.info('fans_queue: %d(%d)' % (getsize(self.fans_queue), self.fans_queue.qsize()))
-                LOGGER.info('follow_queue: %d(%d)' % (getsize(self.follow_queue), self.follow_queue.qsize()))
-                LOGGER.info('user_queue: %d(%d)' % (getsize(self.user_queue), self.user_queue.qsize()))
-                LOGGER.info("-" * 100)
-                sleep(20)
-            except:
-                pass
 
     def grab_follow(self, follow_dict):
         session = requests.Session()
@@ -248,10 +244,9 @@ class WeiboCnSpider:
             if page_div:
                 max_page = int(page_div.input.get('value'))
                 for page in range(2, max_page + 1):
-
-                    self.weibo_queue.put({'url': (self.follow_url % follow_dict['uid'])+'?page=' + str(page),
-                                          'uid': follow_dict['uid']})
-        pass
+                    RedisJob.push_job(JobType.tweet.value,
+                                      {'url': (self.follow_url % follow_dict['uid']) + '?page=' + str(page),
+                                       'uid': follow_dict['uid']})
 
     def get_fans(self, user_id):
         pass
@@ -260,7 +255,7 @@ class WeiboCnSpider:
         if user_id and user_id not in self.bloom_filter:
             # LOGGER.info('%s in user queue.' % user_id)
             self.bloom_filter.add(user_id)
-            self.user_queue.put(user_id)
+            RedisJob.push_job(JobType.user.value, {'user_id': user_id})
 
     @staticmethod
     def get_header():
@@ -337,7 +332,8 @@ class WeiboCnSpider:
                     tweet_content = tweet_div.find('span', class_='ctt').get_text()
                     others = tweet_div.find(class_='ct').get_text()
                     tweet_details = list(
-                        filter(lambda div: div.find(class_='pms'), comment_html.find_all('div', id=False, class_=False)))
+                        filter(lambda div: div.find(class_='pms'),
+                               comment_html.find_all('div', id=False, class_=False)))
                     detail = tweet_details[0].get_text(';').replace('\xa0', '')
                     like = re.findall(u'\u8d5e\[(\d+)\];', detail)  # 点赞数
                     transfer = re.findall(u'\u8f6c\u53d1\[(\d+)\];', detail)  # 转载数
@@ -361,8 +357,9 @@ class WeiboCnSpider:
 
                 max_page = int(page_div.input.get('value'))
                 for page in range(2, max_page + 1):
-                    self.comment_queue.put({'url': self.tweet_comment_url2 % (comment_url['tweetId'], page),
-                                            'tweetId': comment_url['tweetId']})
+                    RedisJob.push_job(JobType.comment.value,
+                                      {'url': self.tweet_comment_url2 % (comment_url['tweetId'], page),
+                                       'tweetId': comment_url['tweetId']})
 
     def grab_user_tweet(self, tweet_url):
         LOGGER.info('grab: %s' % str(tweet_url))
@@ -454,8 +451,8 @@ class WeiboCnSpider:
                 if self.weibo_limit:
                     max_page = max_page if max_page < 10 else 10
                 for page in range(2, max_page + 1):
-                    self.weibo_queue.put({'url': self.user_tweet_url2 % (tweet_url['uid'], page),
-                                          'uid': tweet_url['uid']})
+                    RedisJob.push_job(JobType.tweet.value, {'url': self.user_tweet_url2 % (tweet_url['uid'], page),
+                                                            'uid': tweet_url['uid']})
 
     def grab_user_info(self, user_id):
         session = requests.Session()
@@ -517,8 +514,6 @@ class WeiboCnSpider:
             user_info['id'] = user_id
 
             self.weibo_producer.send(user_info)
-
-        #
 
 
 if __name__ == '__main__':

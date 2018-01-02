@@ -22,6 +22,7 @@ USER_INFO_MAP = {
     '等级': 'level',
     '注册时间': 'created_at'
 }
+WEIBO_CN_HOST = 'https://weibo.cn'
 ROOT_URL = 'https://m.weibo.cn'
 LOGIN_URL = 'https://passport.weibo.cn/sso/login'
 PROPERTIES = yaml.load(open(os.path.split(os.path.realpath(__file__))[0] + '/conf/weibo.yaml'))

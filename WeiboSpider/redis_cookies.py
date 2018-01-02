@@ -13,14 +13,15 @@ class RedisJob(object):
     @classmethod
     def push_job(cls, job_type, job_info):
         r = redis.Redis(connection_pool=cls.redis_pool)
-        r.lpush(job_type, json.dumps(job_info))
-        LOGGER.info("push weibo job into redis")
+        r.lpush(str(job_type), json.dumps(job_info))
+        LOGGER.info("push weibo job into redis: %s" % str(job_info))
 
     @classmethod
     def fetch_job(cls, job_type):
         r = redis.Redis(connection_pool=cls.redis_pool)
         job_info = r.lpop(job_type)
         if job_info:
+            LOGGER.info('fetched job: %s' % job_info)
             return json.loads(job_info)
         else:
             return None

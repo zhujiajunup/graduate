@@ -1,6 +1,12 @@
 package cn.edu.zju.zjj;
 
-import cn.edu.zju.zjj.dao.WeiboUserDao;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
 import cn.edu.zju.zjj.entity.BaseEntity;
 import cn.edu.zju.zjj.entity.WeiboComment;
 import cn.edu.zju.zjj.entity.WeiboTweet;
@@ -10,16 +16,6 @@ import cn.edu.zju.zjj.service.WeiboCommentService;
 import cn.edu.zju.zjj.service.WeiboTweetService;
 import cn.edu.zju.zjj.service.WeiboUserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * Hello world!

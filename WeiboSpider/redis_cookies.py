@@ -4,7 +4,26 @@ import json
 import datetime
 from login import WeiboLogin
 from setting import LOGGER, ACCOUNTS
+import traceback
 
+
+class RedisJob(object):
+    redis_pool = redis.ConnectionPool(host='localhost', port=6379, db=1)
+
+    @classmethod
+    def push_job(cls, job_type, job_info):
+        r = redis.Redis(connection_pool=cls.redis_pool)
+        r.lpush(job_type, json.dumps(job_info))
+        LOGGER.info("push weibo job into redis")
+
+    @classmethod
+    def fetch_job(cls, job_type):
+        r = redis.Redis(connection_pool=cls.redis_pool)
+        job_info = r.lpop(job_type)
+        if job_info:
+            return json.loads(job_info)
+        else:
+            return None
 
 class RedisCookies(object):
     redis_pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
@@ -39,7 +58,7 @@ class RedisCookies(object):
 
     @classmethod
     def fetch_cookies(cls):
-        LOGGER.info('get cookies from reids')
+        # LOGGER.info('get cookies from reids')
         r = redis.Redis(connection_pool=cls.redis_pool)
         while True:
             user = r.spop('users')
@@ -48,7 +67,7 @@ class RedisCookies(object):
             if c:
                 user_cookies = c.decode('utf-8')
                 cookies_json = json.loads(user_cookies)
-                LOGGER.info(cookies_json)
+                # LOGGER.info(cookies_json)
                 return cookies_json
             LOGGER.warn('cookies not get')
 
@@ -75,6 +94,8 @@ def main():
             else:
                 failed.append(account)
         except Exception:
+            LOGGER.error("get cookies failed")
+            traceback.print_exc()
             failed.append(account)
     LOGGER.info("%d accounts login success" % len(success))
     LOGGER.info("%d accounts login failed" % len(failed))

@@ -1,4 +1,5 @@
 //Flot Line Chart
+var tweetId = 'FCoPpaIQp';
 $(document).ready(function () {
 
     var offset = 0;
@@ -12,7 +13,7 @@ $(document).ready(function () {
             dataType: 'json',
             url: '/comment/timeCnt/stat',
             contentType: "application/json",
-            data: JSON.stringify({'tweetId': 'Fz6Td1IgJ'}),
+            data: JSON.stringify({'tweetId': tweetId}),
             success: function (result) {
                 var timeCntData = result['data'];
 
@@ -113,7 +114,7 @@ $(function () {
             dataType: 'json',
             url: '/comment/source/stat',
             contentType: "application/json",
-            data: JSON.stringify({'tweetId': 'Fz6Td1IgJ'}),
+            data: JSON.stringify({'tweetId': tweetId}),
             success: function (result) {
                 var source_data = result['data'];
                 var seriesData = [];
@@ -184,7 +185,7 @@ $(function () {
         dataType: 'json',
         url: '/comment/wordCloud',
         contentType: "application/json",
-        data: JSON.stringify({'tweetId': 'Fz6Td1IgJ'}),
+        data: JSON.stringify({'tweetId': tweetId}),
         success: function (result) {
             var wordCountData = result['data'];
             var data = [];
@@ -236,7 +237,7 @@ $(function () {
         dataType: 'json',
         url: '/comment/cityCnt',
         contentType: "application/json",
-        data: JSON.stringify({'tweetId': 'Fz6Td1IgJ'}),
+        data: JSON.stringify({'tweetId': tweetId}),
         success: function (result) {
             var mapData = getMapData();
             console.log(mapData);

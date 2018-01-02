@@ -22,9 +22,9 @@
     <SUITE FILE_PATH="coverage/WeiboSpider$weibo__1_.coverage" NAME="weibo (1) Coverage Results" MODIFIED="1512822235275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WeiboSpider$weibo_com.coverage" NAME="weibo_com Coverage Results" MODIFIED="1513087769976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WeiboSpider$weibo2.coverage" NAME="weibo2 Coverage Results" MODIFIED="1513176804670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WeiboSpider2" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$redis_cookies.coverage" NAME="redis_cookies Coverage Results" MODIFIED="1513914050202" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$redis_cookies.coverage" NAME="redis_cookies Coverage Results" MODIFIED="1514876262054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WeiboSpider$login.coverage" NAME="login Coverage Results" MODIFIED="1513913989861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WeiboSpider$weibo_cn.coverage" NAME="weibo_cn Coverage Results" MODIFIED="1513916633156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WeiboSpider$weibo_cn.coverage" NAME="weibo_cn Coverage Results" MODIFIED="1514884959444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WeiboSpider$Begin.coverage" NAME="Begin Coverage Results" MODIFIED="1512138931706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -33,15 +33,41 @@
       <file leaf-file-name="redis_cookies.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/redis_cookies.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1740">
-              <caret line="70" column="37" lean-forward="false" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
+            <state relative-caret-position="352">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
-                <marker date="1514862260300" expanded="true" signature="159:1915" ph="..." />
-                <marker date="1514862260300" expanded="true" signature="753:969" ph="..." />
-                <marker date="1514862260300" expanded="true" signature="1805:1915" ph="..." />
-                <marker date="1514862260300" expanded="true" signature="2061:2487" ph="..." />
-                <marker date="1514862260300" expanded="true" signature="2322:2430" ph="..." />
+                <element signature="e#23#35#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="start_services.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/start_services.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_agents.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user_agents.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-480">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/Lib/site-packages/redis/client.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="1222" column="29" lean-forward="false" selection-start-line="1222" selection-start-column="29" selection-end-line="1222" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,8 +75,8 @@
       <file leaf-file-name="weibo_cn.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/weibo_cn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-841">
-              <caret line="160" column="17" lean-forward="true" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
+            <state relative-caret-position="384">
+              <caret line="309" column="21" lean-forward="true" selection-start-line="309" selection-start-column="21" selection-end-line="309" selection-end-column="21" />
               <folding>
                 <element signature="e#23#34#0" expanded="true" />
               </folding>
@@ -58,58 +84,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="datetime.pyi" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/datetime.pyi">
+      <file leaf-file-name="connectionpool.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/Lib/site-packages/requests/packages/urllib3/connectionpool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3219">
-              <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+            <state relative-caret-position="-9">
+              <caret line="851" column="0" lean-forward="false" selection-start-line="851" selection-start-column="0" selection-end-line="851" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.py">
+      <file leaf-file-name="memory_collect.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/memory_collect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5452">
-              <caret line="202" column="2" lean-forward="false" selection-start-line="202" selection-start-column="2" selection-end-line="202" selection-end-column="2" />
+            <state relative-caret-position="96">
+              <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
-                <marker date="1514862260299" expanded="true" signature="615:7910" ph="..." />
-                <marker date="1514862260299" expanded="true" signature="7351:7809" ph="..." />
-                <marker date="1514862260299" expanded="true" signature="7351:7910" ph="..." />
-                <marker date="1514862260299" expanded="true" signature="7573:7683" ph="..." />
-                <marker date="1514862260299" expanded="true" signature="7823:7910" ph="..." />
-                <marker date="1514862260299" expanded="true" signature="7912:8066" ph="..." />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="18127141093-screenshot.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/img/18127141093-screenshot.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="code_recognize.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code_recognize.py">
+      <file leaf-file-name="builtins.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/1412029153/builtins.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding>
-                <marker date="1514862260298" expanded="true" signature="88:173" ph="..." />
-              </folding>
+            <state relative-caret-position="99">
+              <caret line="276" column="4" lean-forward="false" selection-start-line="276" selection-start-column="4" selection-end-line="276" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logging.conf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/logging.conf">
+      <file leaf-file-name="queue.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/ProgramData/Anaconda3/Lib/queue.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="131">
+              <caret line="202" column="17" lean-forward="false" selection-start-line="202" selection-start-column="17" selection-end-line="202" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_collections.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/1412029153/_collections.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="81" column="6" lean-forward="false" selection-start-line="81" selection-start-column="6" selection-end-line="81" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -126,36 +147,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>DesiredCapabilities</find>
-      <find>17081444230</find>
-      <find>input_wrap</find>
-      <find>pl_unlogin_home_login</find>
-      <find>crawl_weibo</find>
-      <find>user_tweet_url</find>
-      <find>comment</find>
-      <find>weibo_queue.put</find>
-      <find>comment_queue</find>
-      <find>id</find>
-      <find>print</find>
-      <find>sleep</find>
-      <find>id got</find>
       <find>grab_user_info</find>
       <find>user_queue.pu</find>
       <find>user_queue.get</find>
       <find>17074732502</find>
       <find>15390949677</find>
       <find>StaleElementReferenceException</find>
-      <find>tweet_info</find>
       <find>self.weibo_queue.pu</find>
       <find>LOGGER</find>
       <find>RedisCookies.fetch_cookies()</find>
       <find>rotatingFileHandler</find>
       <find>17081442416</find>
-      <find>user_queue</find>
       <find>13891331754</find>
       <find>unknown</find>
       <find>weibo</find>
       <find>flag</find>
+      <find>DEBUG</find>
+      <find>tweetId</find>
+      <find>tweet_id</find>
+      <find>split('\u6765\u81ea')</find>
+      <find>tweet_info</find>
+      <find>user_queue</find>
+      <find>error</find>
+      <find>user queue.</find>
+      <find>get id from home page</find>
+      <find>comment_queue</find>
+      <find>follow_queue</find>
+      <find>weibo_queue.</find>
+      <find>weibo_queue</find>
+      <find>repost</find>
+      <find>repost_queue</find>
     </findStrings>
     <replaceStrings>
       <replace>WeiboSpider</replace>
@@ -163,6 +184,7 @@
       <replace>logging</replace>
       <replace>s</replace>
       <replace>setting.LOGGER</replace>
+      <replace>INFO</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -201,12 +223,13 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/usage/decorator.py" />
         <option value="$PROJECT_DIR$/usage/add.py" />
-        <option value="$PROJECT_DIR$/redis_cookies.py" />
-        <option value="$PROJECT_DIR$/conf/logging.conf" />
         <option value="$PROJECT_DIR$/conf/weibo.yaml" />
-        <option value="$PROJECT_DIR$/login.py" />
         <option value="$PROJECT_DIR$/code_recognize.py" />
+        <option value="$PROJECT_DIR$/login.py" />
+        <option value="$PROJECT_DIR$/conf/logging.conf" />
+        <option value="$PROJECT_DIR$/memory_collect.py" />
         <option value="$PROJECT_DIR$/weibo_cn.py" />
+        <option value="$PROJECT_DIR$/redis_cookies.py" />
       </list>
     </option>
   </component>
@@ -249,20 +272,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WeiboSpider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WeiboSpider" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="conf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -272,7 +281,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -610,12 +619,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44469026" sideWeight="0.50214595" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3329646" sideWeight="0.49785408" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5075269" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45376346" sideWeight="0.49785408" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6698925" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25375536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3483871" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.67741936" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5022124" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50215054" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -759,7 +768,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/weibo_cn.py</url>
-          <line>442</line>
+          <line>524</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -774,58 +783,35 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/weibo_cn.py</url>
-          <line>241</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/weibo_cn.py</url>
-          <line>129</line>
+          <line>190</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/weibo_cn.py</url>
-          <line>285</line>
-          <option name="timeStamp" value="46" />
+          <line>378</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/weibo_cn.py</url>
-          <line>296</line>
-          <option name="timeStamp" value="47" />
+          <line>117</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/weibo_cn.py</url>
+          <line>153</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/weibo_cn.py</url>
+          <line>152</line>
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="48" />
+      <option name="time" value="53" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharm2017.2/system/python_stubs/-313451744/nt.py" />
-    <entry file="file://$PROJECT_DIR$/1.png" />
-    <entry file="file://$PROJECT_DIR$/3.png" />
-    <entry file="file://$PROJECT_DIR$/2.png" />
-    <entry file="file://$PROJECT_DIR$/img/screenshot.png" />
-    <entry file="file://$PROJECT_DIR$/WeiboSpider2/weibo2.py" />
-    <entry file="file://$PROJECT_DIR$/WeiboSpider2/__init__.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_cython_wrapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_breakpoints.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_comm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2376">
@@ -898,13 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/start_services.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/usage/add.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -924,39 +903,9 @@
     <entry file="file://$PROJECT_DIR$/img/13726864770-verify_code.png" />
     <entry file="file://$PROJECT_DIR$/img/13248549167-verify_code.png" />
     <entry file="file://$PROJECT_DIR$/img/17157387746-verify_code.png" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/datetime.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3219">
-          <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/urllib3/connectionpool.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/threading.py" />
     <entry file="file://C:/ProgramData/Anaconda3/Lib/site-packages/requests/packages.py" />
-    <entry file="file://$PROJECT_DIR$/redis_cookies.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="70" column="37" lean-forward="false" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
-          <folding>
-            <marker date="1514862260300" expanded="true" signature="159:1915" ph="..." />
-            <marker date="1514862260300" expanded="true" signature="753:969" ph="..." />
-            <marker date="1514862260300" expanded="true" signature="1805:1915" ph="..." />
-            <marker date="1514862260300" expanded="true" signature="2061:2487" ph="..." />
-            <marker date="1514862260300" expanded="true" signature="2322:2430" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/logging.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/18127141093-screenshot.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -967,25 +916,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5452">
-          <caret line="202" column="2" lean-forward="false" selection-start-line="202" selection-start-column="2" selection-end-line="202" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-            <marker date="1514862260299" expanded="true" signature="615:7910" ph="..." />
-            <marker date="1514862260299" expanded="true" signature="7351:7809" ph="..." />
-            <marker date="1514862260299" expanded="true" signature="7351:7910" ph="..." />
-            <marker date="1514862260299" expanded="true" signature="7573:7683" ph="..." />
-            <marker date="1514862260299" expanded="true" signature="7823:7910" ph="..." />
-            <marker date="1514862260299" expanded="true" signature="7912:8066" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code_recognize.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
+        <state relative-caret-position="0">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <marker date="1514862260298" expanded="true" signature="88:173" ph="..." />
@@ -1001,10 +934,136 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/Lib/traceback.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="156" column="4" lean-forward="false" selection-start-line="156" selection-start-column="4" selection-end-line="156" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5280">
+          <caret line="174" column="22" lean-forward="true" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#15#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/datetime.pyi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="111" column="8" lean-forward="false" selection-start-line="111" selection-start-column="8" selection-end-line="111" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/logging.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="21" column="10" lean-forward="false" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/Lib/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="863" column="57" lean-forward="false" selection-start-line="863" selection-start-column="57" selection-end-line="863" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/ProgramData/Anaconda3/Lib/site-packages/pybloom-2.0.0-py3.6.egg!/pybloom/pybloom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="289" column="22" lean-forward="true" selection-start-line="289" selection-start-column="22" selection-end-line="289" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/Lib/site-packages/requests/packages/urllib3/connectionpool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="851" column="0" lean-forward="false" selection-start-line="851" selection-start-column="0" selection-end-line="851" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/1412029153/_collections.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="81" column="6" lean-forward="false" selection-start-line="81" selection-start-column="6" selection-end-line="81" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2017.1/system/python_stubs/1412029153/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="276" column="4" lean-forward="false" selection-start-line="276" selection-start-column="4" selection-end-line="276" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/Lib/queue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="202" column="17" lean-forward="false" selection-start-line="202" selection-start-column="17" selection-end-line="202" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/memory_collect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/Lib/site-packages/redis/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="1222" column="29" lean-forward="false" selection-start-line="1222" selection-start-column="29" selection-end-line="1222" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redis_cookies.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start_services.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user_agents.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-480">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/weibo_cn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-841">
-          <caret line="160" column="17" lean-forward="true" selection-start-line="160" selection-start-column="17" selection-end-line="160" selection-end-column="17" />
+        <state relative-caret-position="384">
+          <caret line="309" column="21" lean-forward="true" selection-start-line="309" selection-start-column="21" selection-end-line="309" selection-end-column="21" />
           <folding>
             <element signature="e#23#34#0" expanded="true" />
           </folding>

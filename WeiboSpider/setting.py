@@ -22,20 +22,17 @@ USER_INFO_MAP = {
     '等级': 'level',
     '注册时间': 'created_at'
 }
+WEIBO_CN_HOST = 'https://weibo.cn'
 ROOT_URL = 'https://m.weibo.cn'
 LOGIN_URL = 'https://passport.weibo.cn/sso/login'
 PROPERTIES = yaml.load(open(os.path.split(os.path.realpath(__file__))[0] + '/conf/weibo.yaml'))
 ACCOUNTS = PROPERTIES.get('accounts')
-# PROXIES = [{"HTTP": "58.248.137.228:80"}, {"HTTP": "58.251.132.181:8888"}, {"HTTP": "60.160.34.4:3128"},
-#                         {"HTTP": "60.191.153.12:3128"}, {"HTTP": "60.191.164.22:3128"}, {"HTTP": "80.242.219.50:3128"},
-#                         {"HTTP": "86.100.118.44:80"}, {"HTTP": "88.214.207.89:3128"}, {"HTTP": "91.183.124.41:80"},
-#                         {"HTTP": "93.51.247.104:80"}]
 PROXIES = [{'http', '60.214.154.2:53281'}, {'http', '121.232.145.63:9000'}]
 SLEEP_TIME = [6, 7, 8, 10, 10, 13, 15]
 # 登陆重试时间
 TRY_TIME = 3
 # 多线程线程数
-THREAD_NUM = 5
+THREAD_NUM = 2
 
 
 def logger_conf():

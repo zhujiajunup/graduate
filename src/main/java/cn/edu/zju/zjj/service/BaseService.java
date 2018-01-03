@@ -21,12 +21,12 @@ public abstract class BaseService<T extends BaseEntity> {
 
     public void insertOrUpdate(T t){
         if(dao.exist(t.getId())){
-            log.info("update entity: {}", t);
+            //log.info("update entity: {}", t);
 
             dao.update(t);
             App.update.incrementAndGet();
         }else{
-            log.info("insert entity: {}", t);
+            //log.info("insert entity: {}", t);
 
             dao.insert(t);
             App.insert.incrementAndGet();

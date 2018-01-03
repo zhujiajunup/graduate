@@ -15,7 +15,7 @@ from kafka import KafkaProducer
 import urllib3
 import user_agents
 from redis_cookies import RedisCookies, RedisJob
-from setting import LOGGER
+from setting import LOGGER, THREAD_NUM
 from pybloom import ScalableBloomFilter
 from memory_collect import getsize
 
@@ -29,10 +29,10 @@ class WeiboProcuder:
                                       value_serializer=lambda msg: json.dumps(msg).encode('utf-8'))
 
     def send(self, msg, url):
-        LOGGER.info(url)
-        LOGGER.info('send type: %s, id: %s, (%s)' % (msg['type'], msg['id'], str(msg)))
-        self.producer.send(topic=self.topic, value=msg)
-        LOGGER.info('send successful.')
+            LOGGER.info(url)
+            LOGGER.info('send type: %s, id: %s, (%s)' % (msg['type'], msg['id'], str(msg)))
+            self.producer.send(topic=self.topic, value=msg)
+            LOGGER.info('send successful.')
 
 
 class JobType(Enum):
@@ -84,8 +84,8 @@ class WeiboCnSpider:
             if follow_dict:
                 try:
                     self.grab_follow(follow_dict)
+
                 except:
-                    LOGGER.error("something error")
                     LOGGER.error(traceback.format_exc())
                     sleep(5 * 60)
 
@@ -95,7 +95,7 @@ class WeiboCnSpider:
             if comment_job_info:
                 try:
                     self.grab_tweet_comments(comment_job_info)
-
+                    
                 except:
                     LOGGER.error("something error")
                     LOGGER.error(traceback.format_exc())
@@ -108,7 +108,6 @@ class WeiboCnSpider:
                 try:
                     self.grab_user_tweet(tweet_job_info)
                 except:
-                    LOGGER.error("something error")
                     LOGGER.error(traceback.format_exc())
                     sleep(5 * 60)
 
@@ -119,7 +118,6 @@ class WeiboCnSpider:
                 try:
                     self.grab_tweet_repost(repost_job_info)
                 except:
-                    LOGGER.error("something error")
                     LOGGER.error(traceback.format_exc())
                     sleep(5 * 60)
 
@@ -157,6 +155,7 @@ class WeiboCnSpider:
             else:
                 user_id = self.get_user_id_from_homepage(self.weibo_host + user_href)
             tweet_info['uid'] = user_id
+            self.user_id_in_queue(user_id)
             tweet_content = repost.get_text()
             tweet_info['content'] = tweet_content
             tweet_info['sourceTid'] = repost_url['tweetId']
@@ -194,7 +193,7 @@ class WeiboCnSpider:
                 else:
                     return time_str
 
-    def start(self):
+    def start(self, args):
         # self.user_queue.put('6037294528')
         # self.grab_user_info('1316949123')
         # return self.grab_user_info('1316949123')
@@ -202,18 +201,24 @@ class WeiboCnSpider:
         # self.get_follow({'uid': '2365758410', 'url': self.follow_url % '2365758410'})
         # RedisJob.push_job(JobType.comment.value, {'url': 'https://weibo.cn/comment/FCoPpaIQp', 'tweetId': 'FCoPpaIQp'})
 
-        # follow_thread = threading.Thread(target=self.crawl_follow, name='follow_thread')
-        # follow_thread.start()
-        comment_thread = threading.Thread(target=self.crawl_comment, name='comment_thread')
-        comment_thread.start()
-        # user_thread = threading.Thread(target=self.crawl_user, name='user_thread')
-        # user_thread.start()
-        # self.weibo_queue.put({'url': self.user_tweet_url % '277118746', 'uid': '277118746'})
-        # weibo_thread = threading.Thread(target=self.crawl_weibo, name='weibo_thread')
-        # weibo_thread.start()
-        # self.repost_queue.put({'url': self.user_repost_url % 'FCoPpaIQp', 'tweetId': 'FCoPpaIQp'})
-        # repost_thread = threading.Thread(target=self.crawl_repost, name='repost_thread')
-        # repost_thread.start()
+        for i in range(0, THREAD_NUM):
+            if 'f' in args:
+                follow_thread = threading.Thread(target=self.crawl_follow, name='follow_thread_'+str(i))
+                follow_thread.start()
+            if 'c' in args:
+                comment_thread = threading.Thread(target=self.crawl_comment, name='comment_thread_'+str(i))
+                comment_thread.start()
+            if 'u' in args:
+                user_thread = threading.Thread(target=self.crawl_user, name='user_thread_'+str(i))
+                user_thread.start()
+            # self.weibo_queue.put({'url': self.user_tweet_url % '277118746', 'uid': '277118746'})
+            if 'w' in args:
+                weibo_thread = threading.Thread(target=self.crawl_weibo, name='weibo_thread_'+str(i))
+                weibo_thread.start()
+            # self.repost_queue.put({'url': self.user_repost_url % 'FCoPpaIQp', 'tweetId': 'FCoPpaIQp'})
+            if 'r' in args:
+                repost_thread = threading.Thread(target=self.crawl_repost, name='repost_thread_'+str(i))
+                repost_thread.start()
 
     def grab_follow(self, follow_dict):
         LOGGER.info('start grab user follow: %s' % str(follow_dict))
@@ -523,8 +528,10 @@ class WeiboCnSpider:
             user_info['type'] = 'user_info'
             user_info['id'] = user_id
 
-            self.weibo_producer.send(user_info)
+            self.weibo_producer.send(user_info, self.user_info_url % user_id)
 
 
 if __name__ == '__main__':
-    WeiboCnSpider().start()
+    args = sys.argv[1:]
+    LOGGER.info(args)
+    WeiboCnSpider().start(args)

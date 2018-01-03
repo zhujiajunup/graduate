@@ -20,13 +20,13 @@ class RedisJob(object):
                 cls.url_filter.add(job_info['url'])
                 r = redis.Redis(connection_pool=cls.redis_pool)
                 r.lpush(str(job_type), json.dumps(job_info))
-                LOGGER.info("push weibo job into redis: %s" % str(job_info))
+                LOGGER.info("push %s job into redis: %s" % (job_type, str(job_info)))
             else:
-                LOGGER.warn("job filtered. %s" % str(job_info))
+                LOGGER.warn("%s job filtered. %s" % (job_type, str(job_info)))
         else:
             r = redis.Redis(connection_pool=cls.redis_pool)
             r.lpush(str(job_type), json.dumps(job_info))
-            LOGGER.info("push weibo job into redis: %s" % str(job_info))
+            LOGGER.info("push %s job into redis: %s" % (job_type, str(job_info)))
 
     @classmethod
     def fetch_job(cls, job_type):

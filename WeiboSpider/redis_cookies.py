@@ -5,16 +5,28 @@ import datetime
 from login import WeiboLogin
 from setting import LOGGER, ACCOUNTS
 import traceback
+from pybloom import ScalableBloomFilter
 
 
 class RedisJob(object):
     redis_pool = redis.ConnectionPool(host='localhost', port=6379, db=1)
+    url_filter = ScalableBloomFilter(mode=ScalableBloomFilter.SMALL_SET_GROWTH)
 
     @classmethod
     def push_job(cls, job_type, job_info):
-        r = redis.Redis(connection_pool=cls.redis_pool)
-        r.lpush(str(job_type), json.dumps(job_info))
-        LOGGER.info("push weibo job into redis: %s" % str(job_info))
+
+        if 'url' in job_info:
+            if job_info['url'] not in cls.url_filter:
+                cls.url_filter.add(job_info['url'])
+                r = redis.Redis(connection_pool=cls.redis_pool)
+                r.lpush(str(job_type), json.dumps(job_info))
+                LOGGER.info("push weibo job into redis: %s" % str(job_info))
+            else:
+                LOGGER.warn("job filtered. %s" % str(job_info))
+        else:
+            r = redis.Redis(connection_pool=cls.redis_pool)
+            r.lpush(str(job_type), json.dumps(job_info))
+            LOGGER.info("push weibo job into redis: %s" % str(job_info))
 
     @classmethod
     def fetch_job(cls, job_type):

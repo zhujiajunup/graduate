@@ -42,7 +42,7 @@ public class WeiboConsumer {
         records.forEach(
                 record -> {
                     try {
-                        log.info("get message: {}", record.value());
+                        //log.info("get message: {}", record.value());
                         String value = record.value();
                         Map<String, String> map = MAPPER.readValue(value, Map.class);
                         if ("user_info".equals(map.get("type"))) {
@@ -53,12 +53,15 @@ public class WeiboConsumer {
                             entities.add(user);
                         }else if("tweet_info".equals(map.get("type"))){
                             WeiboTweet tweet = MAPPER.readValue(value, WeiboTweet.class);
-                            tweet.setContent(EmojiUtils.shortCodify(tweet.getContent()));
-
+                            if(tweet.getContent() != null) {
+                                tweet.setContent(EmojiUtils.shortCodify(tweet.getContent()));
+                            }
                             entities.add(tweet);
                         }else if("comment_info".equals(map.get("type"))){
                             WeiboComment comment = MAPPER.readValue(value, WeiboComment.class);
-                            comment.setContent(EmojiUtils.shortCodify(comment.getContent()));
+                            if(comment.getContent() != null) {
+                                comment.setContent(EmojiUtils.shortCodify(comment.getContent()));
+                            }
                             entities.add(comment);
                         }
                     } catch (IOException e) {

@@ -11,7 +11,7 @@ import lombok.ToString;
  */
 @Setter
 @Getter
-@ToString(of = "id")
+@ToString
 public class BaseEntity {
     private String id;
     private String type;

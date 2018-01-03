@@ -36,7 +36,7 @@ SLEEP_TIME = [6, 7, 8, 10, 10, 13, 15]
 # 登陆重试时间
 TRY_TIME = 3
 # 多线程线程数
-THREAD_NUM = 5
+THREAD_NUM = 2
 
 
 def logger_conf():

@@ -13,9 +13,17 @@
         select ifnull(exists(select 1 from weibo_tweet where id = #{id}), 0);
     </select>
     <update id="update" parameterType="cn.edu.zju.zjj.entity.WeiboTweet">
-        update weibo_tweet set `time` = #{time}, source = #{source}, `like` = #{like}, transfer = #{transfer},
-         comment = #{comment}, content = #{content}, source_tid = #{sourceTid},
-          flag = #{flag}, uid = #{uid} where id = #{id}
+        update weibo_tweet
+        <set>
+            <if test="time != null">`time`=#{time},</if>
+            <if test="source != null">source=#{source},</if>
+            <if test="like != null">`like`=#{like},</if>
+            <if test="transfer != null">transfer=#{transfer},</if>
+            <if test="comment != null">comment=#{comment},</if>
+            <if test="content != null">content=#{content},</if>
+            <if test="sourceTid != null">source_tid=#{sourceTid},</if>
+        </set>
+        where id = #{id}
     </update>
 
 

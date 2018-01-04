@@ -21,7 +21,7 @@ import static cn.edu.zju.zjj.config.MybatisConstant.*;
 /**
  * bachelor项目数据库的Mybatis 配置类
  * 
- * @author 祝佳俊(hzzhujiajun@corp.netease.com)
+ * @author 祝佳俊(zhujijunup@163.com)
  */
 @Configuration
 @EnableTransactionManagement // 开启事务管理
@@ -38,35 +38,35 @@ public class DataSourceConfig {
      */
     private JdbcConfig jdbcConfig;
 
-    @Autowired
+    //@Autowired
     public DataSourceConfig(Environment env) {
-        this.jdbcConfig = new JdbcConfig();
-        this.jdbcConfig.setDbUrl(env.getProperty("jdbc.url"))
-                .setUsername(env.getProperty("jdbc.username"))
-                .setPassword(env.getProperty("jdbc.password"))
-                .setDriverClassName(env.getProperty("jdbc.driverClassName"))
-                .setInitialSize(
-                        Integer.parseInt(env.getProperty("jdbc.initialSize")))
-                .setMinIdle(Integer.parseInt(env.getProperty("jdbc.minIdle")))
-                .setMaxActive(Integer.parseInt(env.getProperty("jdbc.maxActive")))
-                .setMaxWait(Integer.parseInt(env.getProperty("jdbc.maxWait")))
-                .setTimeBetweenEvictionRunsMillis(Integer.parseInt(
-                        env.getProperty("jdbc.timeBetweenEvictionRunsMillis")))
-                .setMinEvictableIdleTimeMillis(Integer
-                        .parseInt(env.getProperty("jdbc.minEvictableIdleTimeMillis")))
-                .setValidationQuery(env.getProperty("jdbc.validationQuery"))
-                .setTestWhileIdle(
-                        Boolean.parseBoolean(env.getProperty("jdbc.testWhileIdle")))
-                .setTestOnBorrow(
-                        Boolean.parseBoolean(env.getProperty("jdbc.testOnReturn")))
-                .setPoolPreparedStatements(Boolean
-                        .parseBoolean(env.getProperty("jdbc.poolPreparedStatements")))
-                .setMaxPoolPreparedStatementPerConnectionSize(Integer.parseInt(env
-                        .getProperty("jdbc.maxPoolPreparedStatementPerConnectionSize")))
-                .setFilters(env.getProperty("jdbc.filters"))
-                .setConnectionProperties(
-                        env.getProperty("jdbc.connectionProperties"));
-        LOGGER.info("jdbc config {}", jdbcConfig);
+//        this.jdbcConfig = new JdbcConfig();
+//        this.jdbcConfig.setDbUrl(env.getProperty("jdbc.url"))
+//                .setUsername(env.getProperty("jdbc.username"))
+//                .setPassword(env.getProperty("jdbc.password"))
+//                .setDriverClassName(env.getProperty("jdbc.driverClassName"))
+//                .setInitialSize(
+//                        Integer.parseInt(env.getProperty("jdbc.initialSize")))
+//                .setMinIdle(Integer.parseInt(env.getProperty("jdbc.minIdle")))
+//                .setMaxActive(Integer.parseInt(env.getProperty("jdbc.maxActive")))
+//                .setMaxWait(Integer.parseInt(env.getProperty("jdbc.maxWait")))
+//                .setTimeBetweenEvictionRunsMillis(Integer.parseInt(
+//                        env.getProperty("jdbc.timeBetweenEvictionRunsMillis")))
+//                .setMinEvictableIdleTimeMillis(Integer
+//                        .parseInt(env.getProperty("jdbc.minEvictableIdleTimeMillis")))
+//                .setValidationQuery(env.getProperty("jdbc.validationQuery"))
+//                .setTestWhileIdle(
+//                        Boolean.parseBoolean(env.getProperty("jdbc.testWhileIdle")))
+//                .setTestOnBorrow(
+//                        Boolean.parseBoolean(env.getProperty("jdbc.testOnReturn")))
+//                .setPoolPreparedStatements(Boolean
+//                        .parseBoolean(env.getProperty("jdbc.poolPreparedStatements")))
+//                .setMaxPoolPreparedStatementPerConnectionSize(Integer.parseInt(env
+//                        .getProperty("jdbc.maxPoolPreparedStatementPerConnectionSize")))
+//                .setFilters(env.getProperty("jdbc.filters"))
+//                .setConnectionProperties(
+//                        env.getProperty("jdbc.connectionProperties"));
+//        LOGGER.info("jdbc config {}", jdbcConfig);
     }
 
     /**
@@ -74,11 +74,12 @@ public class DataSourceConfig {
      *
      * @return DataSource
      */
-    @Bean(name = DATA_SOURCE)
+   /* @Bean(name = DATA_SOURCE)
     @Primary
     public DataSource createDataSource() {
+
         return Factory.getDataSource(this.jdbcConfig);
-    }
+    }*/
 
     /**
      * 创建sqlSessionFactory
@@ -90,7 +91,7 @@ public class DataSourceConfig {
     @Bean(SSF_REF)
     @Primary
     public SqlSessionFactory createSqlSessionFactory(
-        @Qualifier(DATA_SOURCE) DataSource dataSource) {
+        DataSource dataSource) {
         return Factory.createSqlSessionFactory(dataSource, MYBATIS_CONFIG, MAPPER_LOCATIONS);
     }
 }

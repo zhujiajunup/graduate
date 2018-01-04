@@ -14,7 +14,7 @@ import java.sql.SQLException;
 /**
  * data source factory
  * 
- * @author 祝佳俊(hzzhujiajun@corp.netease.com)
+ * @author 祝佳俊(zhujijunup@163.com)
  */
 class Factory {
     private static final Logger LOGGER = LoggerFactory.getLogger(Factory.class);
@@ -27,6 +27,7 @@ class Factory {
      * @return DataSource instance
      */
     static DataSource getDataSource(JdbcConfig jdbcConfig) {
+
         DruidDataSource datasource = new DruidDataSource();
         datasource.setUrl(jdbcConfig.getDbUrl());
         datasource.setUsername(jdbcConfig.getUsername());

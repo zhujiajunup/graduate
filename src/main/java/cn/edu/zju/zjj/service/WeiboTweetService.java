@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class WeiboTweetService extends  BaseService<WeiboTweet>{
 
+
+
     @Autowired
     private WeiboTweetService(WeiboTweetDao tweetDao){
         super(tweetDao);

@@ -9,5 +9,5 @@ public interface BaseDao<T> {
     void insert(T t);
     void update(T t);
     boolean exist(String id);
-
+    T getById(String id);
 }

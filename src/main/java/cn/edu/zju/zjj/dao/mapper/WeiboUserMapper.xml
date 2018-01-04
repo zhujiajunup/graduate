@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="cn.edu.zju.zjj.entity.WeiboUser">
         insert into weibo_user (id, tags, gender, place, signature, birthday, sex_orientation, edu_info, marriage,
-        work_info, nickname) value (#{id}, #{tags}, #{gender}, #{place}, #{signature}, #{birthday},#{sexOrientation}, #{eduInfo},
+        work_info, nickname) VALUES (#{id}, #{tags}, #{gender}, #{place}, #{signature}, #{birthday},#{sexOrientation}, #{eduInfo},
          #{marriage}, #{workInfo}, #{nickname})
     </insert>
     <select id="exist" resultType="java.lang.Boolean">
@@ -17,6 +17,11 @@
          birthday = #{birthday}, sex_orientation = #{sexOrientation}, edu_info = #{eduInfo},
           marriage = #{marriage}, work_info = #{workInfo}, nickname = #{nickname} where id = #{id}
     </update>
-
-
+    
+    <select id="getPublisher" resultType="cn.edu.zju.zjj.entity.WeiboUser">
+        select weibo_user.* from weibo_user, (select uid from weibo_tweet where id = #{tweetId}) t where id = t.uid;
+    </select>
+    <select id="getById" resultType="cn.edu.zju.zjj.entity.WeiboUser">
+        select * from weibo_user where id = #{id}
+    </select>
 </mapper>

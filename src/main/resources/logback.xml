@@ -18,7 +18,7 @@
     </appender>
 
 
-    <appender name="HOLMES_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="HEHE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${logback.logDir}/weibo.log</file>
 
         <encoder>
@@ -32,8 +32,8 @@
     </appender>
 
 
-    <logger name="com.netease.mail" level="INFO" additivity="true">
-        <appender-ref ref="HOLMES_APPENDER"/>
+    <logger name="cn.edu.zju" level="INFO" additivity="true">
+        <appender-ref ref="HEHE_APPENDER"/>
     </logger>
 
     <root level="INFO">

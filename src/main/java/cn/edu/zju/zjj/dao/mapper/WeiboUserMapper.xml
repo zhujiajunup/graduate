@@ -6,8 +6,9 @@
 
     <insert id="insert" parameterType="cn.edu.zju.zjj.entity.WeiboUser">
         insert into weibo_user (id, tags, gender, place, signature, birthday, sex_orientation, edu_info, marriage,
-        work_info, nickname) VALUES (#{id}, #{tags}, #{gender}, #{place}, #{signature}, #{birthday},#{sexOrientation}, #{eduInfo},
-         #{marriage}, #{workInfo}, #{nickname})
+        work_info, nickname, follow_num, fans_num, tweet_num, head) VALUES (#{id}, #{tags}, #{gender}, #{place}, #{signature},
+          #{birthday},#{sexOrientation}, #{eduInfo},
+         #{marriage}, #{workInfo}, #{nickname}, #{followNum}, #{fansNum}, #{tweetNum}, #{head})
     </insert>
     <select id="exist" resultType="java.lang.Boolean">
         select ifnull(exists(select 1 from weibo_user where id = #{id}), 0);
@@ -17,7 +18,7 @@
          birthday = #{birthday}, sex_orientation = #{sexOrientation}, edu_info = #{eduInfo},
           marriage = #{marriage}, work_info = #{workInfo}, nickname = #{nickname} where id = #{id}
     </update>
-    
+
     <select id="getPublisher" resultType="cn.edu.zju.zjj.entity.WeiboUser">
         select weibo_user.* from weibo_user, (select uid from weibo_tweet where id = #{tweetId}) t where id = t.uid;
     </select>

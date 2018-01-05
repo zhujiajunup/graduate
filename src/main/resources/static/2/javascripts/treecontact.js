@@ -44,6 +44,7 @@ function tweetContent(tweetId) {
             data: JSON.stringify({'tweetId': tweetId}),
             success: function (result) {
                 console.log(result['data']);
+                console.log(result['data']);
                 document.getElementById("tweet_content").innerHTML =
                     '<div class="caption wrapper-lg">\n' +
                     '<div class="post-sum">\n' +
@@ -52,10 +53,10 @@ function tweetContent(tweetId) {
                     '</div>\n' +
                     '<div class="line line-lg"></div>\n' +
                     '<div class="text-muted">\n' +
-                    '    <i class="fa fa-clock-o icon-muted"></i>' + result['data']['time']+
-                    '    <i class="fa fa-retweet icon-muted"></i>' + result['data']['transfer']+
-                    '<a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i>'+ result['data']['comment']+'</a>\n' +
-                    '    <i class="icon-like icon-muted"></i>' + result['data']['like']+
+                    '    <i class="fa fa-clock-o icon-muted"></i>' + result['data']['time'] +
+                    '    <i class="fa fa-retweet icon-muted"></i>' + result['data']['transfer'] +
+                    '<a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i>' + result['data']['comment'] + '</a>\n' +
+                    '    <i class="icon-like icon-muted"></i>' + result['data']['like'] +
                     '</div>' +
                     '</div>'
             }
@@ -161,7 +162,26 @@ function userInfo(tweetId) {
                 '<div>教育信息: ' + result['data']['eduInfo'] + '</div>' +
                 '<div>工作信息: ' + result['data']['workInfo'] + '</div>' +
                 '<div>婚姻状况: ' + result['data']['marriage'] + '</div>' +
-                '<div>标签: ' + result['data']['tags'] + '</div>'
+                '<div>标签: ' + result['data']['tags'] + '</div>';
+            document.getElementById('home_page_info').innerHTML =
+                '<div class="row text-center inform">' +
+                '<img src="' + result['data']['head'] + '">' +
+                '<h4 style="font-weight: bold;">' + result['data']['nickname'] + '</h4>' +
+                '<div class="col-sm-12 my_inform">' +
+                '<div class="col-sm-4 col-xs-4">' +
+                '<div>' + result['data']['followNum'] + '</div>' +
+                '<div class="sort">关注</div>' +
+                '</div>' +
+                '<div class="col-sm-4 col-xs-4">' +
+                '<div>' + result['data']['fansNum'] + '</div>' +
+                '<div class="sort">粉丝</div>' +
+                '</div>' +
+                '<div class="col-sm-4 col-xs-4">' +
+                '<div>' + result['data']['tweetNum'] + '</div>' +
+                '<div class="sort">博客</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
         }
     });
 }
@@ -197,30 +217,30 @@ function commentTimeLine(tweetId) {
                         '鼠标拖动可以进行缩放' : '手势操作进行缩放'
                 },
                 /*xAxis: {
-type: 'datetime',
-dateTimeLabelFormats: {
-    millisecond: '%H:%M:%S.%L',
-    second: '%H:%M:%S',
-    minute: '%H:%M',
-    hour: '%H:%M',
-    day: '%m-%d',
-    week: '%m-%d',
-    month: '%Y-%m',
-    year: '%Y'
-}
-                },*/
+                 type: 'datetime',
+                 dateTimeLabelFormats: {
+                 millisecond: '%H:%M:%S.%L',
+                 second: '%H:%M:%S',
+                 minute: '%H:%M',
+                 hour: '%H:%M',
+                 day: '%m-%d',
+                 week: '%m-%d',
+                 month: '%Y-%m',
+                 year: '%Y'
+                 }
+                 },*/
                 /*tooltip: {
-dateTimeLabelFormats: {
-    millisecond: '%H:%M:%S.%L',
-    second: '%H:%M:%S',
-    minute: '%H:%M',
-    hour: '%H:%M',
-    day: '%Y-%m-%d',
-    week: '%m-%d',
-    month: '%Y-%m',
-    year: '%Y'
-}
-                },*/
+                 dateTimeLabelFormats: {
+                 millisecond: '%H:%M:%S.%L',
+                 second: '%H:%M:%S',
+                 minute: '%H:%M',
+                 hour: '%H:%M',
+                 day: '%Y-%m-%d',
+                 week: '%m-%d',
+                 month: '%Y-%m',
+                 year: '%Y'
+                 }
+                 },*/
                 yAxis: {
                     title: {
                         text: '评论数'

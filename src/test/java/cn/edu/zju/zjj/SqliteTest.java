@@ -1,8 +1,8 @@
 /**
  * @(#)SqliteTest.java, 2018/1/4.
  * <p/>
- * Copyright 2018 Netease, Inc. All rights reserved.
- * NETEASE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ * Copyright 2018 HEHE, Inc. All rights reserved.
+ * HEHE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 package cn.edu.zju.zjj;
 

@@ -9,7 +9,7 @@ package cn.edu.zju.zjj.config;
 /**
  * mybatis 相关的常量
  * 
- * @author 祝佳俊(hzzhujiajun@corp.netease.com)
+ * @author 祝佳俊(zhujiajunup@163.com)
  */
 class MybatisConstant {
 

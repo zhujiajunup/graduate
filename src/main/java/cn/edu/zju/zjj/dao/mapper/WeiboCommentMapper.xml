@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="cn.edu.zju.zjj.entity.WeiboComment">
         insert into weibo_comment (id, user_id, content, pub_time, source, tweet_id)
-         value (#{id}, #{userId}, #{content}, #{pubTime}, #{source}, #{tweetId})
+         values (#{id}, #{userId}, #{content}, #{pubTime}, #{source}, #{tweetId})
     </insert>
     <select id="exist" resultType="java.lang.Boolean">
         select ifnull(exists(select 1 from weibo_comment where id = #{id}), 0);
@@ -21,7 +21,7 @@
     </select>
 
     <select id="statTime" resultType="cn.edu.zju.zjj.entity.TimeCount">
-        select count(*) as `count`, left(pub_time, 13) as `time` from weibo_comment where tweet_id = #{tweetId} group by `time`
+        select count(*) as `count`, substr(pub_time,1, 13) as `time` from weibo_comment where tweet_id = #{tweetId} group by `time`
     </select>
 
     <select id="getByTweetId" resultType="cn.edu.zju.zjj.entity.WeiboComment">
@@ -31,5 +31,7 @@
     <select id="getUsers" resultType="cn.edu.zju.zjj.entity.WeiboUser">
         select wu.* from weibo_comment wc left join weibo_user wu on wc.user_id = wu.id where wc.tweet_id = #{tweetId}
     </select>
-
+    <select id="getById" resultType="cn.edu.zju.zjj.entity.WeiboComment">
+        select * from weibo_comment where id = #{id}
+    </select>
 </mapper>

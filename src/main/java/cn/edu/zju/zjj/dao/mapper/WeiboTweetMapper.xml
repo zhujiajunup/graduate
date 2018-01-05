@@ -6,7 +6,7 @@
 
     <insert id="insert" parameterType="cn.edu.zju.zjj.entity.WeiboTweet">
         insert into weibo_tweet (id, `time`, source, `like`, transfer, comment, content, source_tid, flag,
-        uid) value (#{id}, #{time}, #{source}, #{like}, #{transfer}, #{comment},#{content}, #{sourceTid},
+        uid) VALUES (#{id}, #{time}, #{source}, #{like}, #{transfer}, #{comment},#{content}, #{sourceTid},
          #{flag}, #{uid})
     </insert>
     <select id="exist" resultType="java.lang.Boolean">
@@ -26,5 +26,7 @@
         where id = #{id}
     </update>
 
-
+    <select id="getById" resultType="cn.edu.zju.zjj.entity.WeiboTweet">
+        select * from weibo_tweet where id = #{id}
+    </select>
 </mapper>

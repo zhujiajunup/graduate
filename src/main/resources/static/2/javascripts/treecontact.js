@@ -27,107 +27,42 @@ function tree() {
     function hideload() {
         $("#dialog").hide();
     }
+
     var inputId = $("#exampleInputName2").val();
     source(inputId);
     commentTimeLine(inputId);
-    /*$.ajax({
-        type: "get",
-        dataType: 'json',
-        url: '../jsons/' + $("#exampleInputName2").val() + '.json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("请输入ID");
-        },
-        beforeSend: function () {
-            showload();
-        },
-        success: function (root) {
-            console.log(root);
-            if (root == "notfound") {
-                alert("ID有误，请输入正确的ID")
-            }
-            else {
-                source();
-                d3.json("../jsons/chinatree.json", function (error, mapjson) {
-                    d3.select("g.map")
-                        .selectAll("path")
-                        .data(mapjson.features)
-                        .enter()
-                        .append("path")
-                        .attr("stroke", "#000")
-                        .attr("stroke-width", 1)
-                        .attr("d", path)
-                        .attr("fill", function (d, i) {
-                            var mapcolor = root.information[0].province[i];
-                            return "rgb(255,255," + (255 - mapcolor * 10) + ")";
-                        })
-                })
-                d3.select("g.tiao").append("rect")
-                    .attr("x", wi * 0.15)
-                    .attr("y", hi * 0.9)
-                    .attr("width", wi * 0.5)
-                    .attr("height", 15)
-                    .style("fill", "url(#" + linearGradient.attr("id") + ")")
-                var nodes = tree.nodes(root),
-                    links = tree.links(nodes);
+    userInfo(inputId);
+    tweetContent(inputId);
+}
 
-                var link = svg.selectAll(".link")//创建链
-                    .data(links)
-                    .enter().append("path")
-                    .attr("class", "link")
-                    .attr("d", diagonal);
-
-                var node = svg.selectAll(".node")//创建点
-                    .data(nodes)
-                    .enter().append("g")
-                    .attr("class", "node")
-                    .attr("transform", function (d) {
-                        return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
-                    })
-                    .append("circle")//点的圆
-                    .attr("r", 4.5)
-                    .on("mouseover", function (d, i) {
-                        d3.select(this).attr("r", 10);
-                    })
-                    .on("mouseout", function (d, i) {
-                        d3.select(this).attr("r", 4.5);
-                    })
-                    .append("title")
-                    .text(function (d, i) {
-                        return "昵称: " + d.Nickname + "\n内容: " + d.Content + "\n时间: " + d.Time + "\n来源: " + d.Source
-                    })
-                render_time(parseFloat(root.information[0].time[0]), parseFloat(root.information[0].time[1]), parseFloat(root.information[0].time[2]), parseFloat(root.information[0].time[3]), parseFloat(root.information[0].time[4]),
-                    parseFloat(root.information[0].time[5]), parseFloat(root.information[0].time[6]), parseFloat(root.information[0].time[7]), parseFloat(root.information[0].time[8]), parseFloat(root.information[0].time[9]),
-                    parseFloat(root.information[0].time[10]), parseFloat(root.information[0].time[11]), parseFloat(root.information[0].time[12]), parseFloat(root.information[0].time[13]), parseFloat(root.information[0].time[14]),
-                    parseFloat(root.information[0].time[15]), parseFloat(root.information[0].time[16]), parseFloat(root.information[0].time[17]), parseFloat(root.information[0].time[18]),
-                    parseFloat(root.information[0].time[19]), parseFloat(root.information[0].time[20]), parseFloat(root.information[0].time[21]), parseFloat(root.information[0].time[22]),
-                    parseFloat(root.information[0].time[23]), createsvgzhe());
-                var data = [{"bili": root.information[0].plusv, "str": "认证"}, {
-                    "bili": root.information[0].notv,
-                    "str": "VIP"
-                }];
-                //render_rect1(data);
-                var data = [{"bili": root.information[0].first, "str": "1"}, {
-                    "bili": root.information[0].second,
-                    "str": "2"
-                }, {"bili": root.information[0].third, "str": "3"}
-                    , {"bili": root.information[0].fourth, "str": "4"}, {
-                        "bili": root.information[0].fifth,
-                        "str": "5"
-                    }, {"bili": root.information[0].sixth, "str": ">=6"}];
-                // render_rect2(data);
-                var data = [{"bili": root.information[0].male, "str": "男"}, {
-                    "bili": root.information[0].female,
-                    "str": "女"
-                }];
-                //render_rect3(data);
+function tweetContent(tweetId) {
+    $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: '/tweet/getById',
+            contentType: "application/json",
+            data: JSON.stringify({'tweetId': tweetId}),
+            success: function (result) {
+                console.log(result['data']);
+                document.getElementById("tweet_content").innerHTML =
+                    '<div class="caption wrapper-lg">\n' +
+                    '<div class="post-sum">\n' +
+                    '    <p>' + result['data']['content'].substring(0, 140) +
+                    '    </p>\n' +
+                    '</div>\n' +
+                    '<div class="line line-lg"></div>\n' +
+                    '<div class="text-muted">\n' +
+                    '    <i class="fa fa-clock-o icon-muted"></i>' + result['data']['time']+
+                    '    <i class="fa fa-retweet icon-muted"></i>' + result['data']['transfer']+
+                    '<a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i>'+ result['data']['comment']+'</a>\n' +
+                    '    <i class="icon-like icon-muted"></i>' + result['data']['like']+
+                    '</div>' +
+                    '</div>'
             }
-        },
-        complete: function () {
-            hideload();
         }
-    })
-    d3.select(self.frameElement).style("height", diameter - 150 + "px");*/
-};
+    )
+}
+
 var margin = {
     top: 20,
     right: 50,
@@ -206,6 +141,31 @@ function render_time(one, two, three, four, five, six, seven, eight, nine, ten, 
         .attr("transform", "translate(" + (wikuang - 120) + ",0)");
 
 }//zhexian
+
+function userInfo(tweetId) {
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: '/usr/pub',
+        contentType: "application/json",
+        data: JSON.stringify({'tweetId': tweetId}),
+        success: function (result) {
+            console.log(result);
+            document.getElementById('user_info').innerHTML =
+                '<div>昵称:' + result['data']['nickname'] + '</div>' +
+                '<div>所在地: ' + result['data']['place'] + '</div>' +
+                '<div>性别:' + result['data']['gender'] + '</div>' +
+                '<div>性取向: ' + result['data']['sexOrientation'] + '</div>' +
+                '<div>生日: ' + result['data']['birthday'] + '</div>' +
+                '<div>简介: ' + result['data']['signature'] + '</div>' +
+                '<div>教育信息: ' + result['data']['eduInfo'] + '</div>' +
+                '<div>工作信息: ' + result['data']['workInfo'] + '</div>' +
+                '<div>婚姻状况: ' + result['data']['marriage'] + '</div>' +
+                '<div>标签: ' + result['data']['tags'] + '</div>'
+        }
+    });
+}
+
 // 'FCoPpaIQp'
 function commentTimeLine(tweetId) {
     $.ajax({
@@ -237,29 +197,29 @@ function commentTimeLine(tweetId) {
                         '鼠标拖动可以进行缩放' : '手势操作进行缩放'
                 },
                 /*xAxis: {
-                    type: 'datetime',
-                    dateTimeLabelFormats: {
-                        millisecond: '%H:%M:%S.%L',
-                        second: '%H:%M:%S',
-                        minute: '%H:%M',
-                        hour: '%H:%M',
-                        day: '%m-%d',
-                        week: '%m-%d',
-                        month: '%Y-%m',
-                        year: '%Y'
-                    }
+type: 'datetime',
+dateTimeLabelFormats: {
+    millisecond: '%H:%M:%S.%L',
+    second: '%H:%M:%S',
+    minute: '%H:%M',
+    hour: '%H:%M',
+    day: '%m-%d',
+    week: '%m-%d',
+    month: '%Y-%m',
+    year: '%Y'
+}
                 },*/
                 /*tooltip: {
-                    dateTimeLabelFormats: {
-                        millisecond: '%H:%M:%S.%L',
-                        second: '%H:%M:%S',
-                        minute: '%H:%M',
-                        hour: '%H:%M',
-                        day: '%Y-%m-%d',
-                        week: '%m-%d',
-                        month: '%Y-%m',
-                        year: '%Y'
-                    }
+dateTimeLabelFormats: {
+    millisecond: '%H:%M:%S.%L',
+    second: '%H:%M:%S',
+    minute: '%H:%M',
+    hour: '%H:%M',
+    day: '%Y-%m-%d',
+    week: '%m-%d',
+    month: '%Y-%m',
+    year: '%Y'
+}
                 },*/
                 yAxis: {
                     title: {
@@ -305,7 +265,8 @@ function commentTimeLine(tweetId) {
     });
 
 }
-function source(tweetId){
+
+function source(tweetId) {
     $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -360,6 +321,7 @@ function source(tweetId){
         }
     );
 }
+
 function render_rect1(data) {
     var width = document.documentElement.scrollWidth * (1 / 3) - 150,
         height = 60,

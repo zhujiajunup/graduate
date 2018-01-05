@@ -1,9 +1,13 @@
 package cn.edu.zju.zjj;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -28,58 +32,82 @@ import lombok.extern.slf4j.Slf4j;
 @EnableScheduling
 public class App {
     private WeiboUserService weiboUserService;
+
     private WeiboTweetService weiboTweetService;
+
     private WeiboCommentService weiboCommentService;
+
     private WeiboConsumer weiboConsumer = new WeiboConsumer();
+
     public static final AtomicLong update = new AtomicLong(0);
+
     public static final AtomicLong insert = new AtomicLong(0);
+
     private long updateBefore = update.get();
+
     private long insertBefore = insert.get();
 
+    ExecutorService threadPool = Executors.newFixedThreadPool(5);
+
+    @Value("${spring.datasource.url}")
+    private String jdbcUrl;
+
     @Autowired
-    public App(WeiboUserService weiboUserService, WeiboTweetService weiboTweetService, WeiboCommentService weiboCommentService) {
+    public App(WeiboUserService weiboUserService,
+        WeiboTweetService weiboTweetService,
+        WeiboCommentService weiboCommentService) {
         this.weiboUserService = weiboUserService;
         this.weiboTweetService = weiboTweetService;
         this.weiboCommentService = weiboCommentService;
     }
 
     @Scheduled(cron = "0 */1 * * * ?")
-    public void qps(){
+    public void qps() {
         long updateNow = update.get();
         long insertNow = insert.get();
 
-        log.info("-----------------({}-{})-----{}/s---------------",updateNow, updateBefore, (updateNow - updateBefore)/60);
-        log.info("-----------------({}-{})-----{}/s---------------",insertNow, insertBefore, (insertNow - insertBefore)/60);
+        log.info("-----------------({}-{})-----{}/s---------------", updateNow,
+            updateBefore, (updateNow - updateBefore) / 60);
+        log.info("-----------------({}-{})-----{}/s---------------", insertNow,
+            insertBefore, (insertNow - insertBefore) / 60);
         insertBefore = insertNow;
         updateBefore = updateNow;
     }
 
+    private void process(BaseEntity baseEntity) {
+        try {
+            if (baseEntity instanceof WeiboUser) {
+
+                weiboUserService.insertOrUpdate((WeiboUser) baseEntity);
+            } else if (baseEntity instanceof WeiboTweet) {
+
+                weiboTweetService.insertOrUpdate((WeiboTweet) baseEntity);
+
+            } else if (baseEntity instanceof WeiboComment) {
+                weiboCommentService.insertOrUpdate((WeiboComment) baseEntity);
+            }
+        } catch (Exception e) {
+
+            log.error("{}", baseEntity);
+            log.error("", e);
+        }
+    }
+
     private void run() {
+        String dbType = this.jdbcUrl.split(":")[1];
+        log.info("db type: {}", dbType);
         while (true) {
             try {
                 List<BaseEntity> entities = weiboConsumer.receive();
-                entities.forEach(
-                        baseEntity -> {
+                entities.forEach(baseEntity -> {
+                    if (dbType.equals("sqlite")) {
+                        process(baseEntity);
+                    } else {
+                        threadPool.submit(() -> process(baseEntity));
+                    }
+                    //log.info("{}", baseEntity);
 
-                            //log.info("{}", baseEntity);
-                            try {
-                                if (baseEntity instanceof WeiboUser) {
-
-                                    weiboUserService.insertOrUpdate((WeiboUser) baseEntity);
-                                } else if (baseEntity instanceof WeiboTweet) {
-
-                                    weiboTweetService.insertOrUpdate((WeiboTweet) baseEntity);
-
-                                } else if (baseEntity instanceof WeiboComment) {
-                                    weiboCommentService.insertOrUpdate((WeiboComment) baseEntity);
-                                }
-                            } catch (Exception e) {
-
-                                log.error("{}", baseEntity);
-                                log.error("", e);
-                            }
-                        }
-                );
+                });
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

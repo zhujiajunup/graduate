@@ -12,7 +12,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * @author 祝佳俊(hzzhujiajun@corp.netease.com)
+ * @author 祝佳俊(zhujiajunup@163.com)
  */
 @Setter
 @Getter

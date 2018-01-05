@@ -4,6 +4,7 @@ import cn.edu.zju.zjj.App;
 import cn.edu.zju.zjj.dao.BaseDao;
 import cn.edu.zju.zjj.entity.BaseEntity;
 
+import cn.edu.zju.zjj.entity.WeiboTweet;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -19,17 +20,22 @@ public abstract class BaseService<T extends BaseEntity> {
         this.dao = dao;
     }
 
+
     public void insertOrUpdate(T t){
         if(dao.exist(t.getId())){
-            //log.info("update entity: {}", t);
-
             dao.update(t);
             App.update.incrementAndGet();
+            log.info("update entity: {}", t);
         }else{
-            //log.info("insert entity: {}", t);
+            //
 
             dao.insert(t);
             App.insert.incrementAndGet();
+            log.info("insert entity: {}", t);
         }
+    }
+
+    public T getById(String tweetId){
+        return this.dao.getById(tweetId);
     }
 }

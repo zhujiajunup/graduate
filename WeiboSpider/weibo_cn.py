@@ -199,7 +199,7 @@ class WeiboCnSpider:
         # return self.grab_user_info('1316949123')
 
         # self.get_follow({'uid': '2365758410', 'url': self.follow_url % '2365758410'})
-        # RedisJob.push_job(JobType.comment.value, {'url': 'https://weibo.cn/comment/FCoPpaIQp', 'tweetId': 'FCoPpaIQp'})
+        # RedisJob.push_job(JobType.comment.value, {'url': 'https://weibo.cn/comment/FCa7KxpHE', 'tweetId': 'FCa7KxpHE'})
 
         for i in range(0, THREAD_NUM):
             if 'f' in args:
@@ -309,7 +309,7 @@ class WeiboCnSpider:
                     user_id = user_href[3:]
                 else:
                     user_id = self.get_user_id_from_homepage(self.weibo_host + user_href)
-                # self.user_id_in_queue(user_id)
+                self.user_id_in_queue(user_id)
                 comment_info['userId'] = user_id
                 comment_info['content'] = comment_div.find(class_='ctt').get_text()
                 others = comment_div.find(class_='ct').get_text()

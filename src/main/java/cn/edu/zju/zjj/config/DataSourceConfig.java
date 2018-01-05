@@ -21,7 +21,7 @@ import static cn.edu.zju.zjj.config.MybatisConstant.*;
 /**
  * bachelor项目数据库的Mybatis 配置类
  * 
- * @author 祝佳俊(zhujijunup@163.com)
+ * @author 祝佳俊(zhujiajunup@163.com)
  */
 @Configuration
 @EnableTransactionManagement // 开启事务管理

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author 祝佳俊(zhujijunup@163.com)
+ * @author 祝佳俊(zhujiajunup@163.com)
  */
 @Slf4j
 @RestController

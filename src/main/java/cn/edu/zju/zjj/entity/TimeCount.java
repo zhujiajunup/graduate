@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author 祝佳俊(zhujijunup@163.com)
+ * @author 祝佳俊(zhujiajunup@163.com)
  */
 @Setter
 @Getter

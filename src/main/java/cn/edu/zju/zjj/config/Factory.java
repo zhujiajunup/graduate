@@ -14,7 +14,7 @@ import java.sql.SQLException;
 /**
  * data source factory
  * 
- * @author 祝佳俊(zhujijunup@163.com)
+ * @author 祝佳俊(zhujiajunup@163.com)
  */
 class Factory {
     private static final Logger LOGGER = LoggerFactory.getLogger(Factory.class);

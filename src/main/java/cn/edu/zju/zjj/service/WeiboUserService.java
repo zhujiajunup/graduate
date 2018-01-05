@@ -23,4 +23,8 @@ public class WeiboUserService extends BaseService<WeiboUser>{
     public WeiboUser getPublisher(String tweetId){
         return this.userDao.getPublisher(tweetId);
     }
+
+    public WeiboUser getUser(String uid){
+        return this.userDao.getById(uid);
+    }
 }

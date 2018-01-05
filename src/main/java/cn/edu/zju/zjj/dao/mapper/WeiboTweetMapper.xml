@@ -29,4 +29,7 @@
     <select id="getById" resultType="cn.edu.zju.zjj.entity.WeiboTweet">
         select * from weibo_tweet where id = #{id}
     </select>
+    <select id="getByUid" resultType="cn.edu.zju.zjj.entity.WeiboTweet">
+        select * from weibo_tweet where uid = #{uid} limit 10
+    </select>
 </mapper>

@@ -1,6 +1,9 @@
 package cn.edu.zju.zjj.dao;
 
 import cn.edu.zju.zjj.entity.WeiboTweet;
+
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,5 +13,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface WeiboTweetDao extends BaseDao<WeiboTweet> {
-
+    List<WeiboTweet> getByUid(String uid);
 }

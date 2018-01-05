@@ -43,4 +43,14 @@ public class WeiboUserController {
         bean.setData(userService.getPublisher(tweetId));
         return bean;
     }
+
+    @RequestMapping(value = "/byId", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean getById(@RequestBody Map<String, Object> params) {
+        log.info("{}", params);
+        ResponseBean bean = new ResponseBean();
+        String uid = (String) params.get("uid");
+        bean.setData(userService.getUser(uid));
+        return bean;
+    }
 }

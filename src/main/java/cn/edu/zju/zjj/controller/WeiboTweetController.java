@@ -40,6 +40,15 @@ public class WeiboTweetController {
         String tweetId = (String) params.get("tweetId");
         bean.setData(this.tweetService.getById(tweetId));
         return bean;
+    }
 
+    @RequestMapping(value = "/getByUid", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean getUserTweets(@RequestBody Map<String, Object> params) {
+        log.info("{}", params);
+        ResponseBean bean = new ResponseBean();
+        String uid = (String) params.get("uid");
+        bean.setData(this.tweetService.getByUid(uid));
+        return bean;
     }
 }

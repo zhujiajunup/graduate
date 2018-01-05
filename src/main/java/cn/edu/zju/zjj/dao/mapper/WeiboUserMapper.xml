@@ -6,18 +6,34 @@
 
     <insert id="insert" parameterType="cn.edu.zju.zjj.entity.WeiboUser">
         insert into weibo_user (id, tags, gender, place, signature, birthday, sex_orientation, edu_info, marriage,
-        work_info, nickname) VALUES (#{id}, #{tags}, #{gender}, #{place}, #{signature}, #{birthday},#{sexOrientation}, #{eduInfo},
-         #{marriage}, #{workInfo}, #{nickname})
+        work_info, nickname, follow_num, fans_num, tweet_num, head) VALUES (#{id}, #{tags}, #{gender}, #{place}, #{signature},
+          #{birthday},#{sexOrientation}, #{eduInfo},
+         #{marriage}, #{workInfo}, #{nickname}, #{followNum}, #{fansNum}, #{tweetNum}, #{head})
     </insert>
     <select id="exist" resultType="java.lang.Boolean">
         select ifnull(exists(select 1 from weibo_user where id = #{id}), 0);
     </select>
     <update id="update" parameterType="cn.edu.zju.zjj.entity.WeiboUser">
-        update weibo_user set tags = #{tags}, gender = #{gender}, place = #{place}, signature = #{signature},
-         birthday = #{birthday}, sex_orientation = #{sexOrientation}, edu_info = #{eduInfo},
-          marriage = #{marriage}, work_info = #{workInfo}, nickname = #{nickname} where id = #{id}
+        update weibo_user
+        <set>
+            <if test="tags != null">tags = #{tags},</if>
+            <if test="gender != null or gender != unknown">gender = #{gender},</if>
+            <if test="place != null or place != unknown">place = #{place},</if>
+            <if test="signature != null or signature != unknown">signature = #{signature},</if>
+            <if test="birthday != null or birthday != unknown">birthday = #{birthday},</if>
+            <if test="sexOrientation != null or sexOrientation != unknown">sex_orientation = #{sexOrientation},</if>
+            <if test="eduInfo != null or eduInfo != unknown">edu_info = #{eduInfo},</if>
+            <if test="marriage != null or marriage != unknown">marriage = #{marriage},</if>
+            <if test="workInfo != null or workInfo != unknown">work_info = #{workInfo},</if>
+            <if test="nickname != null or nickname != unknown">nickname = #{nickname},</if>
+            <if test="head != null or head != unknown">head = #{head},</if>
+            <if test="fansNum != 0 or fansNum != -1">fans_num = #{fansNum},</if>
+            <if test="tweetNum != 0 or tweetNum != -1">tweet_num = #{tweetNum},</if>
+            <if test="followNum != 0 or followNum != -1">follow_num = #{followNum},</if>
+        </set>
+        where id = #{id}
     </update>
-    
+
     <select id="getPublisher" resultType="cn.edu.zju.zjj.entity.WeiboUser">
         select weibo_user.* from weibo_user, (select uid from weibo_tweet where id = #{tweetId}) t where id = t.uid;
     </select>

@@ -23,5 +23,9 @@ public class WeiboUser extends BaseEntity{
     private String eduInfo;
     private String marriage;
     private String workInfo;
+    private int fansNum;
+    private int tweetNum;
+    private int followNum;
+    private String head;
 
 }

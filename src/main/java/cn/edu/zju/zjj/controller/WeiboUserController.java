@@ -1,8 +1,8 @@
 /**
  * @(#)WeiboUserController.java, 2018/1/4.
  * <p/>
- * Copyright 2018 Netease, Inc. All rights reserved.
- * NETEASE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ * Copyright 2018 HEHE, Inc. All rights reserved.
+ * HEHE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 package cn.edu.zju.zjj.controller;
 
@@ -41,6 +41,16 @@ public class WeiboUserController {
         ResponseBean bean = new ResponseBean();
         String tweetId = (String) params.get("tweetId");
         bean.setData(userService.getPublisher(tweetId));
+        return bean;
+    }
+
+    @RequestMapping(value = "/byId", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean getById(@RequestBody Map<String, Object> params) {
+        log.info("{}", params);
+        ResponseBean bean = new ResponseBean();
+        String uid = (String) params.get("uid");
+        bean.setData(userService.getUser(uid));
         return bean;
     }
 }

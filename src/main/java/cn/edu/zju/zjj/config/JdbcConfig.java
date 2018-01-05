@@ -1,8 +1,8 @@
 /**
  * @(#)Config.java, 2017/10/12.
  * <p/>
- * Copyright 2017 Netease, Inc. All rights reserved.
- * NETEASE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ * Copyright 2017 HEHE, Inc. All rights reserved.
+ * HEHE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 package cn.edu.zju.zjj.config;
 

@@ -43,21 +43,8 @@ function tweetContent(tweetId) {
             contentType: "application/json",
             data: JSON.stringify({'tweetId': tweetId}),
             success: function (result) {
-                console.log(result['data']);
-                document.getElementById("tweet_content").innerHTML =
-                    '<div class="caption wrapper-lg">\n' +
-                    '<div class="post-sum">\n' +
-                    '    <p>' + result['data']['content'].substring(0, 140) +
-                    '    </p>\n' +
-                    '</div>\n' +
-                    '<div class="line line-lg"></div>\n' +
-                    '<div class="text-muted">\n' +
-                    '    <i class="fa fa-clock-o icon-muted"></i>' + result['data']['time']+
-                    '    <i class="fa fa-retweet icon-muted"></i>' + result['data']['transfer']+
-                    '<a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i>'+ result['data']['comment']+'</a>\n' +
-                    '    <i class="icon-like icon-muted"></i>' + result['data']['like']+
-                    '</div>' +
-                    '</div>'
+                document.getElementById("tweet_content").innerHTML = tweetInfoHtml(result['data']);
+
             }
         }
     )
@@ -142,6 +129,8 @@ function render_time(one, two, three, four, five, six, seven, eight, nine, ten, 
 
 }//zhexian
 
+
+
 function userInfo(tweetId) {
     $.ajax({
         type: 'POST',
@@ -152,7 +141,7 @@ function userInfo(tweetId) {
         success: function (result) {
             console.log(result);
             document.getElementById('user_info').innerHTML =
-                '<div>昵称:' + result['data']['nickname'] + '</div>' +
+                '<div>昵称:' + result['data']['nickname']+'('+result['data']['id']+')' + '</div>' +
                 '<div>所在地: ' + result['data']['place'] + '</div>' +
                 '<div>性别:' + result['data']['gender'] + '</div>' +
                 '<div>性取向: ' + result['data']['sexOrientation'] + '</div>' +
@@ -161,7 +150,9 @@ function userInfo(tweetId) {
                 '<div>教育信息: ' + result['data']['eduInfo'] + '</div>' +
                 '<div>工作信息: ' + result['data']['workInfo'] + '</div>' +
                 '<div>婚姻状况: ' + result['data']['marriage'] + '</div>' +
-                '<div>标签: ' + result['data']['tags'] + '</div>'
+                '<div>标签: ' + result['data']['tags'] + '</div>';
+            document.getElementById('home_page_info').innerHTML = homePageHtml(result['data']);
+
         }
     });
 }
@@ -197,30 +188,30 @@ function commentTimeLine(tweetId) {
                         '鼠标拖动可以进行缩放' : '手势操作进行缩放'
                 },
                 /*xAxis: {
-type: 'datetime',
-dateTimeLabelFormats: {
-    millisecond: '%H:%M:%S.%L',
-    second: '%H:%M:%S',
-    minute: '%H:%M',
-    hour: '%H:%M',
-    day: '%m-%d',
-    week: '%m-%d',
-    month: '%Y-%m',
-    year: '%Y'
-}
-                },*/
+                 type: 'datetime',
+                 dateTimeLabelFormats: {
+                 millisecond: '%H:%M:%S.%L',
+                 second: '%H:%M:%S',
+                 minute: '%H:%M',
+                 hour: '%H:%M',
+                 day: '%m-%d',
+                 week: '%m-%d',
+                 month: '%Y-%m',
+                 year: '%Y'
+                 }
+                 },*/
                 /*tooltip: {
-dateTimeLabelFormats: {
-    millisecond: '%H:%M:%S.%L',
-    second: '%H:%M:%S',
-    minute: '%H:%M',
-    hour: '%H:%M',
-    day: '%Y-%m-%d',
-    week: '%m-%d',
-    month: '%Y-%m',
-    year: '%Y'
-}
-                },*/
+                 dateTimeLabelFormats: {
+                 millisecond: '%H:%M:%S.%L',
+                 second: '%H:%M:%S',
+                 minute: '%H:%M',
+                 hour: '%H:%M',
+                 day: '%Y-%m-%d',
+                 week: '%m-%d',
+                 month: '%Y-%m',
+                 year: '%Y'
+                 }
+                 },*/
                 yAxis: {
                     title: {
                         text: '评论数'

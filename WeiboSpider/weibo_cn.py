@@ -46,7 +46,7 @@ class JobType(Enum):
 class WeiboCnSpider:
     def __init__(self):
         self.bloom_filter = ScalableBloomFilter(mode=ScalableBloomFilter.SMALL_SET_GROWTH)
-        self.weibo_limit = True
+        self.weibo_limit = False
         self.time_current_pattern = re.compile(r'(\d*)分钟前')
         self.time_today_pattern = re.compile(r'今天\s*(\d*):(\d*)')
         self.time_year_pattern = re.compile(r'(\d*)月(\d*)日\s*(\d*):(\d*)')
@@ -120,6 +120,31 @@ class WeiboCnSpider:
                 except:
                     LOGGER.error(traceback.format_exc())
                     sleep(5 * 60)
+
+    def grab_view(self, user_id):
+        """
+        获取用户id的微博数、粉丝数、发布的微博数
+        :param user_id: 用户id
+        :return: dict
+        """
+        LOGGER.info('grab user view: %s' % str(user_id))
+        session = requests.Session()
+        cookies = RedisCookies.fetch_cookies()
+        response = session.get(self.weibo_host+'/' + str(user_id), cookies=cookies['cookies'], verify=False)
+        home_page_html = BeautifulSoup(response.text, "lxml")
+        v = home_page_html.find('div', class_='tip2')
+        result = {}
+        if v:
+            content = v.get_text(';')
+        else:
+            content = ''
+        tweet_r = re.findall('微博\[(\d+)\];', content)
+        result['tweetNum'] = tweet_r[0] if tweet_r else -1
+        fans_r = re.findall('粉丝\[(\d+)\];', content)
+        result['fansNum'] = fans_r[0] if fans_r else -1
+        follow_r = re.findall('关注\[(\d+)\];', content)
+        result['followNum'] = follow_r[0] if follow_r else -1
+        return result
 
     def grab_tweet_repost(self, repost_url):
         LOGGER.info('grab tweet repost: %s' % str(repost_url))
@@ -220,6 +245,7 @@ class WeiboCnSpider:
                 repost_thread = threading.Thread(target=self.crawl_repost, name='repost_thread_'+str(i))
                 repost_thread.start()
 
+
     def grab_follow(self, follow_dict):
         LOGGER.info('start grab user follow: %s' % str(follow_dict))
         session = requests.Session()
@@ -249,7 +275,7 @@ class WeiboCnSpider:
             if page_div:
                 max_page = int(page_div.input.get('value'))
                 for page in range(2, max_page + 1):
-                    RedisJob.push_job(JobType.tweet.value,
+                    RedisJob.push_job(JobType.follower.value,
                                       {'url': (self.follow_url % follow_dict['uid']) + '?page=' + str(page),
                                        'uid': follow_dict['uid']})
 
@@ -447,18 +473,17 @@ class WeiboCnSpider:
 
         if 'page=' not in tweet_url['url']:
 
-            total_weibo_span = user_tweet_html.find('span', class_='tc')
-            if total_weibo_span:
-                total_result = re.findall('微博\[(\d*)\]', total_weibo_span.get_text())
-                if total_result:
-                    total = total_result[0]
-                    if int(total) > 5000:
-                        return
-                else:
-                    return
-            else:
-                return
-
+            # total_weibo_span = user_tweet_html.find('span', class_='tc')
+            # if total_weibo_span:
+            #     total_result = re.findall('微博\[(\d*)\]', total_weibo_span.get_text())
+            #     if total_result:
+            #         total = total_result[0]
+            #         if int(total) > 5000:
+            #             return
+            #     else:
+            #         return
+            # else:
+            #     return
             page_div = user_tweet_html.find(id='pagelist')
             if page_div:
                 max_page = int(page_div.input.get('value'))
@@ -475,12 +500,12 @@ class WeiboCnSpider:
         cookie = ''
         for k, v in cookies['cookies'].items():
             cookie = cookie + k + '=' + v + ';'
-        headers = self.get_header()
         response = session.get(self.user_info_url % user_id, cookies=cookies['cookies'], verify=False)
 
         response.encoding = 'utf-8'
         user_info_html = BeautifulSoup(response.text, "lxml")
         div_list = list(user_info_html.find_all(class_=['c', 'tip']))
+
         base_info_index, edu_info_index, work_info_index = -1, -1, -1
         base_info = ''
         edu_info = ''
@@ -514,7 +539,9 @@ class WeiboCnSpider:
             birthday = re.findall(u'\u751f\u65e5[:|\uff1a](.*?);', base_info)  # 生日
             sex_orientation = re.findall(u'\u6027\u53d6\u5411[:|\uff1a](.*?);', base_info)  # 性取向
             marriage = re.findall(u'\u611f\u60c5\u72b6\u51b5[:|\uff1a](.*?);', base_info)  # 婚姻状况
-
+            head_url = user_info_html.find('img', alt='头像')
+            if head_url:
+                user_info['head'] = head_url.get('src')
             user_info['tags'] = tags
             user_info['gender'] = gender[0] if gender else 'unknown'
             user_info['place'] = place[0] if place else 'unknown'
@@ -527,7 +554,8 @@ class WeiboCnSpider:
 
             user_info['type'] = 'user_info'
             user_info['id'] = user_id
-
+            result = self.grab_view(user_id)
+            user_info.update(result)
             self.weibo_producer.send(user_info, self.user_info_url % user_id)
 
 

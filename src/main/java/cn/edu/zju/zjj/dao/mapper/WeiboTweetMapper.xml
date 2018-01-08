@@ -32,4 +32,13 @@
     <select id="getByUid" resultType="cn.edu.zju.zjj.entity.WeiboTweet">
         select * from weibo_tweet where uid = #{uid} limit 10
     </select>
+    <select id="getTotal" resultType="java.lang.Integer">
+        select count(*) from weibo_tweet where uid = #{uid}
+    </select>
+    <select id="getByPage" resultType="cn.edu.zju.zjj.entity.WeiboTweet">
+        select * from weibo_tweet where uid = #{uid} limit #{pageSize} offset #{offset}
+    </select>
+    <select id="getRepost" resultType="cn.edu.zju.zjj.entity.WeiboTweet">
+        select * from weibo_tweet where source_tid = #{tid}
+    </select>
 </mapper>

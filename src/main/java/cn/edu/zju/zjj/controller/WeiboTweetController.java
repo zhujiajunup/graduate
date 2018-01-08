@@ -7,9 +7,12 @@
 package cn.edu.zju.zjj.controller;
 
 import cn.edu.zju.zjj.bean.ResponseBean;
+import cn.edu.zju.zjj.entity.WeiboTweet;
 import cn.edu.zju.zjj.service.WeiboTweetService;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.MediaType;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import scala.Int;
 
 /**
  * @author 祝佳俊(zhujiajunup@163.com)
@@ -51,4 +55,26 @@ public class WeiboTweetController {
         bean.setData(this.tweetService.getByUid(uid));
         return bean;
     }
+
+    @RequestMapping(value = "/getByPage", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean getByPageg(@RequestBody Map<String, Object> params) {
+        log.info("{}", params);
+        ResponseBean bean = new ResponseBean();
+        String uid = (String) params.get("uid");
+        int pageNum = (Integer) params.get("pageNum");
+        int pageSize = (Integer) params.get("pageSize");
+        int total = this.tweetService.getTotal(uid);
+        int maxPage = total / pageSize + (total % pageSize == 0 ? 0 : 1);
+        List<WeiboTweet> tweets = this.tweetService.getByPage(uid, pageSize, pageNum);
+        Map<String, Object> result = new HashMap<>();
+        result.put("tweets", tweets);
+        result.put("total", total);
+        result.put("maxPage", maxPage);
+        result.put("pageSize", pageSize);
+        result.put("pageNum", pageNum);
+        bean.setData(result);
+        return bean;
+    }
+
 }

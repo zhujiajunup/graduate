@@ -27,4 +27,15 @@ public class WeiboTweetService extends  BaseService<WeiboTweet>{
     public List<WeiboTweet> getByUid(String uid){
         return this.tweetDao.getByUid(uid);
     }
+    public int getTotal(String uid){
+        return this.tweetDao.getTotal(uid);
+    }
+    public List<WeiboTweet> getByPage(String uid, int pageSize, int pageNum){
+        int offset = (pageNum-1) * pageSize;
+        return this.tweetDao.getByPage(uid, pageSize, offset);
+    }
+    public List<WeiboTweet> getRepost(String tid){
+        return this.tweetDao.getRepost(tid);
+    }
 }
+

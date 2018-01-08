@@ -40,4 +40,5 @@
     <select id="getById" resultType="cn.edu.zju.zjj.entity.WeiboUser">
         select * from weibo_user where id = #{id}
     </select>
+
 </mapper>

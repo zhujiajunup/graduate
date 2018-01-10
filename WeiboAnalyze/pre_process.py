@@ -62,3 +62,6 @@ def split_emoji():
                     negative_file.write(content + '\n')
     negative_file.close()
     positive_file.close()
+
+
+split_emoji()

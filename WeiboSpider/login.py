@@ -136,7 +136,7 @@ class WeiboLogin:
     def login_by_selenium(self, weibo_user, weibo_password):
         browser = webdriver.Firefox()
         browser.maximize_window()
-        try_time = 5
+        try_time = 10
         cookie_got = False
         browser.get('https://weibo.com/login.php')
         username = browser.find_element_by_id("loginname")
@@ -148,7 +148,7 @@ class WeiboLogin:
         commit_btn = browser.find_element_by_xpath('//a[@node-type="submitBtn"]')
         commit_btn.click()
         # 没那么快登录成功
-        sleep(5)
+
         while try_time:
             try:
                 # 如果登录不成功是有验证码框的
@@ -175,14 +175,17 @@ class WeiboLogin:
                 # 稍等一会
                 sleep(3)
                 try_time -= 1
-            except (StaleElementReferenceException, NoSuchElementException, InvalidElementStateException):
+            except (StaleElementReferenceException, NoSuchElementException):
+
                 cookie_got = True
                 print('login success')
                 break
-
-            except ElementNotInteractableException:
+            except InvalidElementStateException:
                 sleep(2)
                 try_time -= 1
+            # except ElementNotInteractableException:
+            #     sleep(2)
+            #     try_time -= 1
         if cookie_got:
             sleep(2)
             LOGGER.info('get https://weibo.cn/1316949123/info')

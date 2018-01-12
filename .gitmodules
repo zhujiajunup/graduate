@@ -1,0 +1,3 @@
+[submodule "WeiboSpider"]
+	path = WeiboSpider
+	url = https://github.com/zhujiajunup/WeiboSpider.git

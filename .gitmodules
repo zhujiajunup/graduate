@@ -1,6 +1,0 @@
-[submodule "WeiboSpider"]
-	path = WeiboSpider
-	url = https://github.com/zhujiajunup/WeiboSpider.git
-[submodule "WeiboAnalyze"]
-	path = WeiboAnalyze
-	url = https://github.com/zhujiajunup/WeiboAnalyze.git

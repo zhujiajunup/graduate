@@ -1,6 +1,8 @@
 package cn.edu.zju.zjj;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -19,6 +21,7 @@ import cn.edu.zju.zjj.entity.WeiboComment;
 import cn.edu.zju.zjj.entity.WeiboTweet;
 import cn.edu.zju.zjj.entity.WeiboUser;
 import cn.edu.zju.zjj.kafka.WeiboConsumer;
+import cn.edu.zju.zjj.service.JedisService;
 import cn.edu.zju.zjj.service.WeiboCommentService;
 import cn.edu.zju.zjj.service.WeiboTweetService;
 import cn.edu.zju.zjj.service.WeiboUserService;
@@ -37,6 +40,8 @@ public class App {
 
     private WeiboCommentService weiboCommentService;
 
+    private JedisService jedisService;
+
     private WeiboConsumer weiboConsumer = new WeiboConsumer();
 
     public static final AtomicLong update = new AtomicLong(0);
@@ -52,13 +57,17 @@ public class App {
     @Value("${spring.datasource.url}")
     private String jdbcUrl;
 
+    @Value("${jedis.user}")
+    private boolean ifPushUser;
+
     @Autowired
     public App(WeiboUserService weiboUserService,
         WeiboTweetService weiboTweetService,
-        WeiboCommentService weiboCommentService) {
+        WeiboCommentService weiboCommentService, JedisService jedisService) {
         this.weiboUserService = weiboUserService;
         this.weiboTweetService = weiboTweetService;
         this.weiboCommentService = weiboCommentService;
+        this.jedisService = jedisService;
     }
 
     @Scheduled(cron = "0 */1 * * * ?")
@@ -93,9 +102,28 @@ public class App {
         }
     }
 
+    private void pushUser() {
+        List<WeiboUser> users = this.weiboUserService.getByLimit(50_000);
+        users.forEach(user -> {
+            log.info("push to redis: {}", user);
+                    this.jedisService.pushToList("user",
+                            new HashMap<String, Object>() {
+                                {
+                                    put("user_id", String.valueOf(user.getId()));
+                                }
+                            });
+                }
+
+        );
+    }
+
     private void run() {
         String dbType = this.jdbcUrl.split(":")[1];
         log.info("db type: {}", dbType);
+        if(ifPushUser) {
+            log.info("push user info to redis");
+            threadPool.submit(this::pushUser);
+        }
         while (true) {
             try {
                 List<BaseEntity> entities = weiboConsumer.receive();

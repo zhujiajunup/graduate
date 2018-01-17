@@ -2,6 +2,9 @@ package cn.edu.zju.zjj.service;
 
 import cn.edu.zju.zjj.dao.WeiboUserDao;
 import cn.edu.zju.zjj.entity.WeiboUser;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,20 +14,25 @@ import org.springframework.stereotype.Service;
  * Data: 2017/12/9 15:39
  */
 @Service
-public class WeiboUserService extends BaseService<WeiboUser>{
+public class WeiboUserService extends BaseService<WeiboUser> {
 
     private WeiboUserDao userDao;
+
     @Autowired
-    private WeiboUserService(WeiboUserDao weiboUserDao){
+    private WeiboUserService(WeiboUserDao weiboUserDao) {
         super(weiboUserDao);
         this.userDao = weiboUserDao;
     }
 
-    public WeiboUser getPublisher(String tweetId){
+    public WeiboUser getPublisher(String tweetId) {
         return this.userDao.getPublisher(tweetId);
     }
 
-    public WeiboUser getUser(String uid){
+    public WeiboUser getUser(String uid) {
         return this.userDao.getById(uid);
+    }
+
+    public List<WeiboUser> getByLimit(int limit) {
+        return userDao.getByLimit(limit);
     }
 }

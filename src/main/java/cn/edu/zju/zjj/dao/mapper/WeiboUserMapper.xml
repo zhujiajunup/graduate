@@ -40,5 +40,7 @@
     <select id="getById" resultType="cn.edu.zju.zjj.entity.WeiboUser">
         select * from weibo_user where id = #{id}
     </select>
-
+    <select id="getByLimit" resultType="cn.edu.zju.zjj.entity.WeiboUser">
+        select * from weibo_user order by rand() limit #{limit}
+    </select>
 </mapper>

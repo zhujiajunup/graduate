@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zju.zjj.dao.WeiboTaskDao">
+
+    <insert id="insert" parameterType="cn.edu.zju.zjj.entity.WeiboTask">
+        insert into weibo_task (status, create_time, weibo_id) VALUES (#{status}, #{createTime}, #{weiboId})
+    </insert>
+    <select id="exist" resultType="java.lang.Boolean">
+        select ifnull(exists(select 1 from weibo_task where weibo_id = #{id}), 0);
+    </select>
+    <update id="update" parameterType="cn.edu.zju.zjj.entity.WeiboTask">
+        update weibo_task
+        <set>
+            <if test="status != null">status = #{status},</if>
+            <if test="weiboUser != null or weiboUser != ''">weibo_user = #{weiboUser},</if>
+            <if test="weiboContent != null or place != unknown">weibo_content = #{weiboContent},</if>
+        </set>
+        where weibo_id = #{weiboId}
+    </update>
+
+    <select id="getById" resultType="cn.edu.zju.zjj.entity.WeiboTask">
+        select * from weibo_task where weibo_id = #{id}
+    </select>
+    <select id="getAll" resultType="cn.edu.zju.zjj.entity.WeiboTask">
+        select * from weibo_task order by create_time desc
+    </select>
+</mapper>

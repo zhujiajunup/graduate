@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
-    <script type="text/javascript" src="javascripts/line.d3.v3.js"></script>
-    <script src="javascripts/jquery-1.11.2.js"></script>
-    <script src="javascripts/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="styles/easyui.css"/>
+    <link rel="stylesheet" href="styles/index.css" type="text/css">
+    <link rel="stylesheet" href="../3/css/app.css" type="text/css">
+    <link rel="stylesheet" href="../3/css/font-awesome.min.css" type="text/css">
     <script type="text/javascript" src="javascripts/jquery-1.5.2.min.js"></script>
     <script type="text/javascript" src="javascripts/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="javascripts/dataweibo.js"></script>
-    <link rel="stylesheet" href="styles/index.css">
+    <script type="text/javascript" src="javascripts/line.d3.v3.js"></script>
+    <script src="javascripts/jquery-1.11.2.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/task.js"></script>
     <title>新浪微博数据分析</title>
 </head>
 <body>
@@ -22,175 +25,142 @@
                 <a href="##" class="navbar-brand" style="color:white">新浪微博数据分析</a>
             </div>
             <div class="navbar-header">
-                <a href="htmls/treecontact.html" class="navbar-brand" style="color:#8A8A8A" onmouseover="this.style.cssText='color:white'" onmouseout="this.style.cssText='color:#8A8A8A'">级联转发分析</a>
+                <a href="htmls/treecontact.html" class="navbar-brand" style="color:#8A8A8A"
+                   onmouseover="this.style.cssText='color:white'"
+                   onmouseout="this.style.cssText='color:#8A8A8A'">级联转发分析</a>
             </div>
             <div class="navbar-header">
-                <a href="htmls/cloud.html" class="navbar-brand" style="color:#8A8A8A" onmouseover="this.style.cssText='color:white'" onmouseout="this.style.cssText='color:#8A8A8A'">文本分析</a>
+                <a href="htmls/cloud.html" class="navbar-brand" style="color:#8A8A8A"
+                   onmouseover="this.style.cssText='color:white'"
+                   onmouseout="this.style.cssText='color:#8A8A8A'">文本分析</a>
             </div>
         </div>
-        <div class="select col-xs-2" style="position:relative;" id="mo">
-            <h3 >
-                <a onmouseover="javascript:chinamap();" >选择省份: </a>
-                <a id="province"></a>
-            </h3>
-            <div id="mapwindow" style="display:none;position:absolute;right:2px;top:55px;z-index:99;background:white;border:1px solid black;">
-            </div>
-        </div>
-
     </div>
+
     <div class="row">
-        <div id="dialog" style="display:none;position:absolute;right:50%;top:35%;z-index:99;">
-            <div class="loading">
-                <img src="picture/jindu.gif" height="50" width="50"/>
-                玩命加载中...
-            </div>
+        <div class="figure-content">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="exampleInputName2">微博URL</label>
+                    <input type="text" class="form-control" id="exampleInputName2" placeholder="123456">
+                </div>
+                <button type="button" class="btn btn-outline btn-info" onclick="addTask()">添加任务</button>
+
+                <!--<button type="button" class="btn btn-default" onclick="tree()">查看</button>-->
+                <p style="font-size: 1px;line-height:2;font-style:oblique;">(示例ID：FCa7KxpHE)</p>
+            </form>
         </div>
-        <div class="side-nav col-xs-2">
-            <ul class="category">
-                <li onClick="show(this)"><a href="#">用户信息比例</a></li>
-                <li onClick="show(this)"><a href="#">消息来源、发布时间</a></li>
-                <li onClick="show(this)"><a href="#">热门用户、热门话题</a></li>
-            </ul>
+        <div class="col-sm-12">
+            <section class="panel panel-default">
+                <header class="panel-heading">
+                    <span class="label bg-danger pull-right m-t-xs">4 left</span>
+                    Tasks
+                </header>
+                <table class="table table-striped m-b-none" id="tasks">
+                    <thead>
+                    <tr>
+                        <th>进度</th>
+                        <th>微博url</th>
+                        <th>发布者</th>
+                        <th>微博内容</th>
+                        <th>任务创建时间</th>
+                        <th style="width:70px;"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--<div class="progress progress-sm progress-striped active m-t-xs m-b-none">-->
+                                <!--<div class="progress-bar bg-success" data-toggle="tooltip" data-original-title="80%"-->
+                                     <!--style="width: 80%"></div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td>App prototype design</td>-->
+                        <!--<td>3分钟前</td>-->
+                        <!--<td class="text-right">-->
+                            <!--<div class="btn-group">-->
+                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-pencil"></i></a>-->
+                                <!--<ul class="dropdown-menu pull-right">-->
+                                    <!--<li><a href="#">Action</a></li>-->
+                                    <!--<li><a href="#">Another action</a></li>-->
+                                    <!--<li><a href="#">Something else here</a></li>-->
+                                    <!--<li class="divider"></li>-->
+                                    <!--<li><a href="#">Separated link</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--<div class="progress progress-xs m-t-xs m-b-none">-->
+                                <!--<div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="40%"-->
+                                     <!--style="width: 40%"></div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td>Design documents</td>-->
+                        <!--<td>3分钟前</td>-->
+                        <!--<td class="text-right">-->
+                            <!--<div class="btn-group">-->
+                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-pencil"></i></a>-->
+                                <!--<ul class="dropdown-menu pull-right">-->
+                                    <!--<li><a href="#">Action</a></li>-->
+                                    <!--<li><a href="#">Another action</a></li>-->
+                                    <!--<li><a href="#">Something else here</a></li>-->
+                                    <!--<li class="divider"></li>-->
+                                    <!--<li><a href="#">Separated link</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--<div class="progress progress-xs m-t-xs m-b-none">-->
+                                <!--<div class="progress-bar bg-warning" data-toggle="tooltip" data-original-title="30%"-->
+                                     <!--style="width: 30%"></div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td>UI toolkit</td>-->
+                        <!--<td>3分钟前</td>-->
+                        <!--<td class="text-right">-->
+                            <!--<div class="btn-group">-->
+                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-pencil"></i></a>-->
+                                <!--<ul class="dropdown-menu pull-right">-->
+                                    <!--<li><a href="#">Action</a></li>-->
+                                    <!--<li><a href="#">Another action</a></li>-->
+                                    <!--<li><a href="#">Something else here</a></li>-->
+                                    <!--<li class="divider"></li>-->
+                                    <!--<li><a href="#">Separated link</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--<div class="progress progress-xs m-t-xs m-b-none">-->
+                                <!--<div class="progress-bar bg-danger" data-toggle="tooltip" data-original-title="15%"-->
+                                     <!--style="width: 15%"></div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                        <!--<td>Testing</td>-->
+                        <!--<td>3分钟前</td>-->
+                        <!--<td class="text-right">-->
+                            <!--<div class="btn-group">-->
+                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-pencil"></i></a>-->
+                                <!--<ul class="dropdown-menu pull-right">-->
+                                    <!--<li><a href="#">Action</a></li>-->
+                                    <!--<li><a href="#">Another action</a></li>-->
+                                    <!--<li><a href="#">Something else here</a></li>-->
+                                    <!--<li class="divider"></li>-->
+                                    <!--<li><a href="#">Separated link</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                    </tbody>
+                </table>
+            </section>
         </div>
-
-        <div class="content col-xs-10">
-            <div class="content-inner" id="div1">
-                <div class="figure">
-                    <div class="figure-title" >
-                        <h4>男性用户与女性用户</h4>
-                    </div>
-                    <div class="figure-content" id="pie1">
-                    </div>
-                </div>
-
-                <div class="figure">
-                    <div class="figure-title">
-                        <h4>认证用户与普通用户</h4>
-                    </div>
-                    <div class="figure-content" id="pie2">
-                    </div>
-                </div>
-
-                <div class="figure">
-                    <div class="figure-title">
-                        <h4>转发微博与原创微博</h4>
-                    </div>
-                    <div class="figure-content" id="pie3">
-                    </div>
-                </div>
-            </div>
-            <div class="content-inner" id="div2">
-                <div class="figure">
-                    <div class="figure-title" >
-                        <h4>微博来源</h4>
-                    </div>
-                    <div class="figure-content" id="source">
-                    </div>
-                </div>
-                <div class="figure">
-                    <div class="figure-title" >
-                        <h4>发布时间</h4>
-                    </div>
-                    <div class="figure-content" id="time">
-                    </div>
-                </div>
-            </div>
-            <div class="content-inner" id="div3">
-                <div class="figure">
-                    <div class="figure-title" >
-                        <h4>热门用户</h4>
-                    </div>
-                    <div class="figure-content" id="hotuser">
-                        <ul class="category">
-                            <li id="hotuser1"><a href="#"></a></li>
-                            <li id="hotuser2"><a href="#"></a></li>
-                            <li id="hotuser3"><a href="#"></a></li>
-                            <li id="hotuser4"><a href="#"></a></li>
-                            <li id="hotuser5"><a href="#"></a></li>
-                            <li id="hotuser6"><a href="#"></a></li>
-                            <li id="hotuser7"><a href="#"></a></li>
-                            <li id="hotuser8"><a href="#"></a></li>
-                            <li id="hotuser9"><a href="#"></a></li>
-                            <li id="hotuser10"><a href="#"></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="figure">
-                    <div class="figure-title" >
-                        <h4>热门话题</h4>
-                    </div>
-                    <div class="figure-content" id="hottopic">
-                        <ul class="category">
-                            <li id="hottopic1"><a href="#"></a></li>
-                            <li id="hottopic2"><a href="#"></a></li>
-                            <li id="hottopic3"><a href="#"></a></li>
-                            <li id="hottopic4"><a href="#"></a></li>
-                            <li id="hottopic5"><a href="#"></a></li>
-                            <li id="hottopic6"><a href="#"></a></li>
-                            <li id="hottopic7"><a href="#"></a></li>
-                            <li id="hottopic8"><a href="#"></a></li>
-                            <li id="hottopic9"><a href="#"></a></li>
-                            <li id="hottopic10"><a href="#"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="footer row">
-        <p><img src="picture/zju.jpg" height="30" width="30"/>zju team</p>
     </div>
 </div>
-<script>
-    function index(){
-        window.location.href='../html1/主页/index.html';
-    }
-    function tiao(){
-        window.location.href='treecontact.html';
-    }
-    function wenben(){
-        window.location.href='cloud.html';
-    }
-    $().ready(function (){
-        $("#mo").mouseover(function(){
-            $("#mapwindow").show();
-        });
-        $("#mapwindow").mouseover(function(){
-            $("#mapwindow").show();
-        });
-        $("#mo").mouseout(function(){
-            $("#mapwindow").hide();
-        });
-        $("#mapwindow").mouseout(function(){
-            $("#mapwindow").hide();
-        });
-    });
-    function show(a){
-        var arrayli=$(".category").children("li");
-        var arraydiv=$(".content-inner");
-        for(var i=0;i<arrayli.length;i++){
-            if(arrayli[i]==a){
-                //给li加class属性 active
-                $(arrayli[i]).children("a").addClass("active");
-                //div show hide
-                for(var j=0;j<arraydiv.length;j++){
-                    if(i==j){
-                        $(arraydiv[j]).show();
-                    }else{
-                        $(arraydiv[j]).hide();
-                    }
-                }
-            }else{
-                $(arrayli[i]).children("a").removeClass("active");
-            }
-        }
-    }
-</script>
-<script>
-    var arrayli1=$(".category").children("li");
-    $(arrayli1[0]).click();
-</script>
 </body>
 </html>

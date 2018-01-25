@@ -2,10 +2,8 @@ package cn.edu.zju.zjj;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +50,7 @@ public class App {
 
     private long insertBefore = insert.get();
 
-    ExecutorService threadPool = Executors.newFixedThreadPool(5);
+    public static ExecutorService threadPool = Executors.newFixedThreadPool(5);
 
     @Value("${spring.datasource.url}")
     private String jdbcUrl;
@@ -145,6 +143,6 @@ public class App {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(App.class, args);
-        context.getBean(App.class).run();
+        //context.getBean(App.class).run();
     }
 }

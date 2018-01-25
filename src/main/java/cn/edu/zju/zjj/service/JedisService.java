@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Slf4j
 @Service
 public class JedisService {
+
     private JedisUtil jedisUtil;
 
     private String jedisHost = "localhost";
@@ -30,24 +31,27 @@ public class JedisService {
     private int jedisPort = 6379;
 
     private int db = 1;
+
     private ObjectMapper mapper = new ObjectMapper();
+
     public JedisService() {
         jedisUtil = JedisUtil.getInstance();
     }
 
-    public void pushToList(String key, Map<String, Object> value){
-        try (Jedis jedis = jedisUtil.getJedis(jedisHost, jedisPort, db)){
+    public void pushToList(String key, Map<String, Object> value) {
+        log.info("put to list, key: {}, value: {}", key, value);
+        try (Jedis jedis = jedisUtil.getJedis(jedisHost, jedisPort, db)) {
 
             jedis.lpush(key, mapper.writeValueAsString(value));
 
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            log.error("", e);
         }
 
     }
 
-    public String getFromList(String key){
-        try(Jedis jedis = jedisUtil.getJedis(jedisHost, jedisPort, db)){
+    public String getFromList(String key) {
+        try (Jedis jedis = jedisUtil.getJedis(jedisHost, jedisPort, db)) {
             return jedis.lpop(key);
         }
     }

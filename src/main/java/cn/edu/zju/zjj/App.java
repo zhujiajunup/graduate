@@ -143,6 +143,6 @@ public class App {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(App.class, args);
-        //context.getBean(App.class).run();
+        context.getBean(App.class).run();
     }
 }

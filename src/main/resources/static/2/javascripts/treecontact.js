@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    tree(getQueryString('tid'));
 });
 
 function large() {
@@ -11,24 +12,7 @@ function small() {
     d3.select("g.treezoom").attr("transform", "translate(" + diameter / 2 + "," + diameter / 2.5 + ")scale(1)");
 }
 
-function tree() {
-    document.getElementById("tree").innerHTML = "";
-    document.getElementById("line").innerHTML = "";
-    document.getElementById("rz").innerHTML = "";
-    // document.getElementById("ceng").innerHTML = "";
-    // document.getElementById("sex").innerHTML = "";
-    // document.getElementById("prov").innerHTML = "";
-
-
-    function showload() {
-        $("#dialog").show();
-    }
-
-    function hideload() {
-        $("#dialog").hide();
-    }
-
-    var inputId = $("#exampleInputName2").val();
+function tree(inputId) {
     source(inputId);
     commentTimeLine(inputId);
     userInfo(inputId);

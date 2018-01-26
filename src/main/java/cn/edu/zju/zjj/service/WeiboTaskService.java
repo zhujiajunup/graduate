@@ -55,9 +55,9 @@ public class WeiboTaskService {
         List<WeiboTask> tasks = tasksOpt.orElse(new ArrayList<>());
         tasks.stream().filter(weiboTask -> weiboTask.getWeiboContent() == null)
             .forEach(weiboTask -> App.threadPool.submit(() -> {
-                log.info("update for task: {}", "M_"+weiboTask.getWeiboId());
+                log.info("update for task: {}", weiboTask.getWeiboId());
                 Optional<WeiboTweet> tweetOpt = Optional
-                    .ofNullable(this.tweetDao.getById("M_"+weiboTask.getWeiboId()));
+                    .ofNullable(this.tweetDao.getById(weiboTask.getWeiboId()));
                 if (tweetOpt.isPresent()) {
                     Optional<WeiboUser> userOpt = Optional
                         .ofNullable(this.userDao

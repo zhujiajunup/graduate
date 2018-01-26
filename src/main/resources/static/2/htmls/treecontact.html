@@ -45,73 +45,46 @@
                 玩命加载中...
             </div>
         </div>
-        <div class="content col-xs-6" id="content1">
-            <div class="content-inner">
-                <div class="figure-content">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label for="exampleInputName2">微博ID</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="123456">
+        <div class="row">
+            <div class="col-lg-3" id="home_page_info">
+
+            </div>
+            <div class="col-lg-3" id="user_info">
+
+            </div>
+            <div class="col-xs-6">
+                <div class="msg_content" id="tweet_content">
+                    <div class="caption wrapper-lg">
+
+                        <div class="post-sum">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat.
+                            </p>
+                            <p>
+                                Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.</p>
                         </div>
-                        <button type="button" class="btn btn-outline btn-info" onclick="tree()">查看</button>
-
-                        <!--<button type="button" class="btn btn-default" onclick="tree()">查看</button>-->
-                        <p style="font-size: 1px;line-height:2;font-style:oblique;">(示例ID：FCa7KxpHE)</p>
-                    </form>
+                        <div class="line line-lg"></div>
+                        <div class="text-muted">
+                            <i class="fa fa-user icon-muted"></i> by <a href="#" class="m-r-sm">Admin</a>
+                            <i class="fa fa-clock-o icon-muted"></i> Feb 15, 2013
+                            <a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i> 4 comments</a>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary" style="background:#ccc;float:right" onClick="small()">
-                    返回原图
-                </button>
-                <button type="button" class="btn btn-primary" style="background:#ccc;float:right" onClick="large()">
-                    放大一倍
-                </button>
-                <div class="figure-content" id="tree">
-                </div>
-                <div class="figure-content" id="line">
-                </div>
-            </div>
+                <!--<div class="col-sm-12 col-xs-12 message">
+                    <img src="../../weibo/img/icon.png" class="col-sm-2 col-xs-2"
+                         style="border-radius: 50%">
+                    <div class="col-sm-10 col-xs-10"><span style="font-weight: bold;">Jack.C</span> <br>
+                        <small class="date" style="color:#999">刚刚</small>
 
-        </div>
-        <!--<div class="col-sm-3 col-xs-12 part_right">-->
-        <div class="content col-xs-6">
-            <div class="col-lg-6" id="home_page_info">
-
-            </div>
-            <div class="col-lg-6" id="user_info">
-
+                    </div>
+                </div>-->
             </div>
         </div>
 
     </div>
 
     <div class="row" style="background: white">
-        <div class="col-xs-6">
-            <div class="msg_content" id="tweet_content">
-                <div class="caption wrapper-lg">
 
-                    <div class="post-sum">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat.
-                        </p>
-                        <p>
-                            Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.</p>
-                    </div>
-                    <div class="line line-lg"></div>
-                    <div class="text-muted">
-                        <i class="fa fa-user icon-muted"></i> by <a href="#" class="m-r-sm">Admin</a>
-                        <i class="fa fa-clock-o icon-muted"></i> Feb 15, 2013
-                        <a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i> 4 comments</a>
-                    </div>
-                </div>
-            </div>
-            <!--<div class="col-sm-12 col-xs-12 message">
-                <img src="../../weibo/img/icon.png" class="col-sm-2 col-xs-2"
-                     style="border-radius: 50%">
-                <div class="col-sm-10 col-xs-10"><span style="font-weight: bold;">Jack.C</span> <br>
-                    <small class="date" style="color:#999">刚刚</small>
-
-                </div>
-            </div>-->
-        </div>
         <div class="col-xs-6">
             <div class="panel panel-default">
                 <!--<div class="panel-heading">
@@ -125,34 +98,6 @@
                 </div>
                 <!-- /.panel-body -->
             </div>
-            <!--<div class="content-inner">
-                <div class="figure-title">
-                    <h4>认证比例</h4>
-                </div>
-                <div class="flot-chart-content" id="rz">
-                </div>
-            </div>-->
-            <!--<div class="content-inner">
-                <div class="figure-title">
-                    <h4>转发层级</h4>
-                </div>
-                <div class="figure-content" id="ceng" style="border:1px dotted #ccc">
-                </div>
-            </div>
-            <div class="content-inner">
-                <div class="figure-title">
-                    <h4>性别比例</h4>
-                </div>
-                <div class="figure-content" id="sex" style="border:1px dotted #ccc">
-                </div>
-            </div>
-            <div class="content-inner">
-                <div class="figure-title">
-                    <h4>省份比例</h4>
-                </div>
-                <div class="figure-content" id="prov" style="border:1px dotted #ccc">
-                </div>
-            </div>-->
         </div>
     </div>
     <div class="row" style="background: white">
@@ -171,22 +116,6 @@
             </div>
         </div>
     </div>
-    <div class="footer row">
-        <p><img src="../picture/zju.jpg" height="30" width="30"/>浙江大学版权所有</p>
-    </div>
 </div>
-<script>
-    function index() {
-        window.location.href = '../../index.html';
-    }
-
-    function tiao2() {
-        window.location.href = 'weibo.html';
-    }
-
-    function wenben() {
-        window.location.href = 'cloud.html';
-    }
-</script>
 </body>
 </html>

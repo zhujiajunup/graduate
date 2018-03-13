@@ -40,7 +40,7 @@ public class App {
 
     private JedisService jedisService;
 
-    private WeiboConsumer weiboConsumer = new WeiboConsumer();
+    //private WeiboConsumer weiboConsumer = new WeiboConsumer();
 
     public static final AtomicLong update = new AtomicLong(0);
 
@@ -115,7 +115,7 @@ public class App {
         );
     }
 
-    private void run() {
+    /*private void run() {
         String dbType = this.jdbcUrl.split(":")[1];
         log.info("db type: {}", dbType);
         if(ifPushUser) {
@@ -139,10 +139,10 @@ public class App {
             }
         }
 
-    }
+    }*/
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(App.class, args);
-        context.getBean(App.class).run();
+        //context.getBean(App.class).run();
     }
 }

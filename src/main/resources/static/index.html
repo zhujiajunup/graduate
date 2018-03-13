@@ -1,13 +1,84 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
+
 <head>
-<meta http-equiv="refresh" content="0;url=2/index.html">
-<title>SB Admin 2</title>
-<script language="javascript">
-    window.location.href = "2/index.html"
-</script>
+  <title>新浪微博数据分析</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-Go to <a href="2/index.html">/2/index.html</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+    <a class="navbar-brand" href="#">微博舆情</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">新浪微博数据分析
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="treecontact.html">级联转发分析</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cloud.html">文本分析</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="row justify-content-center my-3">
+      <div class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="weiboURL">微博URL&nbsp;</label>
+          <input type="text" class="form-control" id="weiboURL" placeholder="FCa7KxpHE">
+        </div>
+        <button class="btn btn-primary mb-2" id="weiboClick">添加任务</button>
+      </div>
+    </section>
+    <section class="row">
+      <table class="table" id='weibo-table'>
+        <thead>
+          <tr>
+            <th scope="col">进度</th>
+            <th scope="col">微博url</th>
+            <th scope="col">发布者</th>
+            <th scope="col">微博内容</th>
+            <th scope="col">任务创建时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/index.js"></script>
 </body>
+
 </html>

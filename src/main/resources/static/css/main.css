@@ -1,0 +1,11 @@
+.row-form{
+  margin: 20px auto;
+  display:flex;
+  justify-content: center;
+}
+
+.echart{
+  height: 400px;
+  background: #f0f0f0;
+  margin: 10px auto;
+}

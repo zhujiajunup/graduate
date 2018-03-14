@@ -3,14 +3,16 @@
 <head>
     <meta charset="utf-8">
     <script type="text/javascript" src="../javascripts/line.d3.v3.js"></script>
-    <script src="../../vendor/hchart/highcharts.js"></script>
-    <script src="../javascripts/jquery-1.11.2.js"></script>
-    <script src="../javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../vendor/hchart/highcharts.js"></script>
+    <script type="text/javascript" src="../javascripts/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="../javascripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="../javascripts/jquery-1.5.2.min.js"></script>
     <script type="text/javascript" src="../javascripts/jquery.easyui.min.js"></script>
-    <script src="../javascripts/treecontact.js"></script>
-    <script src="../../vendor/echart/echarts.min.js"></script>
-    <script src="../../js/graduate.js"></script>
+    <script type="text/javascript" src="../javascripts/treecontact.js"></script>
+    <!--<script type="text/javascript" src="../../vendor/echart/echarts.min.js"></script>-->
+    <script type="text/javascript" src="../../weibo/js/echarts.min.js"></script>
+    <script type="text/javascript" src="../../js/graduate.js"></script>
+    <script type="text/javascript" src="../../js/map.js"></script>
     <link rel="stylesheet" href="../styles/bootstrap.min.css">
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../../dist/css/sb-admin-2.css">
@@ -57,10 +59,14 @@
                     <div class="caption wrapper-lg">
 
                         <div class="post-sum">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat.
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam
+                                sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec
+                                condimentum. Mauris convallis mauris at pellentesque volutpat.
                             </p>
                             <p>
-                                Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.</p>
+                                Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu
+                                consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada
+                                sem, dapibus porta quam lacus eu neque.</p>
                         </div>
                         <div class="line line-lg"></div>
                         <div class="text-muted">
@@ -116,6 +122,22 @@
             </div>
         </div>
     </div>
+    <div class="row" style="background: white">
+        <div class="clo-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="flot-chart">
+                        <div id="map">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+
+
+</script>
 </body>
 </html>

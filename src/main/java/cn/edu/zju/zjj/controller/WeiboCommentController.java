@@ -38,6 +38,15 @@ public class WeiboCommentController {
         return bean;
     }
 
+    @RequestMapping(value = "/place/stat", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseBean getCommentPlace(@RequestBody Map<String, Object> params){
+        log.info("{}", params);
+        ResponseBean bean = new ResponseBean();
+        String tweetId = (String)params.get("tweetId");
+        bean.setData(this.commentService.statPlace(tweetId));
+        return bean;
+    }
     @RequestMapping(value = "/timeCnt/stat", method = RequestMethod.POST)
     @ResponseBody
     public ResponseBean getCommentTimeCount(@RequestBody Map<String, Object> params){

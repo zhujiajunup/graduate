@@ -34,4 +34,8 @@
     <select id="getById" resultType="cn.edu.zju.zjj.entity.WeiboComment">
         select * from weibo_comment where id = #{id}
     </select>
+
+    <select id="getPlace" resultType="java.lang.String">
+        select place from weibo_user where id in ( select user_id from weibo_comment where tweet_id = #{tweetId}) and place != 'unknown' and place != '其他';
+    </select>
 </mapper>

@@ -23,4 +23,6 @@ public interface WeiboCommentDao extends BaseDao<WeiboComment>{
     List<WeiboComment> getByTweetId(String tweetId);
 
     List<WeiboUser> getUsers(String tweetId);
+
+    List<String> getPlace(String tweetId);
 }

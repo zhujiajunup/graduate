@@ -4,7 +4,6 @@ export default function GetQueryString(name) {
     if (r != null) return unescape(r[2]);
     return null;
 }
-
 function homePageHtml(userInfo) {
     return '<div class="row text-center inform">' +
         '<img src="' + userInfo['head'] + '">' +

@@ -1,24 +1,29 @@
 package cn.edu.zju.zjj.service;
 
-import cn.edu.zju.zjj.bean.PlaceCount;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeMap;
+
+import org.ansj.domain.Result;
+import org.ansj.splitWord.analysis.ToAnalysis;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import cn.edu.zju.zjj.bean.WordCount;
 import cn.edu.zju.zjj.constant.AppConstant;
-import cn.edu.zju.zjj.dao.BaseDao;
 import cn.edu.zju.zjj.dao.ProvinceDao;
 import cn.edu.zju.zjj.dao.WeiboCommentDao;
 import cn.edu.zju.zjj.entity.SourceType;
 import cn.edu.zju.zjj.entity.TimeCount;
 import cn.edu.zju.zjj.entity.WeiboComment;
 import cn.edu.zju.zjj.entity.WeiboUser;
-import org.ansj.domain.Result;
-import org.ansj.splitWord.analysis.ToAnalysis;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import lombok.extern.slf4j.Slf4j;
-import scala.Int;
-
-import java.util.*;
 
 /**
  * author: zjj(zhujiajunup@163.com)
@@ -43,7 +48,8 @@ public class WeiboCommentService extends BaseService<WeiboComment> {
 
     public Map<String, Integer> statPlace(String tweetId) {
         List<String> places = this.commentDao.getPlace(tweetId);
-        Map<String, Integer> placeCnt = new HashMap<>();
+        Map<String, Integer> placeCnt = new TreeMap<>();
+        Map<String, Integer> reslut = new HashMap<>();
         places.forEach(place -> {
             String[] fields = place.split(" ");
             String province = null;
@@ -74,7 +80,15 @@ public class WeiboCommentService extends BaseService<WeiboComment> {
                 }
             }
         });
-        return placeCnt;
+
+        int count = 0;
+        Iterator<String> keyIter = placeCnt.keySet().iterator();
+        while (keyIter.hasNext() && count <= 20){
+            String key = keyIter.next();
+            reslut.put(key, placeCnt.get(key));
+            count ++;
+        }
+        return reslut;
     }
 
     public List<SourceType> statSource(String tweetId) {

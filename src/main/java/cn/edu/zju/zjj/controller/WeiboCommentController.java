@@ -3,7 +3,9 @@ package cn.edu.zju.zjj.controller;
 import cn.edu.zju.zjj.bean.ResponseBean;
 import cn.edu.zju.zjj.dao.WeiboCommentDao;
 import cn.edu.zju.zjj.entity.SourceType;
+import cn.edu.zju.zjj.entity.WeiboUser;
 import cn.edu.zju.zjj.service.WeiboCommentService;
+import cn.edu.zju.zjj.service.WeiboUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -22,10 +24,11 @@ import java.util.Map;
 @RequestMapping(value = "/comment", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class WeiboCommentController {
     private WeiboCommentService commentService;
-
+    private WeiboUserService userService;
     @Autowired
-    public WeiboCommentController(WeiboCommentService commentService){
+    public WeiboCommentController(WeiboCommentService commentService, WeiboUserService userService){
         this.commentService = commentService;
+        this.userService = userService;
     }
 
     @RequestMapping(value = "/source/stat", method = RequestMethod.POST)
@@ -45,6 +48,9 @@ public class WeiboCommentController {
         ResponseBean bean = new ResponseBean();
         String tweetId = (String)params.get("tweetId");
         bean.setData(this.commentService.statPlace(tweetId));
+        // TODO
+        //WeiboUser user = this.userService.getPublisher(tweetId);
+
         return bean;
     }
     @RequestMapping(value = "/timeCnt/stat", method = RequestMethod.POST)

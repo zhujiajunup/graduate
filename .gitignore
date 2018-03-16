@@ -3,3 +3,4 @@ data/*
 .idea/
 target/
 /config/
+src/main/resources/static/map

@@ -46,6 +46,15 @@ public class WeiboTweetController {
         return bean;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/getChain")
+    public ResponseBean getChain(@RequestBody Map<String, Object> params){
+        ResponseBean bean = new ResponseBean();
+        String tweetId = (String) params.get("tweetId");
+        bean.setData(this.tweetService.getChain2(tweetId));
+        return bean;
+    }
+
     @RequestMapping(value = "/getByUid", method = RequestMethod.POST)
     @ResponseBody
     public ResponseBean getUserTweets(@RequestBody Map<String, Object> params) {

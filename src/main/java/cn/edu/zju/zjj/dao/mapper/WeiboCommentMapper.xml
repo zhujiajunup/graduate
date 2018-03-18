@@ -21,7 +21,7 @@
     </select>
 
     <select id="statTime" resultType="cn.edu.zju.zjj.entity.TimeCount">
-        select count(*) as `count`, substr(pub_time,1, 13) as `time` from weibo_comment where tweet_id = #{tweetId} group by `time`
+        select count(*) as `count`, substr(pub_time, 6, 8) as t from weibo_comment where tweet_id = #{tweetId} group by t
     </select>
 
     <select id="getByTweetId" resultType="cn.edu.zju.zjj.entity.WeiboComment">

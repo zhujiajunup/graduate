@@ -6,7 +6,13 @@
     <title>新浪微博数据分析</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="3/css/bootstrap.css" type="text/css"/>
     <link rel="stylesheet" href="3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="3/css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="3/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="3/css/simple-line-icons.css" type="text/css"/>
+    <!--<link rel="stylesheet" href="3/css/font.css" type="text/css"/>-->
+    <link rel="stylesheet" href="3/css/app.css" type="text/css"/>
 </head>
 
 <body>
@@ -40,24 +46,13 @@
 
 <main class="container">
     <section class="card my-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.Some quick example
-                text to build on the card title and make up the bulk of the card's content.Some quick example text to
-                build on
-                the card title and make up the bulk of the card's content.Some quick example text to build on the card
-                title and
-                make up the bulk of the card's content.Some quick example text to build on the card title and make up
-                the bulk
-                of the card's content.</p>
-            <div class="text-muted">
-                <i class="fa fa-clock-o icon-muted"></i> Feb 15, 2013
-                <i class="fa fa-retweet icon-muted"></i>
-                <a href="#" class="m-l-sm"><i class="fa fa-comment-o icon-muted"></i>1</a>
-                <i class="fa fa-thumbs-up"></i>123
-                <i class="fa fa-mobile"></i>213
+        <div class="row">
+            <div class="col-lg-4">
+                <section class="panel panel-default"  id="user_info">
+
+                </section>
+            </div>
+            <div class="col-lg-8" id="tweet_info">
 
             </div>
         </div>
@@ -84,7 +79,14 @@
             <p class="card-text">从上图可以看出，整个事件的爆发点是2017年06月27日 10点，转发类型的数据较为突出，加上原创和媒体的关注，将事态发展推向高点。</p>
         </div>
     </section>
+    <section class="card my-3">
+        <div class="card-body">
 
+            <div class="echart" id="placeBar"></div>
+
+            <p class="card-text">从上图可以看出，整个事件的爆发点是2017年06月27日 10点，转发类型的数据较为突出，加上原创和媒体的关注，将事态发展推向高点。</p>
+        </div>
+    </section>
     <section class="card my-3">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
@@ -112,7 +114,7 @@
             <h5 class="card-title">Card title</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
             <div class="card-charts">
-                <div class="echart" id="line"></div>
+                <div class="echart" id="time_count"></div>
             </div>
             <p class="card-text">从上图可以看出，整个事件的爆发点是2017年06月27日 10点，转发类型的数据较为突出，加上原创和媒体的关注，将事态发展推向高点。</p>
         </div>
@@ -139,6 +141,67 @@
             <p class="card-text">从上图可以看出，整个事件的爆发点是2017年06月27日 10点，转发类型的数据较为突出，加上原创和媒体的关注，将事态发展推向高点。</p>
         </div>
     </section>
+    <section class="card my-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <section class="card my-3">
+                        <div class="card-body">
+
+                            <div class="echart" id="sex">
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+                <div class="col-lg-6">
+                    <section class="card my-3">
+                        <div class="card-body">
+
+                            <div class="echart" id="sex2">
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="card my-3">
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="card-text">从上图可以看出，整个事件的爆发点是2017年06月27日 10点，转发类型的数据较为突出，加上原创和媒体的关注，将事态发展推向高点。</p>
+        </div>
+    </section>
 </main>
 
 <script src="js/jquery.min.js"></script>
@@ -147,10 +210,14 @@
 <script src="js/echarts.wordcloud.min.js"></script>
 
 <script src="js/mapdata.js"></script>
-<script type="module" src="js/charts/graph.js"></script>
-<script type="module" src="js/charts/scatter.js"></script>
+<script type="module" src="js/charts/tree.js"></script>
+<script type="module" src="js/charts/tweetinfo.js"></script>
+<script type="module" src="js/charts/distribution.js"></script>
 <script type="module" src="js/charts/pie.js"></script>
-<script type="module" src="js/charts/line.js"></script>
+<script type="module" src="js/charts/userinfo.js"></script>
+<script type="module" src="js/charts/timecount.js"></script>
+<script type="module" src="js/charts/place_bar.js"></script>
+<script type="module" src="js/charts/sex.js"></script>
 <script type="module" src="js/charts/bar.js"></script>
 <script type="module" src="js/charts/wordcloud.js"></script>
 <script type="module" src="js/treecontact.js"></script>

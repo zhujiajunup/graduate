@@ -1,11 +1,17 @@
-export default function Graph(name, id, url) {
+export default function Graph(name, id, tid) {
   var dom = document.getElementById(id);
   var myChart = echarts.init(dom);
   myChart.showLoading();
-  $.get(url, function(res) {
-    myChart.hideLoading();
-    myChart.setOption(getOption(name, res));
-  });
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: '/tweet/getChain',
+        contentType: "application/json",
+        data: JSON.stringify({'tweetId': tid}),
+        success: function(res) {
+          myChart.hideLoading();
+          myChart.setOption(getOption(name, res.data));
+  }});
 }
 
 function getOption(name, res) {

@@ -41,4 +41,11 @@
     <select id="getRepost" resultType="cn.edu.zju.zjj.entity.WeiboTweet">
         select * from weibo_tweet where source_tid = #{tid}
     </select>
+    <select id="statTime" resultType="cn.edu.zju.zjj.entity.TimeCount">
+        select count(*) as `count`, substr(`time`, 6, 8) as t from weibo_tweet where source_tid = #{tweetId} group by t
+    </select>
+    <select id="getChain" resultType="cn.edu.zju.zjj.entity.Chain">
+        select fromTid, `from`, `to`, toTid, weight from(select weibo_tweet.id as fromTid, uid, nickname as `from` from weibo_tweet  left join weibo_user on weibo_tweet.uid = weibo_user.id where weibo_tweet.id = #{tid}) tmp2 LEFT JOIN
+  (select wt.source_tid as stid, wt.id as toTid, (wt.transfer + wt.comment + wt.like) as weight,  wu.nickname as `to` from weibo_tweet wt left join weibo_user wu on wt.uid = wu.id where wu.nickname NOTNULL )tmp1 on tmp1.stid = tmp2.fromTid ORDER BY tmp1.weight desc limit 10;
+    </select>
 </mapper>

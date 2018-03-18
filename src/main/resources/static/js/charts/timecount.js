@@ -90,7 +90,6 @@ export default function TimeCount(name, id, tid) {
                     }
                 ]
             };
-            console.log(option);
             //myChart.setOption(getOption(name, res));
             myChart.setOption(option);
         }

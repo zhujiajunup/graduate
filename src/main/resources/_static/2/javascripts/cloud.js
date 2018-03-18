@@ -48,7 +48,6 @@ $.ajax({
 		showload();
 	},
 	success:function(wordlist){
-	            console.log(wordlist);
 	if(wordlist=="notfound"){alert("话题有误，请输入正确的话题")}
 	else{
 		var wordcld=wordlist.wordCloud;

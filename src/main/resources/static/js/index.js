@@ -31,7 +31,7 @@ $(() => {
       const weiboURL = weiboURL$I.val().trim();
       if (weiboURL === "") return;
       $.post('/task/add', { weiboID: weiboURL }).done(res => {
-        console.log(res);
+
         // add task to table
         addRow(res.data);
       })

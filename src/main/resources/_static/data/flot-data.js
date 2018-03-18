@@ -24,7 +24,6 @@ $(document).ready(function () {
                     t[1] = timeCntData[i]['count'];
                     data[i] = t;
                 }
-                console.log(data);
                 chart = Highcharts.chart('flot-line-chart', {
                     chart: {
                         zoomType: 'x'
@@ -240,7 +239,6 @@ $(function () {
         data: JSON.stringify({'tweetId': tweetId}),
         success: function (result) {
             var mapData = getMapData();
-            console.log(mapData);
             var cityCount = result['data'];
             var res = []
             for (var key in cityCount) {

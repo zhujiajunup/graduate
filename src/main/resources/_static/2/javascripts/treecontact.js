@@ -51,7 +51,6 @@ function userInfo(tweetId) {
         contentType: "application/json",
         data: JSON.stringify({'tweetId': tweetId}),
         success: function (result) {
-            console.log(result);
             document.getElementById('user_info').innerHTML =
                 '<div>昵称:' + result['data']['nickname']+'('+result['data']['id']+')' + '</div>' +
                 '<div>所在地: ' + result['data']['place'] + '</div>' +
@@ -87,7 +86,6 @@ function commentTimeLine(tweetId) {
                 t[1] = timeCntData[i]['count'];
                 data[i] = t;
             }
-            console.log(data);
             chart = Highcharts.chart('comment-line', {
                 chart: {
                     zoomType: 'x'

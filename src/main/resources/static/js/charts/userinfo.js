@@ -7,7 +7,6 @@ export default function UserInfo(id, tid) {
         contentType: "application/json",
         data: JSON.stringify({'tweetId': tid}),
         success: function (result) {
-            console.log(result);
             var fansNum = result['data']['fansNum'] < 1000? result['data']['fansNum'] : parseInt(result['data']['fansNum']/1000)+'万';
             var followNum = result['data']['followNum'] < 1000? result['data']['followNum'] : parseInt(result['data']['followNum']/1000)+'万';
             var tweetNum = result['data']['tweetNum'] < 1000? result['data']['tweetNum'] : parseInt(result['data']['tweetNum']/1000)+'万';

@@ -26,7 +26,6 @@ export default function Migration(name, id, tid) {
                 data: JSON.stringify({'tweetId': tid}),
                 success: function (res) {
                     console.log(res);
-                    console.log(mapLoc);
                     var data = {};
                     data["city"] = mapLoc;
                     var link = {
@@ -45,7 +44,6 @@ export default function Migration(name, id, tid) {
                     data['link'] = link;
                     data['color'] = color;
                     data['item'] = item;
-                    console.log(data);
                     myChart.hideLoading();
                     myChart.setOption(getOption(name, data));
                 }

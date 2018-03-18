@@ -22,9 +22,9 @@ $(() => {
   TimeCount('折线图堆叠', 'time_count', GetQueryString('tid'));
   Bar('asdfg', 'bar', 'data/bar.json');
   Wordcloud('词云', 'wordcloud', 'data/wordcloud.json');
-  Sex('sex', 'tid');
-  Sex('sex2', 'tid');
-  PlaceBar('placeBar', 'tid');
+  Sex('sex', GetQueryString('tid'));
+  Sex('sex2', GetQueryString('tid'));
+  PlaceBar('placeBar', GetQueryString('tid'));
   UserInfo('user_info', GetQueryString('tid'));
   TweetInfo('tweet_info', GetQueryString('tid'));
 })

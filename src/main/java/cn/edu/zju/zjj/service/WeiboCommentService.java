@@ -1,14 +1,6 @@
 package cn.edu.zju.zjj.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 import org.ansj.domain.Result;
 import org.ansj.splitWord.analysis.ToAnalysis;
@@ -80,12 +72,14 @@ public class WeiboCommentService extends BaseService<WeiboComment> {
                 }
             }
         });
-
+        List<Map.Entry<String, Integer>> entryArrayList = new ArrayList<>(placeCnt.entrySet());
+        entryArrayList.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
         int count = 0;
-        Iterator<String> keyIter = placeCnt.keySet().iterator();
+
+        Iterator<Map.Entry<String, Integer>> keyIter = entryArrayList.iterator();
         while (keyIter.hasNext() && count <= 20){
-            String key = keyIter.next();
-            reslut.put(key, placeCnt.get(key));
+            Map.Entry<String, Integer> entry = keyIter.next();
+            reslut.put(entry.getKey(), entry.getValue());
             count ++;
         }
         return reslut;

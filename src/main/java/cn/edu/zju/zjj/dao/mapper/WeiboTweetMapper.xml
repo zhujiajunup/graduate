@@ -30,7 +30,7 @@
         select * from weibo_tweet where id = #{id}
     </select>
     <select id="getByUid" resultType="cn.edu.zju.zjj.entity.WeiboTweet">
-        select * from weibo_tweet where uid = #{uid} limit 10
+        select * from weibo_tweet where uid = #{uid} limit 20
     </select>
     <select id="getTotal" resultType="java.lang.Integer">
         select count(*) from weibo_tweet where uid = #{uid}
@@ -46,6 +46,6 @@
     </select>
     <select id="getChain" resultType="cn.edu.zju.zjj.entity.Chain">
         select fromTid, `from`, `to`, toTid, weight from(select weibo_tweet.id as fromTid, uid, nickname as `from` from weibo_tweet  left join weibo_user on weibo_tweet.uid = weibo_user.id where weibo_tweet.id = #{tid}) tmp2 LEFT JOIN
-  (select wt.source_tid as stid, wt.id as toTid, (wt.transfer + wt.comment + wt.like) as weight,  wu.nickname as `to` from weibo_tweet wt left join weibo_user wu on wt.uid = wu.id where wu.nickname NOTNULL )tmp1 on tmp1.stid = tmp2.fromTid ORDER BY tmp1.weight desc limit 10;
+  (select wt.source_tid as stid, wt.id as toTid, (wt.transfer + wt.comment + wt.like) as weight,  wu.nickname as `to` from weibo_tweet wt left join weibo_user wu on wt.uid = wu.id where wu.nickname NOTNULL )tmp1 on tmp1.stid = tmp2.fromTid ORDER BY tmp1.weight desc limit 20;
     </select>
 </mapper>

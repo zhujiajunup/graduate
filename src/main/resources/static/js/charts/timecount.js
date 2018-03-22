@@ -18,12 +18,14 @@ export default function TimeCount(name, id, tid) {
                 var c = [];
                 for(var i = 0 ; i < value.length; i ++){
                     d.push(value[i].count);
-                    c.push(value[i].t);
+                    c.push(value[i].t + "时");
                 }
                 categories.push(c);
                 data.push(d);
             });
             myChart.hideLoading();
+            console.log(categories);
+            console.log(data);
             var option = {
                 title: {
                     text: '微博转发量和评论数'
@@ -37,10 +39,10 @@ export default function TimeCount(name, id, tid) {
                 toolbox: {
                     show: true,
                     feature: {
-                        dataView: {show: true, readOnly: false},
+                        //dataView: {show: true, readOnly: false},
                         magicType: {show: true, type: ['line', 'bar']},
-                        restore: {show: true},
-                        saveAsImage: {show: true}
+                        restore: {show: true}
+                        //saveAsImage: {show: true}
                     }
                 },
                 calculable: true,
@@ -78,8 +80,8 @@ export default function TimeCount(name, id, tid) {
                         data: data[1],
                         markPoint: {
                             data: [
-                                {name: '年最高', value: 182.2, xAxis: 7, yAxis: 183},
-                                {name: '年最低', value: 2.3, xAxis: 11, yAxis: 3}
+                                {type: 'max', name: '最大值'},
+                                {type: 'min', name: '最小值'}
                             ]
                         },
                         markLine: {

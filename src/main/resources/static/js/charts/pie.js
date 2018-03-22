@@ -15,7 +15,7 @@ export default function Pie(name, id, tid) {
             res.data.forEach(function (elem) {
                 legend.push(elem['source']);
                 series.push({"value": elem['count'], "name": elem['source']});
-            })
+            });
             myChart.hideLoading();
             myChart.setOption(getOption(name, {"legend": legend, "series": series}));
         }

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>新浪微博数据分析</title>
+    <title>微博舆情传播分析系统</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -20,15 +20,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">新浪微博数据分析
+                    <a class="nav-link" href="index.html">任务
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="treecontact.html">级联转发分析</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cloud.html">文本分析</a>
+                    <a class="nav-link" href="treecontact.html">分析结果展示</a>
                 </li>
             </ul>
         </div>
@@ -39,8 +36,8 @@
     <section class="row justify-content-center my-3">
         <div class="form-inline">
             <div class="form-group mx-sm-3 mb-2">
-                <label for="weiboURL">微博URL&nbsp;</label>
-                <input type="text" class="form-control" id="weiboURL" placeholder="FCa7KxpHE">
+                <label for="weiboURL">请输入监控的微博ID&nbsp;</label>
+                <input type="text" class="form-control" id="weiboURL" placeholder="例如FCa7KxpHE">
             </div>
             <button class="btn btn-primary mb-2" id="weiboClick">添加任务</button>
         </div>
@@ -49,8 +46,8 @@
         <table class="table" id='weibo-table'>
             <thead>
             <tr>
-                <th scope="col">进度</th>
-                <th scope="col">微博url</th>
+                <th scope="col">状态</th>
+                <th scope="col">微博id</th>
                 <th scope="col">发布者</th>
                 <th scope="col">微博内容</th>
                 <th scope="col">任务创建时间</th>
@@ -58,18 +55,18 @@
             </thead>
             <tbody>
             <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>运行中</td>
+                <td><a href="treecontact.html?tid=G7lbPgeeC">G7lbPgeeC</a></td>
+                <td>人民日报</td>
+                <td>【再见，霍金】“我出生于1942年1月8日，这一天刚好是伽利略的三百年忌日。”2018年3月14日，物理学家爱因斯坦诞辰139年，#霍金离世#。再读一读他的文字↓↓以此送别。再见，霍金。</td>
+                <td>2018-03-14 16:50:12</td>
             </tr>
             <tr>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>运行中</td>
+                <td><a href="treecontact.html?tid=G8vATtA5t">G8vATtA5t</a></td>
+                <td>央视新闻</td>
+                <td>【此刻，一起转发承诺：珍惜水资源！拒绝浪费！】你挥霍的，也许正是别人渴求的。#今天是世界水日#，节约用水，我转发！我承诺！传递！</td>
+                <td>2018-03-22 10:02:35</td>
             </tr>
             </tbody>
         </table>

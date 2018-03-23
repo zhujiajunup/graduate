@@ -18,7 +18,7 @@ export default function TimeCount(name, id, tid) {
                 var c = [];
                 for(var i = 0 ; i < value.length; i ++){
                     d.push(value[i].count);
-                    c.push(value[i].t + "时");
+                    c.push(value[i].key + "时");
                 }
                 categories.push(c);
                 data.push(d);

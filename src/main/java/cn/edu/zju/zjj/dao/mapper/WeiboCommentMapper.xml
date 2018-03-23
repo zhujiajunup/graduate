@@ -20,10 +20,12 @@
         select count(*) as `count`, source from weibo_comment where tweet_id = #{tweetId}  group by source order by `count` desc limit 15
     </select>
 
-    <select id="statTime" resultType="cn.edu.zju.zjj.entity.TimeCount">
-        select count(*) as `count`, substr(pub_time, 6, 8) as t from weibo_comment where tweet_id = #{tweetId} group by t
+    <select id="statTime" resultType="cn.edu.zju.zjj.entity.Count">
+        select count(*) as `count`, substr(pub_time, 6, 8) as `key` from weibo_comment where tweet_id = #{tweetId} group by `key`
     </select>
-
+    <select id="statSex" resultType="cn.edu.zju.zjj.entity.Count">
+        select count(*) as `count`, gender as`key` from weibo_user where id in (select uid from weibo_tweet where source_tid = #{tweetId}) GROUP BY gender;
+    </select>
     <select id="getByTweetId" resultType="cn.edu.zju.zjj.entity.WeiboComment">
         select * from weibo_comment where tweet_id = #{tweetId}
     </select>

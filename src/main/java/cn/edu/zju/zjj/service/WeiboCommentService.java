@@ -12,7 +12,7 @@ import cn.edu.zju.zjj.constant.AppConstant;
 import cn.edu.zju.zjj.dao.ProvinceDao;
 import cn.edu.zju.zjj.dao.WeiboCommentDao;
 import cn.edu.zju.zjj.entity.SourceType;
-import cn.edu.zju.zjj.entity.TimeCount;
+import cn.edu.zju.zjj.entity.Count;
 import cn.edu.zju.zjj.entity.WeiboComment;
 import cn.edu.zju.zjj.entity.WeiboUser;
 import lombok.extern.slf4j.Slf4j;
@@ -89,7 +89,7 @@ public class WeiboCommentService extends BaseService<WeiboComment> {
         return this.commentDao.statSource(tweetId);
     }
 
-    public List<TimeCount> statTime(String tweetId) {
+    public List<Count> statTime(String tweetId) {
         return this.commentDao.statTime(tweetId);
     }
 

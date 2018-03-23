@@ -1,11 +1,24 @@
-export default function Wordcloud(name, id, url) {
+export default function Wordcloud(name, id, tid) {
   var dom = document.getElementById(id);
   var myChart = echarts.init(dom);
   myChart.showLoading();
-  $.get(url, function(res) {
-    myChart.hideLoading();
-    myChart.setOption(getOption(name, res));
-  });
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: '/comment/wordCloud',
+        contentType: "application/json",
+        data: JSON.stringify({'tweetId': tid}),
+        success:  function(res) {
+          var result = res.data;
+          var d = {};
+          for(var i = 0 ; i < result.length; i ++){
+           var wordcount = result[i];
+           d[wordcount.word] = wordcount.count;
+          }
+          myChart.hideLoading();
+          myChart.setOption(getOption(name, d));
+        }
+    });
 }
 
 function getOption(name, res) {

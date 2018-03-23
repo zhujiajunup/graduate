@@ -114,15 +114,6 @@
 
     <section class="card my-3">
         <div class="card-body">
-            <div class="card-charts">
-                <div class="echart" id="bar"></div>
-            </div>
-            <p class="card-text">从上图可以看出，整个事件的爆发点是2017年06月27日 10点，转发类型的数据较为突出，加上原创和媒体的关注，将事态发展推向高点。</p>
-        </div>
-    </section>
-
-    <section class="card my-3">
-        <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
             <div class="card-charts">
@@ -159,7 +150,26 @@
     </section>
     <section class="card my-3">
         <div class="card-body">
-            <table class="table">
+            <h2 class="card-title">传播关键人物Top10</h2>
+            <table class="table" id="leader">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">昵称</th>
+                    <th scope="col">粉丝数</th>
+                    <th scope="col">关注数</th>
+                    <th scope="col">地域</th>
+                    <th scope="col">微博URL</th>
+                </tr>
+                </thead>
+
+            </table>
+            <p class="card-text">从上图可以看出，整个事件的爆发点是2017年06月27日 10点，转发类型的数据较为突出，加上原创和媒体的关注，将事态发展推向高点。</p>
+        </div>
+    </section>
+    <section class="card my-3">
+        <div class="card-body">
+            <h2 class="card-title">负面评论Top10</h2>
+            <table class="table" id="n_comment_top">
                 <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
@@ -189,7 +199,46 @@
                 </tr>
                 </tbody>
             </table>
-            <p class="card-text">从上图可以看出，整个事件的爆发点是2017年06月27日 10点，转发类型的数据较为突出，加上原创和媒体的关注，将事态发展推向高点。</p>
+
+        </div>
+    </section>
+    <section class="card my-3">
+        <div class="card-body">
+            <h2 class="card-title">正面评论Top10</h2>
+            <div class=table-responsive">
+            <table class="table" id="p_comment_top">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        joopper
+                    </td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
         </div>
     </section>
 </main>
@@ -205,11 +254,13 @@
 <script type="module" src="js/charts/distribution.js"></script>
 <script type="module" src="js/charts/pie.js"></script>
 <script type="module" src="js/charts/userinfo.js"></script>
+<script type="module" src="js/charts/user_type.js"></script>
 <script type="module" src="js/charts/timecount.js"></script>
 <script type="module" src="js/charts/place_bar.js"></script>
 <script type="module" src="js/charts/sex.js"></script>
-<script type="module" src="js/charts/bar.js"></script>
+<script type="module" src="js/charts/comment_top.js"></script>
 <script type="module" src="js/charts/wordcloud.js"></script>
+<script type="module" src="js/charts/leader.js"></script>
 <script type="module" src="js/treecontact.js"></script>
 
 </body>

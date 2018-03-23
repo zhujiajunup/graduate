@@ -2,7 +2,7 @@ package cn.edu.zju.zjj.service;
 
 import cn.edu.zju.zjj.dao.WeiboTweetDao;
 import cn.edu.zju.zjj.entity.Chain;
-import cn.edu.zju.zjj.entity.TimeCount;
+import cn.edu.zju.zjj.entity.Count;
 import cn.edu.zju.zjj.entity.WeiboTweet;
 
 import java.util.*;
@@ -11,7 +11,6 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import scala.Int;
 
 /**
  * author: zjj
@@ -170,7 +169,7 @@ public class WeiboTweetService extends BaseService<WeiboTweet> {
     public List<WeiboTweet> getRepost(String tid) {
         return this.tweetDao.getRepost(tid);
     }
-    public List<TimeCount> statTime(String tweetId) {
+    public List<Count> statTime(String tweetId) {
         return this.tweetDao.statTime(tweetId);
     }
 

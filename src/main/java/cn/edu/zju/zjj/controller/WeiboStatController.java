@@ -35,5 +35,19 @@ public class WeiboStatController {
         return new ResponseBean(this.statService.statTime(tid));
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/leader")
+    public ResponseBean leader(@RequestBody Map<String, Object> parms){
+        String tid = (String)parms.get("tweetId");
+        return new ResponseBean(this.statService.leaders(tid));
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/sex")
+    public ResponseBean sex(@RequestBody Map<String, Object> parms){
+        String tid = (String)parms.get("tweetId");
+        return new ResponseBean(this.statService.statSex(tid));
+    }
+
 
 }

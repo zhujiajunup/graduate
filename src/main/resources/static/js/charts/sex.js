@@ -1,10 +1,29 @@
 export default function Sex(id, tid) {
     var dom = document.getElementById(id);
     var myChart = echarts.init(dom);
-    var option = {
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: '/stat/sex',
+        contentType: "application/json",
+        data: JSON.stringify({'tweetId': tid}),
+        success: function (res) {
+            myChart.hideLoading();
+            myChart.setOption(getOption(res.data));
+        }
+    });
+}
+function getOption(res) {
+    var legends = [];
+    var data = [];
+    $.map(res, function (value, index) {
+        legends.push(index);
+        data.push({'name': index, 'value': value})
+
+    });
+    return {
         title : {
-            text: '某站点用户访问来源',
-            subtext: '纯属虚构',
+            text: '参与者性别统计',
             x:'center'
         },
         tooltip : {
@@ -14,21 +33,15 @@ export default function Sex(id, tid) {
         legend: {
             orient: 'vertical',
             left: 'left',
-            data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+            data: legends
         },
         series : [
             {
-                name: '访问来源',
+                //name: '访问来源',
                 type: 'pie',
                 radius : '55%',
                 center: ['50%', '60%'],
-                data:[
-                    {value:335, name:'直接访问'},
-                    {value:310, name:'邮件营销'},
-                    {value:234, name:'联盟广告'},
-                    {value:135, name:'视频广告'},
-                    {value:1548, name:'搜索引擎'}
-                ],
+                data:data,
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -39,6 +52,5 @@ export default function Sex(id, tid) {
             }
         ]
     };
-    myChart.setOption(option);
 
 }

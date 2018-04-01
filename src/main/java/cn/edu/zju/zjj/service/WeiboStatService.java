@@ -1,5 +1,7 @@
 package cn.edu.zju.zjj.service;
 
+import cn.edu.zju.zjj.constant.AppConstant;
+import cn.edu.zju.zjj.dao.ProvinceDao;
 import cn.edu.zju.zjj.dao.WeiboCommentDao;
 import cn.edu.zju.zjj.dao.WeiboTweetDao;
 import cn.edu.zju.zjj.entity.Leader;
@@ -7,10 +9,7 @@ import cn.edu.zju.zjj.entity.Count;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * author: zjj(zhujiajunup@163.com)
@@ -23,17 +22,64 @@ public class WeiboStatService {
 
     private WeiboCommentDao commentDao;
     private WeiboTweetDao tweetDao;
-
-    private WeiboStatService(WeiboCommentDao commentDao, WeiboTweetDao tweetDao) {
+    private ProvinceDao provinceDao;
+    private WeiboStatService(ProvinceDao provinceDao, WeiboCommentDao commentDao, WeiboTweetDao tweetDao) {
         this.commentDao = commentDao;
         this.tweetDao = tweetDao;
+        this.provinceDao = provinceDao;
     }
 
     public List<Leader> leaders(String tid){
 
         return this.tweetDao.getLeaders(tid);
     }
+    public Map<String, Integer> statPlace(String tid){
+        List<String> places = this.commentDao.getPlace(tid);
+        places.addAll(this.tweetDao.getPlace(tid));
+        Map<String, Integer> placeCnt = new TreeMap<>();
+        Map<String, Integer> reslut = new HashMap<>();
+        places.forEach(place -> {
+            String[] fields = place.split(" ");
+            String province = null;
+            if(fields.length == 2){
+                if(!"其他".equals(fields[1])){
+                    if(AppConstant.SPECIAL_PROVINCE.contains(fields[0])){
+                        province = fields[0];
+                    }else {
+                        int cnt = placeCnt.getOrDefault(fields[1], 0);
+                        placeCnt.put(fields[1], ++cnt);
+                    }
+                }else{
+                    province = fields[0];
+                }
+            }else if (fields.length == 1) {
+                province = fields[0];
+            }else{
+                log.warn(place);
+            }
+            if(province != null){
+                Optional<String> capitalOpt = Optional
+                        .ofNullable(this.provinceDao.getCapital(province));
+                if (capitalOpt.isPresent()) {
+                    int cnt = placeCnt.getOrDefault(capitalOpt.get(), 0);
+                    placeCnt.put(capitalOpt.get(), ++cnt);
+                } else {
+                    log.warn(place);
+                }
+            }
+        });
+        List<Map.Entry<String, Integer>> entryArrayList = new ArrayList<>(placeCnt.entrySet());
+        entryArrayList.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
+        int count = 0;
 
+        Iterator<Map.Entry<String, Integer>> keyIter = entryArrayList.iterator();
+        while (keyIter.hasNext() && count <= 20){
+            Map.Entry<String, Integer> entry = keyIter.next();
+            reslut.put(entry.getKey(), entry.getValue());
+            count ++;
+        }
+        return reslut;
+    }
     public Map<String, Integer> statSex(String tid){
         Map<String, Integer> result = new HashMap<>();
         List<Count> commentSexCnt = this.commentDao.statSex(tid);

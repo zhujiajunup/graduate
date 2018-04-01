@@ -4,6 +4,7 @@ import cn.edu.zju.zjj.entity.SourceType;
 import cn.edu.zju.zjj.entity.Count;
 import cn.edu.zju.zjj.entity.WeiboComment;
 import cn.edu.zju.zjj.entity.WeiboUser;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,4 +27,6 @@ public interface WeiboCommentDao extends BaseDao<WeiboComment>{
     List<WeiboUser> getUsers(String tweetId);
 
     List<String> getPlace(String tweetId);
+
+    List<WeiboComment> top(@Param("tid")String tid, @Param("type") int type);
 }

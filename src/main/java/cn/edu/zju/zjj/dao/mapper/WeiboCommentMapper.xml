@@ -40,4 +40,8 @@
     <select id="getPlace" resultType="java.lang.String">
         select place from weibo_user where id in ( select user_id from weibo_comment where tweet_id = #{tweetId}) and place != 'unknown' and place != '其他';
     </select>
+
+    <select id="top" resultType="cn.edu.zju.zjj.entity.WeiboComment">
+        select * from (select wc.* from weibo_comment as wc LEFT JOIN weibo_user as wu on user_id = wu.id where wc.tweet_id = #{tid} and wu.id is not null) limit 10
+    </select>
 </mapper>

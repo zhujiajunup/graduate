@@ -37,7 +37,9 @@ public class WeiboCommentService extends BaseService<WeiboComment> {
         this.provinceDao = provinceDao;
         this.commentDao = commentDao;
     }
-
+    public List<WeiboComment> top(int type, String tid){
+        return this.commentDao.top(tid, type);
+    }
     public Map<String, Integer> statPlace(String tweetId) {
         List<String> places = this.commentDao.getPlace(tweetId);
         Map<String, Integer> placeCnt = new TreeMap<>();

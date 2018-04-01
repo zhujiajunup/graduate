@@ -1,6 +1,7 @@
 package cn.edu.zju.zjj.service;
 
 import cn.edu.zju.zjj.dao.WeiboUserDao;
+import cn.edu.zju.zjj.entity.WeiboComment;
 import cn.edu.zju.zjj.entity.WeiboUser;
 
 import java.util.List;
@@ -35,4 +36,6 @@ public class WeiboUserService extends BaseService<WeiboUser> {
     public List<WeiboUser> getByLimit(int limit) {
         return userDao.getByLimit(limit);
     }
+
+
 }

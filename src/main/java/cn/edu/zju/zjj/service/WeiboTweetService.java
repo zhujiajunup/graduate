@@ -169,6 +169,7 @@ public class WeiboTweetService extends BaseService<WeiboTweet> {
     public List<WeiboTweet> getRepost(String tid) {
         return this.tweetDao.getRepost(tid);
     }
+
     public List<Count> statTime(String tweetId) {
         return this.tweetDao.statTime(tweetId);
     }

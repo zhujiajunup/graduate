@@ -53,4 +53,5 @@ select t.id as tid, weibo_user.* from  (select uid, id, transfer+weibo_tweet.com
     <select id="statSex" resultType="cn.edu.zju.zjj.entity.Count">
     select count(*) as `count`, gender as`key` from weibo_user where id in (select user_id as uid from weibo_comment where tweet_id = #{tid}) GROUP BY gender;
     </select>
+    <select id="getPlace" resultType="java.lang.String">select place from weibo_user where id in ( select uid from weibo_tweet where source_tid = #{tid} and uid != 0) and place != 'unknown' and place != '其他';</select>
 </mapper>

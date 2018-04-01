@@ -211,9 +211,9 @@ export default function Distribution(id, tid) {
     var option = {
         backgroundColor: '#404a59',
         title: {
-            text: '全国主要城市空气质量',
-            subtext: 'data from PM25.in',
-            sublink: 'http://www.pm25.in',
+            text: '参与者全国地理分布',
+            // subtext: '',
+            // sublink: 'http://www.pm25.in',
             x:'center',
             textStyle: {
                 color: '#fff'
@@ -264,7 +264,7 @@ export default function Distribution(id, tid) {
         },
         series: [
             {
-                name: 'pm2.5',
+                //name: 'pm2.5',
                 type: 'scatter',
                 coordinateSystem: 'geo',
                 data: convertData([

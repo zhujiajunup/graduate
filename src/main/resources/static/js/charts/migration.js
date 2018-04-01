@@ -29,13 +29,15 @@ export default function Migration(name, id, tid) {
                     var data = {};
                     data["city"] = mapLoc;
                     var link = {
-                        '杭州': $.map(res.data, function (value, key) {
-                            if(mapLoc[key] != undefined) {
-                                return [{'name': key, 'value': value}];
-                            }
+                        '北京': $.map(res.data, function (value, key) {
+                            // if(key != '北京') {
+                                if (mapLoc[key] != undefined) {
+                                    return [{'name': key, 'value': value}];
+                                }
+
                         })
                     };
-                    var item = [{'name': "杭州", 'key': '杭州'}];
+                    var item = [{'name': "北京", 'key': '北京'}];
                     var color = [
                         "#a6c84c",
                         "#ffa022",
@@ -99,7 +101,7 @@ function getOption(name, res) {
             symbol: ['none', 'arrow'],
             symbolSize: 10,
             effect: {
-                show: true,
+                show: false,
                 period: 6,
                 trailLength: 0,
                 symbol: planePath,

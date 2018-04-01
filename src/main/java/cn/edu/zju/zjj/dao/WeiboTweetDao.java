@@ -24,4 +24,5 @@ public interface WeiboTweetDao extends BaseDao<WeiboTweet> {
     List<Count> statTime(String tweetId);
     List<Leader> getLeaders(String tweetId);
     List<Count> statSex(String tid);
+    List<String> getPlace(String tid);
 }

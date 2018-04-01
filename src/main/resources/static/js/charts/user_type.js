@@ -16,18 +16,17 @@ export default function UserType(id, tid) {
 function getOption(res) {
     return {
         title : {
-            text: '南丁格尔玫瑰图',
-            subtext: '纯属虚构',
+            text: '参与者类型',
             x:'center'
         },
         tooltip : {
             trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
+            formatter: "{b} : {d}%"
         },
         legend: {
             x : 'center',
             y : 'bottom',
-            data:['rose1','rose2','rose3','rose4','rose5','rose6','rose7','rose8']
+            data:['橙V用户', '蓝V用户', '微博达人', '普通用户']
         },
         toolbox: {
             show : true,
@@ -45,20 +44,15 @@ function getOption(res) {
         calculable : true,
         series : [
             {
-                name:'面积模式',
                 type:'pie',
                 radius : [30, 110],
-                center : ['75%', '50%'],
+                center : ['50%', '50%'],
                 roseType : 'area',
                 data:[
-                    {value:10, name:'rose1'},
-                    {value:5, name:'rose2'},
-                    {value:15, name:'rose3'},
-                    {value:25, name:'rose4'},
-                    {value:20, name:'rose5'},
-                    {value:35, name:'rose6'},
-                    {value:30, name:'rose7'},
-                    {value:40, name:'rose8'}
+                    {value:10, name:'橙V用户'},
+                    {value:5, name:'蓝V用户'},
+                    {value:15, name:'微博达人'},
+                    {value:25, name:'普通用户'}
                 ]
             }
         ]

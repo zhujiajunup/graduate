@@ -49,10 +49,10 @@ function getOption(res) {
                 center : ['50%', '50%'],
                 roseType : 'area',
                 data:[
-                    {value:10, name:'橙V用户'},
-                    {value:5, name:'蓝V用户'},
-                    {value:15, name:'微博达人'},
-                    {value:25, name:'普通用户'}
+                    {value:20, name:'橙V用户'},
+                    {value:19, name:'蓝V用户'},
+                    {value:9, name:'微博达人'},
+                    {value:12, name:'普通用户'}
                 ]
             }
         ]

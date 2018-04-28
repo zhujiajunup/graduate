@@ -42,6 +42,6 @@
     </select>
 
     <select id="top" resultType="cn.edu.zju.zjj.entity.WeiboComment">
-        select * from (select wc.* from weibo_comment as wc LEFT JOIN weibo_user as wu on user_id = wu.id where wc.tweet_id = #{tid} and wu.id is not null) limit 10
+        select * from (select wc.* from weibo_comment as wc LEFT JOIN weibo_user as wu on user_id = wu.id where wc.tweet_id = #{tid} and sentiment = #{type} and wu.id is not null) limit 10
     </select>
 </mapper>

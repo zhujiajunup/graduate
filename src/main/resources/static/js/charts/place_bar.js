@@ -335,7 +335,9 @@ function setBarOption(res) {
     }
     var option = {
         title: {
-            text: '参与者主要城市分布图'
+            text: '参与者主要城市分布图',
+            left: 'center'
+
         },
         xAxis: {
             data: dataAxis,

@@ -16,9 +16,8 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-public class WeiboTask{
-    private String status;
-    private long createTime;
+public class WeiboTask extends Task{
+
     private String weiboId;
     private String weiboUser;
     private String weiboContent;

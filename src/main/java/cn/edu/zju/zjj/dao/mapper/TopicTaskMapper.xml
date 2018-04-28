@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zju.zjj.dao.TopicTaskDao">
+
+    <insert id="insert" parameterType="cn.edu.zju.zjj.entity.TopicTask">
+        insert into topic_task (topic, status, create_time) VALUES (#{topic}, #{status}, #{createTime})
+    </insert>
+    <select id="exist" resultType="java.lang.Boolean">
+        select ifnull(exists(select 1 from topic_task where topic_task.id = #{id}), 0);
+    </select>
+    <update id="update" parameterType="cn.edu.zju.zjj.entity.TopicTask">
+        update topic_task
+        <set>
+            <if test="status != null">status = #{status},</if>
+           </set>
+        where id = #{id}
+    </update>
+
+    <select id="getById" resultType="cn.edu.zju.zjj.entity.TopicTask">
+        select * from topic_task where id = #{id}
+    </select>
+    <select id="getAll" resultType="cn.edu.zju.zjj.entity.TopicTask">
+        select * from topic_task order by create_time desc
+    </select>
+</mapper>

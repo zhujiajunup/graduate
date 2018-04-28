@@ -98,7 +98,7 @@ public class WeiboCommentController {
         String tweetId = (String) params.get("tweetId");
         int type = (Integer) params.get("type");
         List<WeiboComment> comments = this.commentService.top(type, tweetId);
-        List<WeiboUser> users = new ArrayList<>();
+
         List<Object> result = new ArrayList<>();
         comments.forEach(
                 comment -> {

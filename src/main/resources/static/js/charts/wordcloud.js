@@ -19,6 +19,9 @@ export default function Wordcloud(name, id, tid) {
           myChart.setOption(getOption(name, d));
         }
     });
+    myChart.on('click', function (params) {
+        console.log(params);
+    });
 }
 
 function getOption(name, res) {

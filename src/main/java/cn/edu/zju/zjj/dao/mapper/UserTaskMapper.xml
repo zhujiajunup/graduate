@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zju.zjj.dao.UserTaskDao">
+
+    <insert id="insert" parameterType="cn.edu.zju.zjj.entity.UserTask">
+        insert into user_task (user_id, create_time, status) VALUES (#{userId}, #{createTime}, #{status})
+    </insert>
+    <select id="exist" resultType="java.lang.Boolean">
+        select ifnull(exists(select 1 from user_task where user_task.user_id = #{id}), 0);
+    </select>
+    <update id="update" parameterType="cn.edu.zju.zjj.entity.UserTask">
+        update user_task
+        <set>
+            <if test="status != null">status = #{status},</if>
+           </set>
+        where user_id = #{userId}
+    </update>
+
+    <select id="getById" resultType="cn.edu.zju.zjj.entity.UserTask">
+        select * from user_task where user_id = #{id}
+    </select>
+    <select id="getAll" resultType="cn.edu.zju.zjj.bean.UserTaskBean">
+        select * from user_task left join weibo_user on user_task.user_id = weibo_user.id;
+    </select>
+</mapper>
